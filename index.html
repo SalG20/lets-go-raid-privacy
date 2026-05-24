@@ -3,258 +3,706 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Privacy Policy – Let's Go Raid</title>
+  <title>Let's Go Raid – Privacy &amp; Support</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #07091a;
+      --surface: #0d1225;
+      --surface2: #111830;
+      --border: rgba(56, 189, 248, 0.15);
+      --border-strong: rgba(56, 189, 248, 0.3);
+      --accent: #38bdf8;
+      --accent-dim: #0ea5e9;
+      --accent-glow: rgba(56, 189, 248, 0.08);
+      --text: #cbd5e1;
+      --text-bright: #f1f5f9;
+      --text-muted: #64748b;
+      --text-dim: #475569;
+      --green: #34d399;
+      --green-bg: rgba(52, 211, 153, 0.07);
+      --green-border: rgba(52, 211, 153, 0.28);
+    }
+
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #0d0f18;
-      color: #d4ccc4;
+      background: var(--bg);
+      color: var(--text);
       line-height: 1.7;
-      padding: 0 16px 60px;
     }
-    .container {
-      max-width: 720px;
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7, 9, 26, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+    }
+    .nav-inner {
+      max-width: 820px;
       margin: 0 auto;
-      padding: 48px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 48px;
+      overflow-x: auto;
+      scrollbar-width: none;
     }
-    header {
-      margin-bottom: 36px;
-      border-bottom: 1px solid rgba(216,135,63,0.25);
-      padding-bottom: 28px;
-    }
-    .brand {
+    .nav-inner::-webkit-scrollbar { display: none; }
+    .nav-brand {
       font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: #d8873f;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    h1 {
-      font-size: 28px;
-      font-weight: 900;
-      color: #fff6ea;
-      margin-bottom: 10px;
-    }
-    .meta {
-      font-size: 13px;
-      color: #7a6e64;
-    }
-    h2 {
-      font-size: 17px;
       font-weight: 800;
-      color: #f0a35b;
-      margin: 36px 0 12px;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      margin-right: 12px;
+      text-decoration: none;
     }
-    p {
-      font-size: 15px;
-      color: #c4bab0;
+    .nav-link {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-link:hover { color: var(--accent); background: var(--accent-glow); }
+
+    /* LAYOUT */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 72px 0 52px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      padding: 4px 12px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--text-bright);
+      line-height: 1.12;
       margin-bottom: 14px;
+      letter-spacing: -0.02em;
     }
-    ul {
-      margin: 8px 0 16px 20px;
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      max-width: 520px;
+      line-height: 1.55;
     }
-    ul li {
-      font-size: 15px;
-      color: #c4bab0;
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .hero-meta-item {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .hero-meta-item strong { color: var(--text-muted); }
+
+    /* SECTION */
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    section:last-of-type { border-bottom: none; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
       margin-bottom: 8px;
     }
-    ul li strong {
-      color: #e8ddd4;
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-bright);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
     }
-    a {
-      color: #d8873f;
-      text-decoration: underline;
+
+    /* SUMMARY CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 12px;
+      margin-top: 4px;
     }
-    .disclaimer {
-      margin-top: 40px;
-      padding: 16px 20px;
-      background: rgba(216,135,63,0.08);
-      border-left: 3px solid rgba(216,135,63,0.4);
-      border-radius: 0 6px 6px 0;
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .card:hover {
+      border-color: var(--border-strong);
+      background: var(--surface2);
+    }
+    .card-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+    .card-title {
       font-size: 13px;
-      color: #8a7d72;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 6px;
+    }
+    .card-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* POLICY CONTENT */
+    .policy-section { margin-bottom: 32px; }
+    .policy-section:last-child { margin-bottom: 0; }
+    .policy-h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .policy-p {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+    .policy-ul {
+      list-style: none;
+      margin: 8px 0 12px;
+      padding: 0;
+    }
+    .policy-ul li {
+      font-size: 14px;
+      color: var(--text);
+      padding: 7px 0 7px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: relative;
       line-height: 1.6;
     }
+    .policy-ul li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--accent-dim);
+    }
+    .policy-ul li:last-child { border-bottom: none; }
+    .policy-ul li strong { color: var(--text-bright); }
+    .policy-ul a { color: var(--accent); }
+
+    /* CALLOUT BOXES */
+    .callout {
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .callout-green {
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
+    }
+    .callout-blue {
+      background: var(--accent-glow);
+      border: 1px solid var(--border-strong);
+    }
+    .callout-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .callout-green .callout-title { color: var(--green); }
+    .callout-blue .callout-title { color: var(--accent); }
+    .callout-body {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .callout-body a { color: var(--accent); }
+    .callout-body strong { color: var(--text-bright); }
+
+    /* DELETION STEPS */
+    .deletion-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .deletion-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .deletion-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .deletion-step-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 4px;
+    }
+    .deletion-step-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .deletion-step-body a { color: var(--accent); }
+    .deletion-step-body em { font-style: italic; }
+
+    /* SUPPORT TOPICS */
+    .support-topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .support-topic {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .support-topic-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 6px;
+    }
+    .support-topic-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* EMAIL BUTTON */
+    a { color: var(--accent); text-decoration: underline; }
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      background: var(--accent-glow);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 10px 18px;
+      margin: 12px 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .email-link:hover {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: var(--accent);
+    }
+
+    /* DISCLAIMER */
+    .disclaimer-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+    }
+    .disclaimer-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .disclaimer-box strong { color: var(--text); }
+
+    /* FOOTER */
     footer {
-      margin-top: 52px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 40px 0 20px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .footer-brand {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .footer-copy {
       font-size: 12px;
-      color: #5a5048;
-      line-height: 1.6;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* BODY HELPERS */
+    .body-text {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .body-text-muted {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.65;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 28px; }
+      .hero-sub { font-size: 15px; }
+      .section-title { font-size: 20px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .deletion-steps { grid-template-columns: 1fr; }
+      .support-topics { grid-template-columns: 1fr; }
+      .disclaimer-box { padding: 20px; }
+      .footer-links { align-items: flex-start; }
+      nav { padding: 0 12px; }
+      .container { padding: 0 16px 60px; }
+      .callout { padding: 16px 18px; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">Let's Go Raid</div>
-      <h1>Privacy Policy</h1>
-      <p class="meta">
-        Effective date: May 23, 2026 &nbsp;·&nbsp;
-        Package: com.peacefulsoil.letsgoraid
-      </p>
-    </header>
 
-    <p>
-      This Privacy Policy explains how <strong>Let's Go Raid</strong> ("the App", "we", "us")
-      collects, uses, and protects information when you use the App.
-      By using Let's Go Raid, you agree to the practices described here.
-    </p>
+  <!-- STICKY NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top">Let's Go Raid</a>
+      <a class="nav-link" href="#summary">Overview</a>
+      <a class="nav-link" href="#privacy">Privacy</a>
+      <a class="nav-link" href="#deletion">Delete Data</a>
+      <a class="nav-link" href="#support">Support</a>
+      <a class="nav-link" href="#premium">Premium</a>
+      <a class="nav-link" href="#disclaimer">Disclaimer</a>
+    </div>
+  </nav>
 
-    <h2>1. Information We Collect</h2>
-    <p>We may collect the following categories of information:</p>
-    <ul>
-      <li>
-        <strong>Account and authentication data</strong> — email address, authentication
-        identifiers, session tokens, and related account records managed through Supabase Auth.
-      </li>
-      <li>
-        <strong>Profile and trainer data</strong> — trainer name, trainer level, trainer code,
-        avatar or style choices, verification status, premium or ad-free subscription status,
-        moderation or suspension status, and related profile settings you provide.
-      </li>
-      <li>
-        <strong>Raid and coordination activity</strong> — hosted raids, joined raids, party
-        status, selected raid boss, team color, party size, raid timing, ready/join status,
-        and related coordination data created when you use the App.
-      </li>
-      <li>
-        <strong>Verification images</strong> — screenshots or images you voluntarily submit
-        for profile verification (for example, in-game screenshots used to verify trainer
-        level or other details). These are only processed if you choose to use the
-        verification feature.
-      </li>
-      <li>
-        <strong>Device and app diagnostics</strong> — app version, device platform and
-        operating system, error logs, crash reports, and debugging information used to
-        operate and improve the App.
-      </li>
-      <li>
-        <strong>Purchase and subscription data</strong> — Google Play purchase or subscription
-        identifiers, RevenueCat customer identifiers, entitlement status (premium / remove-ads),
-        product identifiers, and related billing events needed to provide paid features.
-      </li>
-    </ul>
+  <div class="container" id="top">
 
-    <h2>2. How We Use Your Information</h2>
-    <ul>
-      <li>Provide account access, authentication, and session management.</li>
-      <li>Enable raid hosting, joining, party coordination, and related App features.</li>
-      <li>Verify profiles and improve trust, safety, and community quality.</li>
-      <li>Detect and moderate abuse, spam, scam behavior, and violations of our terms.</li>
-      <li>Process subscriptions and provide premium or ad-free features.</li>
-      <li>Debug technical issues, respond to support requests, and maintain App reliability.</li>
-      <li>Improve the App based on usage patterns and diagnostic data.</li>
-    </ul>
-
-    <h2>3. Third-Party Services</h2>
-    <p>
-      The App uses third-party service providers to operate. These providers process data
-      according to their own privacy policies and terms of service:
-    </p>
-    <ul>
-      <li>
-        <strong>Supabase</strong> — provides authentication, database storage, Edge Functions,
-        and backend services. Data is stored and processed on Supabase infrastructure.
-        (<a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase Privacy Policy</a>)
-      </li>
-      <li>
-        <strong>RevenueCat</strong> — manages subscription entitlements and in-app purchase
-        validation for premium features.
-        (<a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat Privacy Policy</a>)
-      </li>
-      <li>
-        <strong>Google Play Billing</strong> — processes Android in-app purchases and
-        subscriptions. Subject to Google's privacy policies and terms.
-        (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>)
-      </li>
-    </ul>
-
-    <h2>4. Data Sharing</h2>
-    <p>
-      We do not sell your personal data. We may share data only in these circumstances:
-    </p>
-    <ul>
-      <li>With service providers listed above that are necessary to operate the App.</li>
-      <li>When required by applicable law, legal process, court order, or platform policy.</li>
-      <li>To investigate abuse, safety incidents, fraud, or security threats.</li>
-    </ul>
-
-    <h2>5. Data Retention</h2>
-    <ul>
-      <li>Account and profile data are retained while your account remains active.</li>
-      <li>
-        Raid activity and operational logs may be retained as needed for app operation,
-        safety enforcement, debugging, and abuse prevention.
-      </li>
-      <li>
-        Verification images are retained as needed to support the verification process
-        and moderation, and may be deleted upon account deletion request.
-      </li>
-      <li>
-        You may request deletion of your account and associated data at any time.
-        See Section 7 (Contact and Data Requests) below.
-      </li>
-    </ul>
-
-    <h2>6. Children's Privacy</h2>
-    <p>
-      Let's Go Raid is not directed at children under the age of 13 (or the applicable
-      age of digital consent in your region). We do not knowingly collect personal
-      information from children under 13. If you believe a child under 13 has provided
-      information through the App, please contact us so we can delete it.
-    </p>
-
-    <h2>7. Contact and Data Requests</h2>
-    <p>
-      For privacy questions, data access requests, data deletion requests, or support,
-      please contact us at:
-    </p>
-    <p>
-      <strong>Email:</strong>
-      <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>
-    </p>
-    <p>
-      To request deletion of your account and data, email the address above with the
-      subject line <em>"Data Deletion Request – Let's Go Raid"</em> and include the email
-      address associated with your account.
-    </p>
-
-    <h2>8. Security</h2>
-    <p>
-      We use reasonable administrative, technical, and physical safeguards to help protect
-      your information. No method of electronic storage or transmission is 100% secure,
-      and we cannot guarantee absolute security.
-    </p>
-
-    <h2>9. Changes to This Policy</h2>
-    <p>
-      We may update this Privacy Policy from time to time. When we do, we will post the
-      revised policy here with an updated effective date. Continued use of the App after
-      changes constitutes acceptance of the updated policy.
-    </p>
-
-    <h2>10. Your Rights</h2>
-    <p>
-      Depending on your location, you may have rights under applicable law to access,
-      correct, export, or delete your personal data. To exercise any of these rights,
-      contact us at <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>.
-    </p>
-
-    <div class="disclaimer">
-      <strong>Disclaimer:</strong> Let's Go Raid is an independent fan-made app for Pokémon GO
-      raid coordination. It is not affiliated with, endorsed by, or sponsored by Niantic,
-      Inc., The Pokémon Company International, Nintendo Co., Ltd., or any related entities.
-      Pokémon GO and Pokémon are trademarks of their respective owners.
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-badge">Privacy &amp; Support</div>
+      <h1>Let's Go Raid</h1>
+      <p class="hero-sub">Privacy policy, account deletion, and support information for Let's Go Raid — raid coordination for Android.</p>
+      <div class="hero-meta">
+        <span class="hero-meta-item"><strong>Package:</strong> com.peacefulsoil.letsgoraid</span>
+        <span class="hero-meta-item"><strong>Effective:</strong> May 24, 2026</span>
+        <span class="hero-meta-item"><strong>Contact:</strong> peacefulsoil4k@gmail.com</span>
+      </div>
     </div>
 
-    <footer>
-      &copy; 2026 Peaceful Soil. Let's Go Raid · com.peacefulsoil.letsgoraid<br />
-      Contact: <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>
-    </footer>
-  </div>
+    <!-- QUICK SUMMARY -->
+    <section id="summary">
+      <div class="section-label">Overview</div>
+      <div class="section-title">At a Glance</div>
+      <div class="cards-grid">
+        <div class="card">
+          <span class="card-icon">📋</span>
+          <div class="card-title">What we collect</div>
+          <div class="card-body">Account email, trainer profile, raid activity, optional verification screenshots, and purchase identifiers.</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🔒</span>
+          <div class="card-title">No data sales</div>
+          <div class="card-body">We do not sell your personal data. Data is shared only with the service providers needed to run the app.</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">📢</span>
+          <div class="card-title">No active ads</div>
+          <div class="card-body">The current build has no advertising. Future optional rewarded ads would be disclosed before activation.</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🗑️</span>
+          <div class="card-title">You can delete your data</div>
+          <div class="card-body">Email peacefulsoil4k@gmail.com to request account or data deletion. App install not required.</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🎮</span>
+          <div class="card-title">Independent app</div>
+          <div class="card-body">Not affiliated with Niantic, The Pokémon Company, or Nintendo. See the disclaimer section for details.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY POLICY -->
+    <section id="privacy">
+      <div class="section-label">Legal</div>
+      <div class="section-title">Privacy Policy</div>
+
+      <div class="policy-section">
+        <p class="policy-p">This Privacy Policy explains how <strong>Let's Go Raid</strong> ("the App", "we", "us") collects, uses, and protects information when you use the App. By using Let's Go Raid, you agree to the practices described here.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">1. Information We Collect</div>
+        <ul class="policy-ul">
+          <li><strong>Account and authentication data</strong> — email address, authentication identifiers, session tokens, and related account records managed through Supabase Auth.</li>
+          <li><strong>Profile and trainer data</strong> — trainer name, trainer level, trainer code, avatar or style choices, verification status, premium or ad-free subscription status, moderation or suspension status, and related profile settings you provide.</li>
+          <li><strong>Raid and coordination activity</strong> — hosted raids, joined raids, party status, selected raid boss, team color, party size, raid timing, ready/join status, and related coordination data created when you use the App.</li>
+          <li><strong>Verification images</strong> — screenshots or images you voluntarily submit for profile verification. These are only processed if you choose to use the verification feature.</li>
+          <li><strong>Device and app diagnostics</strong> — app version, device platform and operating system, error logs, and debugging information used to operate and improve the App.</li>
+          <li><strong>Purchase and subscription data</strong> — Google Play purchase or subscription identifiers, RevenueCat customer identifiers, entitlement status (premium / remove-ads), product identifiers, and related billing events needed to provide paid features.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">2. How We Use Your Information</div>
+        <ul class="policy-ul">
+          <li>Provide account access, authentication, and session management.</li>
+          <li>Enable raid hosting, joining, party coordination, and related App features.</li>
+          <li>Verify profiles and improve trust, safety, and community quality.</li>
+          <li>Detect and moderate abuse, spam, misleading raids, and violations of our terms.</li>
+          <li>Process subscriptions and provide premium or ad-free features.</li>
+          <li>Debug technical issues, respond to support requests, and maintain App reliability.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">3. Third-Party Services</div>
+        <p class="policy-p">The App uses third-party service providers to operate. These providers process data according to their own privacy policies:</p>
+        <ul class="policy-ul">
+          <li><strong>Supabase</strong> — provides authentication, database storage, Edge Functions, and backend services. (<a href="https://supabase.com/privacy" target="_blank" rel="noopener">Supabase Privacy Policy</a>)</li>
+          <li><strong>RevenueCat</strong> — manages subscription entitlements and in-app purchase validation. (<a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat Privacy Policy</a>)</li>
+          <li><strong>Google Play Billing</strong> — processes Android in-app purchases and subscriptions. (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>)</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">4. Advertising</div>
+        <p class="policy-p">Let's Go Raid does not currently display ads. A future optional rewarded ad feature may be added in a later version. If ads are introduced, this policy will be updated before activation to describe what advertising networks are used and what data they may collect.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">5. Data Sharing</div>
+        <p class="policy-p">We do not sell your personal data. We may share data only in these circumstances:</p>
+        <ul class="policy-ul">
+          <li>With service providers listed above that are necessary to operate the App.</li>
+          <li>When required by applicable law, legal process, court order, or platform policy.</li>
+          <li>To investigate abuse, safety incidents, fraud, or security threats.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">6. Data Retention</div>
+        <ul class="policy-ul">
+          <li>Account and profile data are retained while your account remains active.</li>
+          <li>Raid activity and operational logs may be retained as needed for app operation, safety enforcement, and debugging.</li>
+          <li>Verification images are retained as needed to support the verification process and moderation, and may be deleted upon account deletion request.</li>
+          <li>You may request deletion of your account and associated data at any time. See the Account and Data Deletion section below.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">7. Children's Privacy</div>
+        <p class="policy-p">Let's Go Raid is not directed at children under the age of 13 (or the applicable minimum age of digital consent in your region). We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided information through the App, please contact us at <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a> so we can promptly delete it.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">8. Security</div>
+        <p class="policy-p">We use reasonable administrative, technical, and physical safeguards to help protect your information. All API traffic uses HTTPS. No method of electronic storage or transmission is 100% secure, and we cannot guarantee absolute security.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">9. Your Rights</div>
+        <p class="policy-p">Depending on your location, you may have rights under applicable law to access, correct, export, or delete your personal data. To exercise any of these rights, contact us at <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">10. Contact and Data Requests</div>
+        <p class="policy-p">For privacy questions, data access requests, or deletion requests, contact us at <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>. See the Account and Data Deletion section below for step-by-step instructions.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">11. Changes to This Policy</div>
+        <p class="policy-p">We may update this Privacy Policy from time to time. When we do, we will post the revised policy here with an updated effective date. Continued use of the App after changes constitutes acceptance of the updated policy.</p>
+      </div>
+    </section>
+
+    <!-- DELETION -->
+    <section id="deletion">
+      <div class="section-label">Your Rights</div>
+      <div class="section-title">Account and Data Deletion</div>
+
+      <p class="body-text">You may request deletion of your account or specific data at any time — even if you no longer have the app installed. We target completion within <strong>30 days</strong> of a complete and verified request.</p>
+
+      <div class="deletion-steps">
+        <div class="deletion-step">
+          <div class="deletion-step-num">Step 1</div>
+          <div class="deletion-step-title">Send an email</div>
+          <div class="deletion-step-body">Email <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a> from the address linked to your account.</div>
+        </div>
+        <div class="deletion-step">
+          <div class="deletion-step-num">Step 2</div>
+          <div class="deletion-step-title">Use the right subject line</div>
+          <div class="deletion-step-body">
+            Account deletion: <em>"Account Deletion Request – Let's Go Raid"</em><br/><br/>
+            Data only: <em>"Data Deletion Request – Let's Go Raid"</em>
+          </div>
+        </div>
+        <div class="deletion-step">
+          <div class="deletion-step-num">Step 3</div>
+          <div class="deletion-step-title">Include your details</div>
+          <div class="deletion-step-body">Your account email and trainer name (if applicable). We may verify account ownership before processing.</div>
+        </div>
+      </div>
+
+      <div class="callout callout-green">
+        <div class="callout-title">What gets deleted</div>
+        <div class="callout-body">
+          <strong>Account deletion</strong> removes: Supabase Auth account, trainer profile (name, level, code, avatar, verification status), verification screenshots, and raid history associated with your account.<br/><br/>
+          <strong>Data-only deletion</strong> removes specific data you identify — such as verification images, profile fields, or support records — without deleting your account.<br/><br/>
+          Purchase and payment records managed by Google Play or RevenueCat are subject to their respective policies and may not be removable on request.
+        </div>
+      </div>
+
+      <a href="mailto:peacefulsoil4k@gmail.com?subject=Account%20Deletion%20Request%20%E2%80%93%20Let%27s%20Go%20Raid" class="email-link">
+        ✉ &nbsp;peacefulsoil4k@gmail.com
+      </a>
+    </section>
+
+    <!-- SUPPORT -->
+    <section id="support">
+      <div class="section-label">Help</div>
+      <div class="section-title">Support</div>
+
+      <p class="body-text">Let's Go Raid is currently in early closed testing. We aim to respond within <strong>5 business days</strong>.</p>
+
+      <a href="mailto:peacefulsoil4k@gmail.com" class="email-link">
+        ✉ &nbsp;peacefulsoil4k@gmail.com
+      </a>
+
+      <p class="body-text-muted" style="margin-top:8px;">When emailing, please include your account email, device model, app version (visible in settings if available), and a description of the issue. Do not send your password or one-time verification codes.</p>
+
+      <div class="support-topics">
+        <div class="support-topic">
+          <div class="support-topic-title">Login / Email Verification</div>
+          <div class="support-topic-body">Check your spam folder first. If the issue continues, contact support with your account email and any visible error message.</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">Profile or Trainer Code</div>
+          <div class="support-topic-body">Try re-entering your trainer name, level, or code. Contact support with the trainer name and error message if the issue persists.</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">Raid Not Showing</div>
+          <div class="support-topic-body">Pull to refresh or close and reopen the lobby screen. Include the boss name and raid type when contacting support.</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">Premium or Purchase Issue</div>
+          <div class="support-topic-body">Try the in-app Restore Purchases option first. Include your Google Play account, the product purchased, and any error message when contacting support.</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">Verification Screenshot</div>
+          <div class="support-topic-body">Include whether image selection opened, whether fields were auto-filled, and whether a permission prompt appeared.</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">Reporting Abuse or Safety Issues</div>
+          <div class="support-topic-body">Email peacefulsoil4k@gmail.com with a description, the trainer name of the reported user if known, and any supporting screenshots.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREMIUM -->
+    <section id="premium">
+      <div class="section-label">Subscriptions</div>
+      <div class="section-title">Premium and Purchases</div>
+
+      <p class="body-text">Let's Go Raid offers optional premium subscriptions and one-time purchases processed through Google Play Billing and managed by RevenueCat.</p>
+
+      <div class="callout callout-blue">
+        <div class="callout-title">How purchases work</div>
+        <div class="callout-body">
+          Purchases are processed by Google Play. After a successful purchase, our backend confirms the entitlement — this typically takes a few seconds. If premium access does not appear immediately, use the <strong>Restore Purchases</strong> option in the app.<br/><br/>
+          <strong>Subscriptions renew automatically.</strong> You can cancel at any time through your Google Play subscription settings. Refunds are subject to Google Play's refund policy.
+        </div>
+      </div>
+
+      <ul class="policy-ul" style="margin-top:16px;">
+        <li><strong>Monthly subscription</strong> — auto-renewing (lets_go_raid_premium_monthly). Renews unless cancelled at least 24 hours before the end of the billing period.</li>
+        <li><strong>One-time purchase</strong> — lifetime remove-ads (lets_go_raid_remove_ads_forever).</li>
+        <li><strong>Entitlement confirmation</strong> — confirmed by our backend after Google Play validates the purchase. A short delay of a few seconds is normal after purchase.</li>
+        <li><strong>Restore purchases</strong> — use the Restore Purchases button in the app if entitlements are not reflected after purchasing or reinstalling.</li>
+        <li><strong>Cancellation</strong> — cancel subscriptions in your Google Play subscription settings. Refunds follow Google Play's refund policy and are not issued directly by Let's Go Raid.</li>
+        <li><strong>Advertising</strong> — the current build has no active ads. Advertising Identifier is not used in the current build.</li>
+      </ul>
+
+      <p class="body-text-muted">For purchase issues, contact <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a> with your Google Play account, the product purchased, and any error message.</p>
+    </section>
+
+    <!-- DISCLAIMER -->
+    <section id="disclaimer">
+      <div class="section-label">Legal Notice</div>
+      <div class="section-title">Independent App Disclaimer</div>
+      <div class="disclaimer-box">
+        <p>Let's Go Raid is an independent app for Pokémon GO raid coordination. It is <strong>not affiliated with, endorsed by, or sponsored by</strong> Niantic, Inc., The Pokémon Company International, Nintendo Co., Ltd., or any related entities. Pokémon GO and Pokémon are trademarks of their respective owners.</p>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="padding-bottom:0;">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">Let's Go Raid</div>
+          <div class="footer-copy">&copy; 2026 Peaceful Soil &nbsp;·&nbsp; com.peacefulsoil.letsgoraid</div>
+          <div class="footer-copy" style="margin-top:2px;">Last updated: May 24, 2026</div>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>
+          <a href="#top">Back to top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
