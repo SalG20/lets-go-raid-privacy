@@ -182,6 +182,37 @@
       line-height: 1.55;
     }
 
+    /* TABLE OF CONTENTS */
+    .toc-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-top: 24px;
+    }
+    .toc-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-bright);
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .toc-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 8px;
+    }
+    .toc-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(56, 189, 248, 0.12);
+    }
+    .toc-links a:hover { background: var(--accent-glow); }
     /* POLICY CONTENT */
     .policy-section { margin-bottom: 32px; }
     .policy-section:last-child { margin-bottom: 0; }
@@ -419,6 +450,7 @@
       <a class="nav-link" href="#summary">Overview</a>
       <a class="nav-link" href="#privacy">Privacy</a>
       <a class="nav-link" href="#deletion">Delete Data</a>
+      <a class="nav-link" href="#terms">Terms</a>
       <a class="nav-link" href="#support">Support</a>
       <a class="nav-link" href="#premium">Premium</a>
       <a class="nav-link" href="#disclaimer">Disclaimer</a>
@@ -439,6 +471,20 @@
       </div>
     </div>
 
+    <!-- TABLE OF CONTENTS -->
+    <section id="toc">
+      <div class="section-label">Legal Links</div>
+      <div class="section-title">Find What You Need</div>
+      <div class="toc-panel">
+        <div class="toc-title">Page sections</div>
+        <div class="toc-links">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#deletion">Account/Data Deletion</a>
+          <a href="#terms">Terms of Service</a>
+          <a href="#support">Support</a>
+        </div>
+      </div>
+    </section>
     <!-- QUICK SUMMARY -->
     <section id="summary">
       <div class="section-label">Overview</div>
@@ -447,7 +493,7 @@
         <div class="card">
           <span class="card-icon">📋</span>
           <div class="card-title">What we collect</div>
-          <div class="card-body">Account email, trainer profile, raid activity, optional verification screenshots, and purchase identifiers.</div>
+          <div class="card-body">Account email, trainer profile, raid activity, optional verification data, and purchase identifiers if paid features are enabled.</div>
         </div>
         <div class="card">
           <span class="card-icon">🔒</span>
@@ -462,7 +508,7 @@
         <div class="card">
           <span class="card-icon">🗑️</span>
           <div class="card-title">You can delete your data</div>
-          <div class="card-body">Email peacefulsoil4k@gmail.com to request account or data deletion. App install not required.</div>
+          <div class="card-body">Delete your account in-app from Settings once this feature is available, or email peacefulsoil4k@gmail.com. App install is not required for email requests.</div>
         </div>
         <div class="card">
           <span class="card-icon">🎮</span>
@@ -487,9 +533,9 @@
           <li><strong>Account and authentication data</strong> — email address, authentication identifiers, session tokens, and related account records managed through Supabase Auth.</li>
           <li><strong>Profile and trainer data</strong> — trainer name, trainer level, trainer code, avatar or style choices, verification status, premium or ad-free subscription status, moderation or suspension status, and related profile settings you provide.</li>
           <li><strong>Raid and coordination activity</strong> — hosted raids, joined raids, party status, selected raid boss, team color, party size, raid timing, ready/join status, and related coordination data created when you use the App.</li>
-          <li><strong>Verification images</strong> — screenshots or images you voluntarily submit for profile verification. These are only processed if you choose to use the verification feature.</li>
+          <li><strong>Verification images</strong> — if you use the profile verification feature, you may select a screenshot from your device. Images are processed locally on your device using on-device text recognition (OCR) to extract your trainer name and level. <strong>No image is uploaded to or stored on our servers.</strong> Only the extracted text is transmitted to verify your profile.</li>
           <li><strong>Device and app diagnostics</strong> — app version, device platform and operating system, error logs, and debugging information used to operate and improve the App.</li>
-          <li><strong>Purchase and subscription data</strong> — Google Play purchase or subscription identifiers, RevenueCat customer identifiers, entitlement status (premium / remove-ads), product identifiers, and related billing events needed to provide paid features.</li>
+          <li><strong>Purchase and subscription data</strong> — if paid features are enabled, Google Play purchase or subscription identifiers, RevenueCat customer identifiers, entitlement status, product identifiers, and related billing events needed to provide paid features.</li>
         </ul>
       </div>
 
@@ -500,7 +546,7 @@
           <li>Enable raid hosting, joining, party coordination, and related App features.</li>
           <li>Verify profiles and improve trust, safety, and community quality.</li>
           <li>Detect and moderate abuse, spam, misleading raids, and violations of our terms.</li>
-          <li>Process subscriptions and provide premium or ad-free features.</li>
+          <li>Check premium entitlements if paid features are enabled in your installed app version.</li>
           <li>Debug technical issues, respond to support requests, and maintain App reliability.</li>
         </ul>
       </div>
@@ -535,7 +581,7 @@
         <ul class="policy-ul">
           <li>Account and profile data are retained while your account remains active.</li>
           <li>Raid activity and operational logs may be retained as needed for app operation, safety enforcement, and debugging.</li>
-          <li>Verification images are retained as needed to support the verification process and moderation, and may be deleted upon account deletion request.</li>
+          <li>Verification images are processed locally on your device and are not uploaded to our servers. Extracted verification data (trainer name and trainer level) is stored as part of your profile and deleted when your account is deleted.</li>
           <li>You may request deletion of your account and associated data at any time. See the Account and Data Deletion section below.</li>
         </ul>
       </div>
@@ -573,6 +619,13 @@
 
       <p class="body-text">You may request deletion of your account or specific data at any time — even if you no longer have the app installed. We target completion within <strong>30 days</strong> of a complete and verified request.</p>
 
+      <div class="callout callout-blue" style="margin-bottom:20px;">
+        <div class="callout-title">In-app deletion (fastest)</div>
+        <div class="callout-body">In app versions that include this feature: go to <strong>Settings → Delete Account</strong>, confirm the warning, then type <strong>DELETE</strong> to permanently remove your account and all associated data.</div>
+      </div>
+
+      <p class="body-text">If you no longer have the app installed, or this feature is not yet in your version, email us:</p>
+
       <div class="deletion-steps">
         <div class="deletion-step">
           <div class="deletion-step-num">Step 1</div>
@@ -597,7 +650,7 @@
       <div class="callout callout-green">
         <div class="callout-title">What gets deleted</div>
         <div class="callout-body">
-          <strong>Account deletion</strong> removes: Supabase Auth account, trainer profile (name, level, code, avatar, verification status), verification screenshots, and raid history associated with your account.<br/><br/>
+          <strong>Account deletion</strong> removes: Supabase Auth account, trainer profile (name, level, code, avatar, verification status), profile verification data, and raid history associated with your account. Verification screenshots are processed on your device only and are not uploaded to our servers.<br/><br/>
           <strong>Data-only deletion</strong> removes specific data you identify — such as verification images, profile fields, or support records — without deleting your account.<br/><br/>
           Purchase and payment records managed by Google Play or RevenueCat are subject to their respective policies and may not be removable on request.
         </div>
@@ -608,6 +661,93 @@
       </a>
     </section>
 
+    <!-- TERMS -->
+    <section id="terms">
+      <div class="section-label">Legal</div>
+      <div class="section-title">Terms of Service</div>
+
+      <div class="policy-section">
+        <div class="policy-h2">1. Acceptance of Terms</div>
+        <p class="policy-p">By downloading, accessing, or using Let's Go Raid, you agree to these Terms of Service. If you do not agree, do not use the app.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">2. Description of Service</div>
+        <p class="policy-p">Let's Go Raid is an independent Pokemon GO raid coordination app. It helps trainers host raid listings, find raid rooms, share trainer details needed for coordination, mark readiness, and coordinate raid parties.</p>
+        <p class="policy-p">Let's Go Raid does not control Pokemon GO, raid availability, raid invites, remote raid passes, game rewards, shiny odds, catches, event schedules, or any other in-game outcome.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">3. Non-Affiliation Disclaimer</div>
+        <p class="policy-p">Let's Go Raid is not affiliated with, endorsed by, sponsored by, or approved by Niantic, Inc., Nintendo Co., Ltd., The Pokemon Company, The Pokemon Company International, Game Freak, Creatures Inc., or any related entities. Pokemon GO and Pokemon are trademarks of their respective owners.</p>
+        <p class="policy-p">You are responsible for following Pokemon GO's own terms, rules, and community guidelines.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">4. Account and Trainer Profile Responsibility</div>
+        <ul class="policy-ul">
+          <li>You must be at least 13 years old, or the minimum age required by law in your location, to use Let's Go Raid.</li>
+          <li>You are responsible for keeping your account secure and for all activity under your account.</li>
+          <li>Trainer profile information, including trainer name, trainer level, trainer code, team, avatar style, and verification status, should be accurate when hosting or joining raids.</li>
+          <li>False or misleading profile information may result in account limits or removal.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">5. Raid Hosting and Joining Rules</div>
+        <ul class="policy-ul">
+          <li>Hosts should create raid listings only for real raids they intend to coordinate.</li>
+          <li>Hosts should keep party settings accurate and avoid abusing cancel, start, party size, minimum level, premium-only, or report flows.</li>
+          <li>Guests should join only raids they intend to participate in and should mark Ready only when actually ready.</li>
+          <li>If your plans change, leave the raid room so the host has an accurate party list.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">6. User Conduct</div>
+        <ul class="policy-ul">
+          <li>Do not harass, threaten, impersonate, spam, exploit, automate abuse, or misuse trainer codes.</li>
+          <li>Do not create fake or misleading raids, submit false reports, or abuse moderation tools.</li>
+          <li>Do not attempt to bypass premium, safety, moderation, or security systems.</li>
+          <li>Do not use the app to facilitate cheating, location spoofing, unauthorized automation, or violations of Pokemon GO's rules.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">7. Reports and Moderation</div>
+        <p class="policy-p">The app may allow users to report unsafe, abusive, fake, or misleading behavior. We may review reports and take action such as warnings, temporary restrictions, account limitations, or account removal.</p>
+        <p class="policy-p">We do not guarantee a specific moderation outcome or response time.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">8. Premium, Purchases, Ads, and Notifications</div>
+        <ul class="policy-ul">
+          <li>Premium features or paid services may be previewed, tested, changed, delayed, or unavailable depending on the installed build.</li>
+          <li>If paid features are enabled, purchases and subscriptions are processed through Google Play Billing and may be managed through RevenueCat. Refunds follow Google Play policies.</li>
+          <li>Restore purchases should only be considered available if the installed app build provides an active restore flow.</li>
+          <li>Let's Go Raid does not currently display ads. Rewarded ads and advertising features may be considered for a future version only after legal and store disclosures are updated.</li>
+          <li>Local reminders may depend on device permissions. Do not assume server-driven push fan-out is active unless it is specifically available in your installed app version.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">9. Privacy, Deletion, and Third-Party Services</div>
+        <p class="policy-p">Your use of Let's Go Raid is also governed by the <a href="#privacy">Privacy Policy</a>. You may request account or data deletion through the <a href="#deletion">Account/Data Deletion</a> section.</p>
+        <p class="policy-p">The app may rely on third-party services, including Supabase, Expo services, RevenueCat, Google Play Billing, and hosted documentation pages. These services may have their own terms and privacy policies.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">10. Service Availability and No Warranty</div>
+        <p class="policy-p">Let's Go Raid is provided as a coordination tool. We do not guarantee successful raids, invites, catches, rewards, Pokemon GO availability, remote raid limits, event accuracy, notification delivery, uptime, or other users' behavior.</p>
+        <p class="policy-p">The app is provided "as is" and "as available." To the fullest extent permitted by law, we disclaim warranties of merchantability, fitness for a particular purpose, non-infringement, and uninterrupted or error-free operation.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">11. Limitation of Liability and Contact</div>
+        <p class="policy-p">To the fullest extent permitted by law, Peaceful Soil and Let's Go Raid are not liable for indirect, incidental, special, consequential, punitive, or similar damages arising from your use of the app, including missed raids, failed invites, third-party outages, billing platform issues, data loss, service interruptions, notification delivery failures, or inaccurate raid/event information.</p>
+        <p class="policy-p">For support, legal questions, privacy requests, account deletion, or data deletion, contact <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>.</p>
+      </div>
+    </section>
     <!-- SUPPORT -->
     <section id="support">
       <div class="section-label">Help</div>
@@ -635,15 +775,22 @@
           <div class="support-topic-body">Pull to refresh or close and reopen the lobby screen. Include the boss name and raid type when contacting support.</div>
         </div>
         <div class="support-topic">
-          <div class="support-topic-title">Premium or Purchase Issue</div>
-          <div class="support-topic-body">Try the in-app Restore Purchases option first. Include your Google Play account, the product purchased, and any error message when contacting support.</div>
+          <div class="support-topic-title">Privacy or Data Deletion</div>
+          <div class="support-topic-body">Contact support for privacy questions, account deletion, data deletion, or help using the public deletion instructions.</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">Bug Reports</div>
+          <div class="support-topic-body">Include your device model, app version, what you were trying to do, and any visible error message.</div>
+        </div>        <div class="support-topic">
+          <div class="support-topic-title">Payment or Premium Questions</div>
+          <div class="support-topic-body">Paid features are not active in every app build. If purchases are enabled later, include your Google Play account, the product involved, and any visible error message when contacting support.</div>
         </div>
         <div class="support-topic">
           <div class="support-topic-title">Verification Screenshot</div>
           <div class="support-topic-body">Include whether image selection opened, whether fields were auto-filled, and whether a permission prompt appeared.</div>
         </div>
         <div class="support-topic">
-          <div class="support-topic-title">Reporting Abuse or Safety Issues</div>
+          <div class="support-topic-title">Reports or Moderation Questions</div>
           <div class="support-topic-body">Email peacefulsoil4k@gmail.com with a description, the trainer name of the reported user if known, and any supporting screenshots.</div>
         </div>
       </div>
@@ -654,26 +801,26 @@
       <div class="section-label">Subscriptions</div>
       <div class="section-title">Premium and Purchases</div>
 
-      <p class="body-text">Let's Go Raid offers optional premium subscriptions and one-time purchases processed through Google Play Billing and managed by RevenueCat.</p>
+      <p class="body-text">Premium features and paid services may be previewed or enabled only in specific app builds. Purchases, subscriptions, and restore purchases should not be treated as active unless your installed app version provides those flows.</p>
 
       <div class="callout callout-blue">
         <div class="callout-title">How purchases work</div>
         <div class="callout-body">
-          Purchases are processed by Google Play. After a successful purchase, our backend confirms the entitlement — this typically takes a few seconds. If premium access does not appear immediately, use the <strong>Restore Purchases</strong> option in the app.<br/><br/>
-          <strong>Subscriptions renew automatically.</strong> You can cancel at any time through your Google Play subscription settings. Refunds are subject to Google Play's refund policy.
+          If paid features are enabled in a future or specific app build, purchases would be processed by Google Play and entitlement validation may be managed by RevenueCat. Restore purchases should only be considered available if the installed app build provides an active restore flow.<br/><br/>
+          <strong>Subscriptions, if enabled, may renew automatically.</strong> You can manage or cancel subscriptions through your Google Play subscription settings. Refunds are subject to Google Play's refund policy.
         </div>
       </div>
 
       <ul class="policy-ul" style="margin-top:16px;">
-        <li><strong>Monthly subscription</strong> — auto-renewing (lets_go_raid_premium_monthly). Renews unless cancelled at least 24 hours before the end of the billing period.</li>
-        <li><strong>One-time purchase</strong> — lifetime remove-ads (lets_go_raid_remove_ads_forever).</li>
-        <li><strong>Entitlement confirmation</strong> — confirmed by our backend after Google Play validates the purchase. A short delay of a few seconds is normal after purchase.</li>
-        <li><strong>Restore purchases</strong> — use the Restore Purchases button in the app if entitlements are not reflected after purchasing or reinstalling.</li>
-        <li><strong>Cancellation</strong> — cancel subscriptions in your Google Play subscription settings. Refunds follow Google Play's refund policy and are not issued directly by Let's Go Raid.</li>
+        <li><strong>Monthly subscription</strong> — planned product: lets_go_raid_premium_monthly. Treat as active only if visible and purchasable in your installed app build.</li>
+        <li><strong>One-time purchase</strong> — planned product: lets_go_raid_remove_ads_forever. Treat as active only if visible and purchasable in your installed app build.</li>
+        <li><strong>Entitlement confirmation</strong> — if paid features are enabled, premium activation may depend on Google Play and RevenueCat validation.</li>
+        <li><strong>Restore purchases</strong> — available only if your installed app build provides an active restore flow.</li>
+        <li><strong>Cancellation</strong> — if subscriptions are enabled, cancel them in your Google Play subscription settings. Refunds follow Google Play's refund policy and are not issued directly by Let's Go Raid.</li>
         <li><strong>Advertising</strong> — the current build has no active ads. Advertising Identifier is not used in the current build.</li>
       </ul>
 
-      <p class="body-text-muted">For purchase issues, contact <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a> with your Google Play account, the product purchased, and any error message.</p>
+      <p class="body-text-muted">For payment or premium questions, contact <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>. If purchases are enabled in your build, include your Google Play account, the product involved, and any error message.</p>
     </section>
 
     <!-- DISCLAIMER -->
