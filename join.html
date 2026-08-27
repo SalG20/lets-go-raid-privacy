@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join Raid — Let's Go Raid</title>
+  <meta name="description" content="You've been invited to join a Pokémon GO raid on Let's Go Raid." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #07080d;
+      color: #fff1df;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+      text-align: center;
+    }
+    .card {
+      background: #101018;
+      border: 1px solid rgba(216, 135, 63, 0.25);
+      border-radius: 20px;
+      padding: 32px 28px;
+      max-width: 400px;
+      width: 100%;
+    }
+    .logo {
+      font-size: 36px;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 22px;
+      font-weight: 900;
+      color: #fff1df;
+      margin: 0 0 8px;
+    }
+    p {
+      color: #9d9186;
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 0 0 28px;
+    }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      margin-bottom: 12px;
+      transition: opacity 0.15s;
+    }
+    .btn:active { opacity: 0.75; }
+    .btn-primary {
+      background: #d8873f;
+      color: #07080d;
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.07);
+      color: #fff1df;
+      border: 1px solid rgba(255, 255, 255, 0.10);
+    }
+    .note {
+      font-size: 12px;
+      color: #6b6460;
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">⚔️</div>
+    <h1>Join the Raid</h1>
+    <p id="description">You've been invited to join a Pokémon GO raid on <strong>Let's Go Raid</strong>.</p>
+
+    <button class="btn btn-primary" id="openAppBtn" onclick="openApp()">Open in Let's Go Raid</button>
+    <a
+      class="btn btn-secondary"
+      href="https://play.google.com/store/apps/details?id=com.peacefulsoil.letsgoraid"
+      target="_blank"
+      rel="noopener"
+    >Get Let's Go Raid on Google Play</a>
+
+    <p class="note">If the app doesn't open, install Let's Go Raid from Google Play and try the link again.</p>
+  </div>
+
+  <script>
+    var raidId = null;
+    try {
+      var params = new URLSearchParams(window.location.search);
+      raidId = params.get("id");
+    } catch(e) {}
+
+    function openApp() {
+      if (!raidId) return;
+      var appUrl = "raidapp://join-raid-confirm?id=" + encodeURIComponent(raidId);
+      window.location = appUrl;
+      // Fallback: after short delay, offer Play Store if app didn't open
+      setTimeout(function() {
+        window.location = "https://play.google.com/store/apps/details?id=com.peacefulsoil.letsgoraid";
+      }, 1800);
+    }
+
+    // Auto-attempt on page load if raid ID present
+    if (raidId) {
+      document.getElementById("description").textContent =
+        "You've been invited to join a Pokémon GO raid on Let's Go Raid. Tap the button to open the app.";
+    }
+  </script>
+</body>
+</html>
