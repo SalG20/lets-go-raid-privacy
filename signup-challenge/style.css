@@ -1,0 +1,5 @@
+body { color: #fff6ea; background: #07080d; font: 17px system-ui, sans-serif; margin: 24px; }
+main { max-width: 420px; margin: 50px auto; }
+h1, a { color: #f0a35b; }
+a { display: inline-block; padding: 16px 0; }
+a[hidden] { display: none; }
