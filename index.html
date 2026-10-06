@@ -497,13 +497,13 @@
         </div>
         <div class="card">
           <span class="card-icon">🔒</span>
-          <div class="card-title">No data sales</div>
-          <div class="card-body">We do not sell your personal data. Data is shared only with the service providers needed to run the app.</div>
+          <div class="card-title">Data sharing</div>
+          <div class="card-body">We use service providers to operate the app and advertising partners to serve and measure ads. Advertising data sharing and your privacy choices are described below.</div>
         </div>
         <div class="card">
           <span class="card-icon">📢</span>
           <div class="card-title">Advertising disclosure</div>
-          <div class="card-body">Production banner ads are disabled. Rewarded ads may be offered voluntarily for temporary app benefits. Google AdMob is the advertising provider.</div>
+          <div class="card-body">Version 1.0.7 uses Appodeal and its mediated advertising partners for banner ads and optional rewarded ads. Older installed versions may use Google AdMob.</div>
         </div>
         <div class="card">
           <span class="card-icon">🗑️</span>
@@ -528,18 +528,18 @@
 <h3 class="policy-h2">Location</h3>
 <p class="policy-p">Foreground location permission is optional. If you grant it, the app can obtain latitude and longitude, including precise coordinates when your device permits this, and reverse-geocode them to country, region and city. Host/boss-selection flows send coordinates and timezone/location context to backend functions that check raid availability and eligibility. Without permission, some location-dependent results may be unavailable.</p>
 <p class="policy-p">Coarse country/region/city information and update timestamps may be stored with your profile. With existing location permission, the app also resolves a country code for operational activity reporting. Location access does not require background-location permission.</p>
-<p class="policy-p">Our current backend uses precise coordinates to check raid eligibility and writes no exact coordinates into the raid record when creating a raid. The device location service may process coordinates to return a country, region or city. We do not promise that all infrastructure processing is memory-only or immediately erased. Service logs and backups have their own retention behavior. Precise coordinates are not intentionally provided to AdMob by our ad-request code; Google may infer approximate location from IP addresses independently.</p>
-<h3 class="policy-h2">Advertising and privacy choices</h3>
-<p class="policy-p">Google AdMob provides optional rewarded ads for temporary feature access. Rewarded ads do not grant Premium or lifetime Remove Ads. Production banner ads are currently disabled. No interstitial or app-open format is implemented.</p>
-<p class="policy-p">The Google Mobile Ads SDK processes IP addresses, approximate location inferred from IP, advertising/app-set or other device identifiers, app/ad interactions and diagnostic information for advertising, measurement, analytics, security and fraud prevention. Google and its advertising partners process this information under their policies. Non-personalized ads can still involve identifiers, storage and measurement.</p>
-<p class="policy-p">The app uses Google's User Messaging Platform (UMP) to obtain privacy choices where required and gates ad requests on its consent state. Where required, Settings provides Ad privacy choices to reopen the privacy form. Availability depends on your region and the consent platform's requirements. Device settings also let you manage advertising identifiers. Declining optional rewarded ads does not delete your account or prevent ordinary raid coordination.</p>
+<p class="policy-p">Our current backend uses precise coordinates to check raid eligibility and writes no exact coordinates into the raid record when creating a raid. The device location service may process coordinates to return a country, region or city. We do not promise that all infrastructure processing is memory-only or immediately erased. Service logs and backups have their own retention behavior. In version 1.0.7, Appodeal and BidMachine may also collect and share approximate or precise device location for advertising when you have granted the corresponding foreground location permission. You may deny or revoke this permission in Android settings. Advertising partners may infer approximate location from IP addresses even without location permission. Older versions using AdMob do not intentionally pass precise coordinates in the app ad-request code.</p>
+<h3 class="policy-h2">Advertising and privacy choices</h3><p class="policy-p">The advertising SDKs in version 1.0.7 include Appodeal, BidMachine, Bidon, AppLovin, Mintegral, Unity Ads, Liftoff Monetize (Vungle), Meta Audience Network and Pangle; Sentry supports SDK crash reporting. Appodeal collects ad interactions, advertising and other identifiers, technical device/network information, diagnostics and other app performance data for advertising and analytics. Mediated advertising SDKs may also process these data for ad delivery, measurement, analytics, security and fraud prevention; practices vary by provider. Data may be shared with advertising and measurement partners. Permissions and consent choices affect collection; declining personalized ads does not necessarily stop all technical data collection. The app does not directly pass its account user ID or purchase events to Appodeal. This does not exclude collection by other bundled SDKs: Unity Ads documents collection and sharing of personal identifiers for app functionality and purchase history for advertising and analytics. Google Play and RevenueCat process purchases as described below.</p>
+<p class="policy-p">Version 1.0.7 uses Appodeal mediation for banner ads and optional rewarded ads for temporary feature access. Rewarded ads do not grant Premium or lifetime Remove Ads. Ad-free access hides banner placements. No interstitial or app-open format is implemented. Older installed versions may use Google AdMob for rewarded ads with banners disabled.</p>
+<p class="policy-p">In older installed versions using AdMob, the Google Mobile Ads SDK processes IP addresses, approximate location inferred from IP, advertising/app-set or other device identifiers, app/ad interactions and diagnostic information for advertising, measurement, analytics, security and fraud prevention. Google and its advertising partners process this information under their policies. Non-personalized ads can still involve identifiers, storage and measurement.</p>
+<p class="policy-p">Version 1.0.7 uses Appodeal Stack Consent Manager during SDK initialization to obtain privacy choices where required. Older installed versions using AdMob use Google User Messaging Platform (UMP). Where required, Settings provides Ad privacy choices to reopen the privacy form. Availability depends on your region and the consent platform's requirements. Device settings also let you manage advertising identifiers. Declining optional rewarded ads does not delete your account or prevent ordinary raid coordination.</p>
 <h3 class="policy-h2">Purchases</h3>
 <p class="policy-p">Monthly Premium (monthly_premium) and the separate Remove Ads purchase (remove_ads) are available through Google Play Billing. RevenueCat processes account/customer identifiers, purchase history, subscription status and entitlements for validation, restoration and purchase analytics. Our backend receives billing events to keep access current. We do not receive full payment-card details. Subscriptions and refunds are managed through Google Play. Deleting an app account does not itself cancel a Google Play subscription.</p>
 <h3 class="policy-h2">Notifications and operational data</h3>
 <p class="policy-p">If you enable notifications, Expo and Google/Firebase notification services process push tokens, device/installation identifiers, platform information and delivery data. Our backend stores registration and preference information and sends raid/service notifications. You can disable notifications in Settings or Android's notification settings.</p>
 <p class="policy-p">We process app/build version, operating system, device model, session identifiers, screen/activity events and error summaries for reliability, analytics, support and abuse prevention. Activity reporting is linked to your app account. Advertising SDK diagnostics are separate from our operational reporting.</p>
-<h3 class="policy-h2">Providers and disclosures</h3>
-<p class="policy-p">Providers include Supabase (https://supabase.com/privacy), Google Sign-In, Google Play Billing, Google/Firebase services and AdMob (https://policies.google.com/privacy), RevenueCat (https://www.revenuecat.com/privacy), Expo (https://expo.dev/privacy), and signup email-validation provider ZeroBounce (https://www.zerobounce.net/privacy-policy.html).</p>
+<h3 class="policy-h2">Providers and disclosures</h3><p class="policy-p">Advertising provider information: <a href="https://appodeal.com/privacy-policy/">Appodeal</a>, <a href="https://bidmachine.io/privacy-policy/">BidMachine</a>, <a href="https://docs.bidon.org/">Bidon</a>, <a href="https://legal.applovin.com/privacy/">AppLovin</a>, <a href="https://www.mintegral.com/en/privacy">Mintegral</a>, <a href="https://unity.com/legal/privacy-policy">Unity</a>, <a href="https://liftoff.io/privacy-policy/">Liftoff</a>, <a href="https://www.facebook.com/privacy/policy/">Meta</a>, <a href="https://www.pangleglobal.com/privacy">Pangle</a> and <a href="https://sentry.io/privacy/">Sentry</a>.</p>
+<p class="policy-p">Providers include Supabase (https://supabase.com/privacy), Google Sign-In, Google Play Billing, Google/Firebase services and, in older installed versions, AdMob (https://policies.google.com/privacy), RevenueCat (https://www.revenuecat.com/privacy), Expo (https://expo.dev/privacy), and signup email-validation provider ZeroBounce (https://www.zerobounce.net/privacy-policy.html).</p>
 <p class="policy-p">We use providers to operate the app, authenticate users, deliver notifications, validate purchases, serve ads and protect the service. We may disclose information to comply with legal obligations or investigate fraud, abuse and security incidents. We do not sell your personal data.</p>
 <h3 class="policy-h2">Retention and account deletion</h3>
 <p class="policy-p">Account/profile information is retained while your account is active. Raid, moderation, operational and support records may be retained for service operation, safety and troubleshooting. Billing records may be retained by Google Play and RevenueCat under their own policies and legal obligations. Backups and service logs are not necessarily erased immediately when you delete an account.</p>
@@ -618,7 +618,7 @@
           <li>Monthly Premium and Remove Ads are available through Google Play Billing, with entitlement validation by RevenueCat.</li>
           <li>Purchases and subscriptions use Google Play Billing and RevenueCat.</li>
           <li>Restore purchases should only be considered available if the installed app build provides an active restore flow.</li>
-          <li>Production banner ads are currently disabled. Voluntary rewarded ads may be offered for specific in-app benefits or temporary unlocks. Google AdMob is the advertising provider.</li>
+          <li>Version 1.0.7 uses Appodeal and mediated partners for banner ads and voluntary rewarded ads for temporary unlocks. Older installed versions may use AdMob with banners disabled.</li>
           <li>Local reminders and server-driven notifications depend on your permissions and notification preferences.</li>
         </ul>
       </div>
@@ -626,7 +626,7 @@
       <div class="policy-section">
         <div class="policy-h2">9. Privacy, Deletion, and Third-Party Services</div>
         <p class="policy-p">Your use of Let's Go Raid is also governed by the <a href="#privacy">Privacy Policy</a>. You may request account or data deletion through the <a href="#deletion">Account/Data Deletion</a> section.</p>
-        <p class="policy-p">The app may rely on third-party services, including Supabase, Expo services, RevenueCat, Google Play Billing, Google AdMob, and hosted documentation pages. These services may have their own terms and privacy policies.</p>
+        <p class="policy-p">The app may rely on third-party services, including Supabase, Expo services, RevenueCat, Google Play Billing, Appodeal and its mediated partners (or AdMob in older versions), and hosted documentation pages. These services may have their own terms and privacy policies.</p>
       </div>
 
       <div class="policy-section">
@@ -690,7 +690,7 @@
     </section>
 
     <!-- PREMIUM -->
-    <section id="premium"><div class="section-label">Subscriptions</div><div class="section-title">Premium and Purchases</div><p class="body-text">Monthly Premium (monthly_premium) and the separate lifetime Remove Ads purchase (remove_ads) use Google Play Billing and RevenueCat. Prices and availability appear in the app. Restore purchases is available from the app. Subscriptions renew according to Google Play terms; manage cancellation and refunds through Google Play. Account deletion does not cancel a subscription.</p><p class="body-text">Rewarded ads provide temporary feature unlocks only. They do not grant Premium or lifetime Remove Ads. Production banners are currently disabled.</p></section>
+    <section id="premium"><div class="section-label">Subscriptions</div><div class="section-title">Premium and Purchases</div><p class="body-text">Monthly Premium (monthly_premium) and the separate lifetime Remove Ads purchase (remove_ads) use Google Play Billing and RevenueCat. Prices and availability appear in the app. Restore purchases is available from the app. Subscriptions renew according to Google Play terms; manage cancellation and refunds through Google Play. Account deletion does not cancel a subscription.</p><p class="body-text">Rewarded ads provide temporary feature unlocks only. They do not grant Premium or lifetime Remove Ads. Version 1.0.7 supports Appodeal banners for users without ad-free access; older installed versions may have banners disabled.</p></section>
 
     <!-- DISCLAIMER -->
     <section id="disclaimer">
@@ -710,7 +710,7 @@
         <div>
           <div class="footer-brand">Let's Go Raid</div>
           <div class="footer-copy">&copy; 2026 Peaceful Soil &nbsp;·&nbsp; com.peacefulsoil.letsgoraid</div>
-          <div class="footer-copy" style="margin-top:2px;">Last updated: September 28, 2026</div>
+          <div class="footer-copy" style="margin-top:2px;">Last updated: October 6, 2026</div>
         </div>
         <div class="footer-links">
           <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>
