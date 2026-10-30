@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let's Go Raid – プライバシーとサポート</title>
+  <link rel="canonical" href="https://salg20.github.io/lets-go-raid-privacy/ja/" />
+  <link rel="alternate" hreflang="x-default" href="https://salg20.github.io/lets-go-raid-privacy/" />
+  <link rel="alternate" hreflang="en" href="https://salg20.github.io/lets-go-raid-privacy/" />
+  <link rel="alternate" hreflang="ja" href="https://salg20.github.io/lets-go-raid-privacy/ja/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://salg20.github.io/lets-go-raid-privacy/pt-BR/" />
+  <link rel="alternate" hreflang="es" href="https://salg20.github.io/lets-go-raid-privacy/es/" />
+  <link rel="alternate" hreflang="de" href="https://salg20.github.io/lets-go-raid-privacy/de/" />
+  <link rel="alternate" hreflang="ko" href="https://salg20.github.io/lets-go-raid-privacy/ko/" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://salg20.github.io/lets-go-raid-privacy/zh-Hant/" />
+  <link rel="alternate" hreflang="id" href="https://salg20.github.io/lets-go-raid-privacy/id/" />
+  <link rel="alternate" hreflang="th" href="https://salg20.github.io/lets-go-raid-privacy/th/" />
+  <link rel="alternate" hreflang="fr" href="https://salg20.github.io/lets-go-raid-privacy/fr/" />
+  <link rel="alternate" hreflang="it" href="https://salg20.github.io/lets-go-raid-privacy/it/" />
+  <link rel="alternate" hreflang="hi" href="https://salg20.github.io/lets-go-raid-privacy/hi/" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #07091a;
+      --surface: #0d1225;
+      --surface2: #111830;
+      --border: rgba(56, 189, 248, 0.15);
+      --border-strong: rgba(56, 189, 248, 0.3);
+      --accent: #38bdf8;
+      --accent-dim: #0ea5e9;
+      --accent-glow: rgba(56, 189, 248, 0.08);
+      --text: #cbd5e1;
+      --text-bright: #f1f5f9;
+      --text-muted: #64748b;
+      --text-dim: #475569;
+      --green: #34d399;
+      --green-bg: rgba(52, 211, 153, 0.07);
+      --green-border: rgba(52, 211, 153, 0.28);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7, 9, 26, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+    }
+    .nav-bar {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-inner {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 48px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    .nav-brand {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      margin-right: 12px;
+      text-decoration: none;
+    }
+    .nav-link {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-link:hover { color: var(--accent); background: var(--accent-glow); }
+
+    /* LANGUAGE MENU (works without JavaScript: <details> + plain links) */
+    .lang-menu { position: relative; flex: none; }
+    .lang-menu summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text);
+      white-space: nowrap;
+      padding: 5px 9px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .lang-menu summary::-webkit-details-marker { display: none; }
+    .lang-menu summary:hover { color: var(--accent); border-color: var(--border-strong); }
+    .lang-menu summary:focus-visible, .lang-list a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .lang-list {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 6px);
+      z-index: 60;
+      list-style: none;
+      min-width: 190px;
+      max-height: 70vh;
+      overflow-y: auto;
+      padding: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+    .lang-list a {
+      display: block;
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .lang-list a:hover { background: var(--accent-glow); color: var(--accent); }
+    .lang-list a[aria-current="true"] { color: var(--accent); font-weight: 700; }
+
+    /* LAYOUT */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 72px 0 52px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      padding: 4px 12px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--text-bright);
+      line-height: 1.12;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      max-width: 520px;
+      line-height: 1.55;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .hero-meta-item {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .hero-meta-item strong { color: var(--text-muted); }
+
+    /* SECTION */
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    section:last-of-type { border-bottom: none; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-bright);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    /* SUMMARY CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .card:hover {
+      border-color: var(--border-strong);
+      background: var(--surface2);
+    }
+    .card-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 6px;
+    }
+    .card-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* TABLE OF CONTENTS */
+    .toc-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-top: 24px;
+    }
+    .toc-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-bright);
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .toc-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 8px;
+    }
+    .toc-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(56, 189, 248, 0.12);
+    }
+    .toc-links a:hover { background: var(--accent-glow); }
+    /* POLICY CONTENT */
+    .policy-section { margin-bottom: 32px; }
+    .policy-section:last-child { margin-bottom: 0; }
+    .policy-h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .policy-p {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+    .policy-ul {
+      list-style: none;
+      margin: 8px 0 12px;
+      padding: 0;
+    }
+    .policy-ul li {
+      font-size: 14px;
+      color: var(--text);
+      padding: 7px 0 7px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: relative;
+      line-height: 1.6;
+    }
+    .policy-ul li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--accent-dim);
+    }
+    .policy-ul li:last-child { border-bottom: none; }
+    .policy-ul li strong { color: var(--text-bright); }
+    .policy-ul a { color: var(--accent); }
+
+    /* CALLOUT BOXES */
+    .callout {
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .callout-green {
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
+    }
+    .callout-blue {
+      background: var(--accent-glow);
+      border: 1px solid var(--border-strong);
+    }
+    .callout-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .callout-green .callout-title { color: var(--green); }
+    .callout-blue .callout-title { color: var(--accent); }
+    .callout-body {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .callout-body a { color: var(--accent); }
+    .callout-body strong { color: var(--text-bright); }
+
+    /* DELETION STEPS */
+    .deletion-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .deletion-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .deletion-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .deletion-step-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 4px;
+    }
+    .deletion-step-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .deletion-step-body a { color: var(--accent); }
+    .deletion-step-body em { font-style: italic; }
+
+    /* SUPPORT TOPICS */
+    .support-topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .support-topic {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .support-topic-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 6px;
+    }
+    .support-topic-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* EMAIL BUTTON */
+    a { color: var(--accent); text-decoration: underline; }
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      background: var(--accent-glow);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 10px 18px;
+      margin: 12px 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .email-link:hover {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: var(--accent);
+    }
+
+    /* DISCLAIMER */
+    .disclaimer-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+    }
+    .disclaimer-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .disclaimer-box strong { color: var(--text); }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0 20px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .footer-brand {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* BODY HELPERS */
+    .body-text {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .body-text-muted {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.65;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 28px; }
+      .hero-sub { font-size: 15px; }
+      .section-title { font-size: 20px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .deletion-steps { grid-template-columns: 1fr; }
+      .support-topics { grid-template-columns: 1fr; }
+      .disclaimer-box { padding: 20px; }
+      .footer-links { align-items: flex-start; }
+      nav { padding: 0 12px; }
+      .container { padding: 0 16px 60px; }
+      .callout { padding: 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY NAV -->
+  <nav>
+    <div class="nav-bar">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top">Let's Go Raid</a>
+      <a class="nav-link" href="#summary">概要</a>
+      <a class="nav-link" href="#privacy">プライバシー</a>
+      <a class="nav-link" href="#deletion">データ削除</a>
+      <a class="nav-link" href="#terms">利用規約</a>
+      <a class="nav-link" href="#support">サポート</a>
+      <a class="nav-link" href="#premium">プレミアム</a>
+      <a class="nav-link" href="#disclaimer">免責事項</a>
+    </div>
+    <!-- LANGUAGE MENU: language names stay in their own language on every page. -->
+    <details class="lang-menu">
+      <summary aria-label="言語: 日本語"><span aria-hidden="true">🌐</span><span>日本語</span></summary>
+      <ul class="lang-list">
+        <li><a href="../" hreflang="en" lang="en" data-lang="en">English</a></li>
+        <li><a href="../ja/" hreflang="ja" lang="ja" data-lang="ja" aria-current="true">日本語</a></li>
+        <li><a href="../pt-BR/" hreflang="pt-BR" lang="pt-BR" data-lang="pt-BR">Português (Brasil)</a></li>
+        <li><a href="../es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+        <li><a href="../de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+        <li><a href="../ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a></li>
+        <li><a href="../zh-Hant/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-Hant">繁體中文</a></li>
+        <li><a href="../id/" hreflang="id" lang="id" data-lang="id">Bahasa Indonesia</a></li>
+        <li><a href="../th/" hreflang="th" lang="th" data-lang="th">ไทย</a></li>
+        <li><a href="../fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+        <li><a href="../it/" hreflang="it" lang="it" data-lang="it">Italiano</a></li>
+        <li><a href="../hi/" hreflang="hi" lang="hi" data-lang="hi">हिन्दी</a></li>
+      </ul>
+    </details>
+    </div>
+  </nav>
+
+  <div class="container" id="top">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-badge">プライバシーとサポート</div>
+      <h1>Let's Go Raid</h1>
+      <p class="hero-sub">Let's Go Raid（Android 向けレイド調整アプリ）のプライバシーポリシー、アカウント削除、サポートに関する情報です。</p>
+      <div class="hero-meta">
+        <span class="hero-meta-item"><strong>パッケージ:</strong> com.peacefulsoil.letsgoraid</span>
+        <span class="hero-meta-item"><strong>施行日:</strong> 2026年10月30日</span>
+        <span class="hero-meta-item"><strong>連絡先:</strong> peacefulsoil4k@gmail.com</span>
+      </div>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <section id="toc">
+      <div class="section-label">法的情報へのリンク</div>
+      <div class="section-title">必要な情報を探す</div>
+      <div class="toc-panel">
+        <div class="toc-title">このページの項目</div>
+        <div class="toc-links">
+          <a href="#privacy">プライバシーポリシー</a>
+          <a href="#deletion">アカウント・データの削除</a>
+          <a href="#terms">利用規約</a>
+          <a href="#support">サポート</a>
+        </div>
+      </div>
+    </section>
+    <!-- QUICK SUMMARY -->
+    <section id="summary">
+      <div class="section-label">概要</div>
+      <div class="section-title">ひと目でわかる概要</div>
+      <div class="cards-grid">
+        <div class="card">
+          <span class="card-icon">📋</span>
+          <div class="card-title">収集する情報</div>
+          <div class="card-body">アカウントのメールアドレス、トレーナープロフィール、レイドでの活動、任意の認証データ、位置情報に関する情報、任意のオンボーディング回答（このアプリを知ったきっかけ、国・都市、タイムゾーン）、購入識別子。</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🔒</span>
+          <div class="card-title">データの共有</div>
+          <div class="card-body">アプリの運営にはサービスプロバイダーを、広告の配信と効果測定には広告パートナーを利用しています。広告に関するデータ共有と、お客様が選択できるプライバシー設定については、以下で説明します。</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">📢</span>
+          <div class="card-title">広告に関する開示</div>
+          <div class="card-body">バージョン 1.0.7 では、バナー広告と任意のリワード広告に Appodeal とそのメディエーション広告パートナーを使用しています。インストール済みの旧バージョンでは Google AdMob を使用している場合があります。</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🗑️</span>
+          <div class="card-title">データを削除できます</div>
+          <div class="card-body">アプリ内の「設定」からアカウントを削除するか、peacefulsoil4k@gmail.com までメールでご連絡ください。メールでのご依頼にアプリのインストールは必要ありません。</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🎮</span>
+          <div class="card-title">独立したアプリ</div>
+          <div class="card-body">Niantic、The Pokémon Company、Nintendo とは提携していません。詳しくは免責事項の項目をご覧ください。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY POLICY -->
+    <section id="privacy"><div class="section-label">法的情報</div><div class="section-title">プライバシーポリシー</div>
+<p class="policy-p">Let's Go Raid は Peaceful Soil Studio が運営しています。Android パッケージ: com.peacefulsoil.letsgoraid。連絡先: peacefulsoil4k@gmail.com。公開ポリシー: https://salg20.github.io/lets-go-raid-privacy/</p>
+<h3 class="policy-h2">アカウントとトレーナーの情報</h3>
+<p class="policy-p">アカウントへのアクセスとレイドの調整を提供するため、お客様のメールアドレス、アカウント識別子、認証・セッションの記録、トレーナープロフィールを処理します。プロフィールには、トレーナー名、トレーナーコード、レベル、チーム、アバターの選択、認証状況、アカウントの設定が含まれます。認証とバックエンドは Supabase が提供しています。Google Sign-In を選択した場合、Google がお客様を認証し、アプリのセッション作成に使用される ID トークンを提供します。登録時のメールアドレス確認では、無効なメールアドレスを検出し不正利用を減らすために ZeroBounce を使用する場合があります。</p>
+<p class="policy-p">レイドに必要なトレーナー情報は、お客様が調整を行うトレーナーに表示されます。主催・参加したレイド、準備状況、キャンセル、報告、フィードバック、モデレーションの記録は、サービスの運営と不正利用の防止のために処理されます。</p>
+<p class="policy-p">「交流」でフレンドコードの掲載を公開すると、他のアプリユーザーは、掲載に含まれるトレーナー名、フレンドコード、レベル、チーム、アバター、タグ、国、ビビヨンの模様を見ることができ、有効にしている場合はオンライン表示も見ることができます。掲載はいつでも非公開にできます。これらの機能を運営するため、お客様のアカウントに紐づく報酬の活動、ポイント、ゲームの進行状況を保存します。ランキングには、お客様のトレーナー名、順位、ポイントまたはゲームの結果が表示されることがあります。「ランキングに表示する」の設定は変更できます。</p>
+<p class="policy-p">レイドのクイックメッセージでは、あらかじめ用意された調整用メッセージを選ぶことができます。Supabase は、選択されたメッセージの識別子、送信者のアカウント識別子、表示名、役割、タイムスタンプ、配信・再送の識別子を処理し、権限のあるレイドルームの参加者にメッセージを送信します。バックエンドは、不正利用や重複メッセージを防ぐため、送信制限と再送に関する情報も保存します。データベースのブロードキャストは、自動削除されるまで Supabase Realtime に保存されます。これらはデバイスのメモリ内だけで処理されるものではなく、配信後すぐに消えることが保証されているものでもありません。クイックメッセージのブロードキャスト（お客様のアカウント識別子と表示名を含みます）は、配信後一定期間、当社のプロバイダーのリアルタイムメッセージログに残ることがあり、お客様がアカウントを削除してもすぐには削除されません。</p>
+<p class="policy-p">認証用のスクリーンショットは、文字認識を使用してお客様のデバイス上で処理されます。認証フローでは、スクリーンショットではなく、抽出されたトレーナー情報がバックエンドに送信されます。</p>
+<p class="policy-p">メールアドレスでの登録では、ブラウザベースの Cloudflare Turnstile によるセキュリティチェックを使用します。当社のバックエンドはチャレンジトークンを Cloudflare に照会して検証し、メールアドレスを確認のため ZeroBounce に送信します。Turnstile はボットを検出するため、IP アドレス、ブラウザ情報、チャレンジの状況などの技術的なシグナルを処理します。Cloudflare はこれらのシグナルをボット検出の改善にも使用します。詳しくは <a href="https://www.cloudflare.com/turnstile-privacy-policy/">Turnstile プライバシー補遺</a>をご覧ください。</p>
+<h3 class="policy-h2">位置情報</h3>
+<p class="policy-p">フォアグラウンドでの位置情報の許可は任意です。許可した場合、アプリは緯度と経度（デバイスが許可する場合は正確な座標を含みます）を取得し、逆ジオコーディングによって国、地域、都市に変換することがあります。主催・ボス選択のフローでは、座標とタイムゾーン・位置に関する情報を、レイドの利用可否と参加資格を確認するバックエンド機能に送信します。許可がない場合、位置情報に依存する一部の結果が利用できないことがあります。</p>
+<p class="policy-p">おおまかな国・地域・都市の情報と更新日時が、お客様のプロフィールとともに保存される場合があります。すでに位置情報の許可がある場合、アプリは運用上の活動レポートのために国コードも判定します。位置情報へのアクセスに、バックグラウンドでの位置情報の許可は必要ありません。</p>
+<p class="policy-p">現在のバックエンドは、正確な座標をレイドの参加資格の確認に使用し、レイドの作成時に正確な座標をレイドの記録に書き込むことはありません。デバイスの位置情報サービスが、国、地域、都市を返すために座標を処理する場合があります。すべてのインフラ処理がメモリ内のみで行われることや、すぐに消去されることは約束しません。サービスログとバックアップには、それぞれ独自の保持の仕組みがあります。バージョン 1.0.7 では、対応するフォアグラウンドの位置情報の許可を与えている場合、Appodeal と BidMachine も広告のためにデバイスのおおよその位置情報または正確な位置情報を収集・共有することがあります。この許可は Android の設定で拒否または取り消すことができます。広告パートナーは、位置情報の許可がなくても IP アドレスからおおよその位置を推定することがあります。AdMob を使用する旧バージョンでは、アプリの広告リクエストのコードで正確な座標を意図的に渡すことはありません。</p>
+<h3 class="policy-h2">個体値スキャナー、ライブモード、画面キャプチャ</h3>
+<p class="policy-p"><strong>スクリーンショットのスキャン。</strong>個体値スキャナーでスクリーンショットを選択すると、アプリはデバイス上の文字認識を使用してお客様のスマートフォン上でそれを読み取り、ポケモンと、CP、HP、レベル、サイズ、評価などの値を特定します。スクリーンショットとそこから読み取った値は、当社にも広告パートナーにも送信されません。</p>
+<p class="policy-p"><strong>ライブモード（任意）。</strong>ライブモードは Android の画面キャプチャ（MediaProjection）を使用します。開始するたびに Android がお客様に許可を求めます。最近の Android バージョンでは、1 つのアプリ（ポケモンGOのみを推奨します）または画面全体を共有できます。ライブモードがオンの間は、次のようになります。</p>
+<ul class="policy-ul">
+<li>停止ボタン付きの通知が表示されます。</li>
+<li>アプリは共有された画面を継続的に受け取り、最新の画像 1 枚だけをメモリに保持します。</li>
+<li>新しく安定した画面が表示されたとき（自動スキャン）と、フローティングの目のボタンをタップしたときに、共有された画面を自動的に解析します。画面全体を共有している場合、お客様が開いた他のアプリの画面も、スマートフォン上で短時間解析されることがあります。ポケモンの画面ではないものはすべて破棄されます。</li>
+<li>画像はお客様のスマートフォン上でデコード・解析されます。アップロード、動画としての録画、当社や第三者への送信は行われません。</li>
+<li>一時的な画像はアプリの非公開ストレージに保存され、新しい画面が解析されるたびに置き換えられ、ライブモードの停止時に削除されます。</li>
+<li>フローティングボタンと結果は、Android の「他のアプリの上に表示」の許可を使用して他のアプリの上に表示されます。他のアプリの上に広告が表示されることはありません。</li>
+</ul>
+<p class="policy-p">ライブモードは、通知、フローティングボタンのメニュー、ライブモードの画面、または Android の画面共有インジケーターから停止できます。重ねて表示、通知、画面キャプチャの各許可は、Android の設定でいつでも取り消すことができます。</p>
+<p class="policy-p"><strong>文字認識。</strong>文字認識には Google Play 開発者サービスを通じて提供される Google ML Kit を使用し、お客様のデバイス上で実行されます。Google の <a href="https://developers.google.com/ml-kit/android-data-disclosure">ML Kit データ開示</a>に記載されているとおり、Google はデバイスとアプリの情報、パフォーマンス指標、エラーコードなどの技術情報を受け取ることがあります。画像の内容は送信されません。</p>
+<p class="policy-p"><strong>保存したポケモン。</strong>スキャンしたポケモンを保存すると、その値、スクリーンショットの縮小コピー、サムネイルが、当社のサーバーではなくお客様のスマートフォン上のアプリの非公開ストレージに保存され、お客様がスキャンを削除するかアプリをアンインストールするまで保持されます。デバイスで Android のバックアップが有効になっている場合、Android がこのアプリデータをお客様の Google アカウントへのデバイスのバックアップに含めることがあります。</p>
+<p class="policy-p"><strong>画像の共有、コピー、保存。</strong>お客様が選択した場合に限り、アプリは結果パネルの画像を作成し、Android の共有シートで共有したり、クリップボードにコピーしたり、スマートフォンの Pictures/Let's Go Raid フォルダに保存したりできます。このフォルダの画像は、写真へのアクセス権を持つ他のアプリから見ることができます。アプリはクリップボードに書き込みますが、クリップボードを読み取ることはありません。</p>
+<p class="policy-p"><strong>ポケモンの画像。</strong>ポケモンの画像は、必要に応じて GitHub 上でホストされている公開画像リポジトリ（raw.githubusercontent.com）から読み込まれます。これらのリクエストにアカウント情報は含まれませんが、ホストはお客様の IP アドレスやリクエストされた画像などの標準的な技術データを受け取ります。</p>
+<h3 class="policy-h2">オンボーディングの質問とタイムゾーン</h3>
+<p class="policy-p">アカウントの作成後（既存のアカウントの場合は 1 回）、アプリが「どこでこのアプリを知りましたか？」と尋ねることがあります。回答は任意で、スキップすることもできます。選択肢は Instagram、Facebook、TikTok、YouTube、友だち・家族、App Store、その他です。「その他」を選んだ場合、短い説明（80 文字まで）を任意で入力できます。選択した項目、入力したテキスト、質問に回答したかスキップしたかを、お客様のアカウントに紐づけて保存します。この情報は、このアプリがどのように知られているかを把握し、マーケティングを改善するために使用します。他のトレーナーには表示されず、当社のアプリがこの情報を広告プロバイダーに送信することはありません。</p>
+<p class="policy-p">アプリは、お客様のデバイスに設定されているタイムゾーン（例: Europe/Madrid）を読み取ります。初期の候補として、そのタイムゾーンが属する国と、デバイスの言語・地域設定の地域を使用する場合もあります。タイムゾーンの検出はデバイスの設定のみを使用し、GPS は使用せず、位置情報の許可も求めません。オンボーディング中に、オフラインの都市・国のリストを任意で検索して選ぶことができます。検索はお客様のデバイス上で行われます。当社は、お客様のタイムゾーンを IANA タイムゾーン識別子として保存するほか、お客様が選択した国または提案された国、都市を選んだ場合はその都市と地域、そしてお客様が最後にタイムゾーンを確認した日時を保存します。「設定 &gt; タイムゾーン」で、デバイスに現在設定されているタイムゾーンに更新できます。レイドの主催に使用するタイムゾーンの変更は、24 時間に 1 回可能です。</p>
+<p class="policy-p">この情報は、設定画面にタイムゾーンの設定を表示するため、および、現地時間または地域ごとに出現するレイドボスのうちお客様が主催できるものを確認するために使用します（これらの確認には、お客様が確認したタイムゾーンとサーバー時刻を使用します）。デバイスのタイムゾーンやお客様が選んだ都市は検証されず、お客様の実際の所在地の証明としては扱われません。この情報は他のトレーナーには表示されず、当社のアプリがこの情報を広告プロバイダーに送信することはありません。</p>
+<p class="policy-p">これらの回答は当社のバックエンド（Supabase）に保存され、アプリがオフラインでも表示できるようにコピーがお客様のデバイスに保存されます。アクセスできるのは、アプリを通じたお客様ご本人とアプリの運営者のみです。お客様のアカウントが存在する間は保持され、アカウントとともに削除されます（設定 &gt; アカウントを削除）。アクセスや訂正をご希望の場合は当社までご連絡ください。</p>
+<h3 class="policy-h2">広告とプライバシーの選択</h3><p class="policy-p">バージョン 1.0.7 の広告 SDK には、Appodeal、BidMachine、Bidon、AppLovin、Mintegral、Unity Ads、Liftoff Monetize（Vungle）、Meta Audience Network、Pangle が含まれます。Sentry は SDK のクラッシュレポートをサポートしています。Appodeal は、広告とアナリティクスのために、広告の操作、広告 ID その他の識別子、デバイス・ネットワークの技術情報、診断情報、その他のアプリのパフォーマンスデータを収集します。メディエーション広告 SDK も、広告配信、効果測定、アナリティクス、セキュリティ、不正防止のためにこれらのデータを処理することがあります。取り扱いはプロバイダーによって異なります。データは広告・効果測定パートナーと共有されることがあります。許可と同意の選択は収集に影響します。パーソナライズド広告を拒否しても、すべての技術データの収集が止まるとは限りません。リワード広告では、報酬の確認と不正利用の防止のため、当社のアプリが不透明な報酬識別子を Appodeal に渡します。当社のバックエンドはこの識別子をお客様のアカウントに紐づけます。これは匿名ではなく仮名の識別子です。お客様の生のアカウント ID、メールアドレス、トレーナー名ではありません。アプリが購入イベントを Appodeal に直接送信することはありません。ただし、同梱されている他の SDK による収集を排除するものではありません。Unity Ads は、アプリの機能のための個人識別子の収集・共有、および広告とアナリティクスのための購入履歴の収集・共有について文書で示しています。Google Play と RevenueCat は、以下に説明するとおり購入を処理します。</p>
+<p class="policy-p">バージョン 1.0.7 では、バナー広告に Appodeal のメディエーションを、機能を一時的に利用するための任意のリワード広告を使用しています。リワード広告でプレミアムや永久の広告削除が付与されることはありません。広告なしのアクセスでは、バナーの表示枠が非表示になります。インタースティシャル広告やアプリ起動時広告の形式は実装していません。インストール済みの旧バージョンでは、バナーを無効にしたうえで、リワード広告に Google AdMob を使用している場合があります。</p>
+<p class="policy-p">AdMob を使用するインストール済みの旧バージョンでは、Google Mobile Ads SDK が、広告、効果測定、アナリティクス、セキュリティ、不正防止のために、IP アドレス、IP から推定されるおおよその位置、広告 ID・アプリセット ID その他のデバイス識別子、アプリ・広告の操作、診断情報を処理します。Google とその広告パートナーは、それぞれのポリシーに基づいてこれらの情報を処理します。パーソナライズされていない広告でも、識別子、ストレージ、効果測定が関わることがあります。</p>
+<p class="policy-p">バージョン 1.0.7 では、必要な場合にプライバシーの選択を取得するため、SDK の初期化時に Appodeal Stack Consent Manager を使用します。AdMob を使用するインストール済みの旧バージョンでは、Google User Messaging Platform（UMP）を使用します。必要な場合、「設定」の「広告のプライバシー設定」からプライバシーフォームを再表示できます。利用できるかどうかは、お客様の地域と同意プラットフォームの要件によって異なります。デバイスの設定でも広告 ID を管理できます。任意のリワード広告を断っても、アカウントが削除されたり、通常のレイド調整ができなくなったりすることはありません。</p>
+<h3 class="policy-h2">購入</h3>
+<p class="policy-p">月額プレミアム（monthly_premium）と、別売りの広告削除（remove_ads）は、Google Play Billing を通じて購入できます。RevenueCat は、確認、復元、購入分析のために、アカウント・顧客の識別子、購入履歴、サブスクリプションの状態、利用権を処理します。当社のバックエンドは、アクセス状態を最新に保つために請求イベントを受け取ります。当社が支払いカードの完全な情報を受け取ることはありません。サブスクリプションと返金は Google Play で管理されます。アプリのアカウントを削除しても、それだけで Google Play のサブスクリプションが解約されるわけではありません。</p>
+<h3 class="policy-h2">通知と運用データ</h3>
+<p class="policy-p">通知を有効にした場合、Expo と Google/Firebase の通知サービスが、プッシュトークン、デバイス・インストールの識別子、プラットフォーム情報、配信データを処理します。当社のバックエンドは登録情報と設定情報を保存し、レイドやサービスに関する通知を送信します。通知は「設定」または Android の通知設定で無効にできます。</p>
+<p class="policy-p">信頼性の確保、アナリティクス、サポート、不正利用の防止のために、アプリ・ビルドのバージョン、オペレーティングシステム、デバイスのモデル、セッション識別子、画面・活動のイベント、エラーの概要を処理します。活動レポートはお客様のアプリのアカウントに紐づけられます。広告 SDK の診断情報は、当社の運用レポートとは別のものです。</p>
+<p class="policy-p"><strong>デバイスの許可。</strong>使用する機能に応じて、アプリは次の許可を求めることがあります: 通知、フォアグラウンドの位置情報（主催の参加資格とおおまかな国・地域）、古い Android バージョンでの写真へのアクセス（スクリーンショットの選択）、画面キャプチャと他のアプリの上への表示（ライブモード）。いずれも任意で、Android の設定で取り消すことができます。取り消した場合、関連する機能は動作しなくなります。</p>
+<h3 class="policy-h2">プロバイダーと開示</h3><p class="policy-p">広告プロバイダーの情報: <a href="https://appodeal.com/privacy-policy/">Appodeal</a>、<a href="https://bidmachine.io/privacy-policy/">BidMachine</a>、<a href="https://docs.bidon.org/">Bidon</a>、<a href="https://legal.applovin.com/privacy/">AppLovin</a>、<a href="https://www.mintegral.com/en/privacy">Mintegral</a>、<a href="https://unity.com/legal/privacy-policy">Unity</a>、<a href="https://liftoff.io/privacy-policy/">Liftoff</a>、<a href="https://www.facebook.com/privacy/policy/">Meta</a>、<a href="https://www.pangleglobal.com/privacy">Pangle</a>、<a href="https://sentry.io/privacy/">Sentry</a>。</p>
+<p class="policy-p">クレジット: オフラインの都市・国の検索には、<a href="https://creativecommons.org/licenses/by/4.0/">クリエイティブ・コモンズ 表示 4.0</a> ライセンスの下で提供されている <a href="https://www.geonames.org/">GeoNames</a> のデータを使用しています。当社は、アプリで使用するためにこのデータの一部（大きな都市、タイムゾーン、別名）を選択し、形式を変更しました。データは GeoNames により「現状のまま」、無保証で提供されています。お客様の検索テキストはお客様のデバイス上で処理され、GeoNames には送信されません。</p>
+<p class="policy-p">プロバイダーには、Supabase（https://supabase.com/privacy）、Google Sign-In、Google Play Billing、Google/Firebase のサービス、インストール済みの旧バージョンでは AdMob（https://policies.google.com/privacy）、RevenueCat（https://www.revenuecat.com/privacy）、Expo（https://expo.dev/privacy）、登録時のメールアドレス確認プロバイダーである ZeroBounce（https://www.zerobounce.net/privacy-policy.html）、登録時のセキュリティのための Cloudflare Turnstile（https://www.cloudflare.com/turnstile-privacy-policy/）が含まれます。</p>
+<p class="policy-p">当社は、アプリの運営、ユーザーの認証、通知の配信、購入の確認、広告の配信、サービスの保護のためにプロバイダーを利用しています。法的義務の遵守のため、または不正行為、不正利用、セキュリティインシデントの調査のために、情報を開示することがあります。</p>
+<h3 class="policy-h2">保持とアカウントの削除</h3>
+<p class="policy-p">アカウント・プロフィールの情報は、お客様のアカウントが有効な間保持されます。レイド、モデレーション、運用、サポートの記録は、サービスの運営、安全、トラブルシューティングのために保持されることがあります。請求の記録は、Google Play と RevenueCat がそれぞれのポリシーと法的義務に基づいて保持することがあります。バックアップとサービスログは、お客様がアカウントを削除しても、すぐに消去されるとは限りません。</p>
+<p class="policy-p">アカウントの削除は、「設定 &gt; アカウントを削除」から依頼し、確認を完了することで行えます。また、アカウントのメールアドレスから peacefulsoil4k@gmail.com 宛てに、件名を「Account Deletion Request - Let's Go Raid」としてメールを送ることもできます。所有者であることを確認できるよう、トレーナー名を記載してください。この依頼を送るためにアプリを再インストールする必要はありません。</p>
+<p class="policy-p">アカウントを削除すると、認証アカウントとプロフィールが削除され、関連するレイド・メンバーの表示情報が匿名化されます。一部のレイドとモデレーションの記録は、上記の識別情報が削除された後も残ります。保持されているバックエンドの請求イベントには、引き続きアカウント・顧客の識別子とプロバイダーのイベントデータが含まれることがあり、これらの記録は必ずしも匿名ではありません。認証用のスクリーンショットは当社のバックエンドには保存されていません。アカウントを削除しても、Google、RevenueCat、Appodeal とその広告パートナー、その他のプロバイダーが独自に保有している記録は消去されず、サブスクリプションも解約されません。個体値スキャナーで保存したポケモンはお客様のスマートフォンにのみ保存されており、個体値スキャナーで削除するかアプリをアンインストールすると削除されます。アカウントを削除しても、スマートフォンからは削除されません。</p>
+<p class="policy-p">現在、アカウントを残したまま選択したアプリデータだけを削除するための確立された個別の手続きはありません。アクセス、訂正、その他のプライバシーに関するご懸念については、サポートにご連絡いただけます。ただし、これはすべての記録を選択的に削除することを約束するものではありません。</p>
+<h3 class="policy-h2">子ども、セキュリティ、お問い合わせ</h3>
+<p class="policy-p">本アプリは、13 歳未満の子ども、またはその地域で適用される最低年齢に満たない子どもを対象としたものではありません。子どもが不適切に個人情報を提供したと思われる場合は、当社までご連絡ください。当社は絶対的なセキュリティを保証することはできません。</p>
+<p class="policy-p"><strong>お客様の権利。</strong>お住まいの地域によっては、ご自身の個人情報にアクセスする権利、訂正する権利、削除する権利、その写しを受け取る権利、特定の処理に異議を述べる権利または制限する権利、およびいつでも同意を撤回する権利（広告については「設定 &gt; 広告のプライバシー設定」から）を有する場合があります。また、お住まいの地域のデータ保護機関に苦情を申し立てることもできます。peacefulsoil4k@gmail.com までご連絡ください。ご本人確認が必要となる場合があります。一部の広告パートナーは、パーソナライズド広告のためにデバイス識別子を使用しており、米国の一部の州法ではこれを「販売」または「共有」として扱います。必要な場合、「設定 &gt; 広告のプライバシー設定」からオプトアウトできます。当社のプロバイダーは、米国を含むお客様の国以外の場所でデータを処理することがあります。</p>
+<p class="policy-p"><strong>セキュリティ。</strong>当社のアプリとバックエンドは HTTPS で通信します。広告パートナーが配信する一部の広告コンテンツは、暗号化されていない接続を使用する場合があります。</p>
+<p class="policy-p">当社の取り扱いが変わった場合、本ポリシーを更新します。Let's Go Raid は Niantic、Nintendo、The Pokémon Company から独立したアプリです。
+</p></section>
+
+    <!-- DELETION -->
+    <section id="deletion"><div class="section-label">お客様の権利</div><div class="section-title">アカウントの削除</div><p class="body-text">「設定 &rarr; アカウントを削除」を使用し、確認を完了してください。アプリを使用できない場合は、アカウントのメールアドレスから <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a> 宛てに、件名を「Account Deletion Request - Let's Go Raid」としてメールを送ってください。トレーナー名を記載してください。処理の前に、所有者であることを確認します。</p><p class="body-text">認証アカウントとプロフィールは削除され、関連するレイド・メンバーの表示情報は匿名化されます。一部のレイドとモデレーションの記録、サービスログ、バックアップは残ることがあります。保持されているバックエンドの請求イベントには、引き続きアカウント・顧客の識別子とプロバイダーのイベントデータが含まれることがあり、必ずしも匿名ではありません。アカウントを削除しても、Google、RevenueCat、Appodeal とその広告パートナー、その他のプロバイダーが独自に保有している記録は消去されず、サブスクリプションも解約されません。個体値スキャナーで保存したポケモンはお客様のスマートフォンにのみ保存されており、個体値スキャナーで削除するかアプリをアンインストールすると削除されます。アカウントを削除しても、スマートフォンからは削除されません。</p><p class="body-text">現在、アカウントを残したまま選択したアプリデータだけを削除するための確立された個別の手続きはありません。プライバシーに関するご懸念やアカウントの削除については、サポートにご連絡ください。</p></section>
+
+    <!-- TERMS -->
+    <section id="terms">
+      <div class="section-label">法的情報</div>
+      <div class="section-title">利用規約</div>
+
+      <div class="policy-section">
+        <div class="policy-h2">1. 規約への同意</div>
+        <p class="policy-p">Let's Go Raid をダウンロード、アクセス、または使用することにより、お客様は本利用規約に同意したものとみなされます。同意しない場合は、本アプリを使用しないでください。</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">2. サービスの説明</div>
+        <p class="policy-p">Let's Go Raid は、独立したポケモンGOのレイド調整アプリです。トレーナーがレイドの募集を主催し、レイドルームを探し、調整に必要なトレーナー情報を共有し、準備完了を示し、レイドパーティーを調整するのを支援します。</p>
+        <p class="policy-p">Let's Go Raid は、ポケモンGO、レイドの出現状況、レイドの招待、リモートレイドパス、ゲーム内の報酬、色違いの確率、捕獲、イベントのスケジュール、その他のゲーム内の結果を管理するものではありません。</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">3. 非提携に関する免責事項</div>
+        <p class="policy-p">Let's Go Raid は、Niantic, Inc.、Nintendo Co., Ltd.、The Pokemon Company、The Pokemon Company International、Game Freak、Creatures Inc.、またはその関連団体と提携しておらず、これらによる推奨、後援、承認も受けていません。Pokemon GO and Pokemon are trademarks of their respective owners.（Pokemon GO および Pokemon は、それぞれの所有者の商標です。）</p>
+        <p class="policy-p">お客様は、ポケモンGO独自の利用規約、ルール、コミュニティガイドラインを守る責任を負います。</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">4. アカウントとトレーナープロフィールに関する責任</div>
+        <ul class="policy-ul">
+          <li>Let's Go Raid を使用するには、13 歳以上、またはお住まいの地域の法律で定められた最低年齢以上である必要があります。</li>
+          <li>お客様は、ご自身のアカウントを安全に保つこと、およびご自身のアカウントで行われるすべての活動について責任を負います。</li>
+          <li>トレーナー名、トレーナーレベル、トレーナーコード、チーム、アバターのスタイル、認証状況などのトレーナープロフィール情報は、レイドを主催または参加する際に正確である必要があります。</li>
+          <li>虚偽または誤解を招くプロフィール情報は、アカウントの制限または削除につながることがあります。</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">5. レイドの主催と参加に関するルール</div>
+        <ul class="policy-ul">
+          <li>主催者は、実際に調整するつもりのある実在のレイドについてのみ、レイドの募集を作成してください。</li>
+          <li>主催者はパーティーの設定を正確に保ち、キャンセル、開始、パーティーの人数、最低レベル、プレミアム限定、報告の各機能を悪用しないでください。</li>
+          <li>ゲストは参加するつもりのあるレイドにのみ参加し、実際に準備ができたときにのみ準備完了にしてください。</li>
+          <li>予定が変わった場合は、主催者が正確なパーティーリストを把握できるよう、レイドルームから退出してください。</li>
+        </ul>
+      </div>
+
+      <div class="policy-section" id="community-rules">
+        <div class="policy-h2">6. ユーザーの行動とコミュニティルール</div>
+        <p class="policy-p">本コミュニティルールは、トレーナー名、レイドの募集、レイドルーム、クイックメッセージ、フレンドコードの掲載、ランキングなど、他のトレーナーが見ることのできるすべてのものに適用されます。</p>
+        <ul class="policy-ul">
+          <li>攻撃的、憎悪的、性的、脅迫的なトレーナー名や、他の人物または団体になりすますトレーナー名を使用しないでください。</li>
+          <li>他のトレーナーへの嫌がらせ、脅迫、いじめ、虐待をしないでください。</li>
+          <li>レイドの募集、フレンドコードの掲載、メッセージを繰り返し投稿したり、誤解を招く内容を投稿したりするなどのスパム行為をしないでください。</li>
+          <li>偽の、詐欺的な、または誤解を招くレイドを作成しないでください。また、レイドの招待と引き換えに支払い、アカウント情報、アイテムを求めるなど、本アプリを使って他のトレーナーをだまさないでください。</li>
+          <li>フレンドコードの掲載は正確に保ってください。ご自身のフレンドコードと、実際のチーム、レベル、タグ、国の情報を使用してください。</li>
+          <li>他人へのなりすまし、トレーナーコードの悪用、虚偽の報告、モデレーションツールの悪用をしないでください。</li>
+          <li>プレミアム、安全、モデレーション、セキュリティの仕組みを回避しようとしないでください。</li>
+          <li>不正行為、位置情報の偽装、許可されていない自動化、ポケモンGOのルール違反を助けるために本アプリを使用しないでください。</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">7. 報告とモデレーション</div>
+        <p class="policy-p">本アプリでは、レイドに関する問題（例: 主催者がレイドから退出した、参加後にレイドがキャンセルされたなど）を報告できます。当社は報告を確認することがあります。報告と、キャンセルされたレイドに対するアプリの自動チェックにより、警告、一時的な主催の制限、アカウントの制限、トレーナー名や掲載などの不適切なコンテンツの削除または変更、アカウントの削除などの措置がとられることがあります。</p>
+        <p class="policy-p">当社は、特定のモデレーション結果や対応時間を保証するものではありません。</p>
+        <p class="policy-p">お客様に影響するモデレーションの決定についてご質問がある場合は、<a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a> までご連絡ください。現在、別途正式な異議申し立ての手続きはありません。</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">8. プレミアム、購入、広告、通知</div>
+        <ul class="policy-ul">
+          <li>月額プレミアムと広告削除は Google Play Billing を通じて購入でき、利用権の確認は RevenueCat が行います。</li>
+          <li>購入とサブスクリプションには Google Play Billing と RevenueCat を使用します。</li>
+          <li>購入の復元は、インストールされているアプリのビルドに有効な復元フローがある場合にのみ利用可能とみなしてください。</li>
+          <li>バージョン 1.0.7 では、バナー広告と、一時的なアンロックのための任意のリワード広告に、Appodeal とメディエーションパートナーを使用しています。インストール済みの旧バージョンでは、バナーを無効にしたうえで AdMob を使用している場合があります。</li>
+          <li>ローカルのリマインダーとサーバーからの通知は、お客様の許可と通知の設定によって異なります。</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">9. プライバシー、削除、第三者のサービス</div>
+        <p class="policy-p">お客様による Let's Go Raid の使用には、<a href="#privacy">プライバシーポリシー</a>も適用されます。アカウントまたはデータの削除は、<a href="#deletion">アカウント・データの削除</a>の項目から依頼できます。</p>
+        <p class="policy-p">本アプリは、Supabase、Expo のサービス、RevenueCat、Google Play Billing、Appodeal とそのメディエーションパートナー（旧バージョンでは AdMob）、ホストされているドキュメントページなどの第三者のサービスに依存することがあります。これらのサービスには、独自の利用規約とプライバシーポリシーがある場合があります。</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">10. サービスの提供状況と無保証</div>
+        <p class="policy-p">Let's Go Raid は調整ツールとして提供されています。当社は、レイドの成功、招待、捕獲、報酬、ポケモンGOの利用可能性、リモートレイドの制限、イベント情報の正確性、通知の配信、稼働時間、他のユーザーの行動を保証しません。</p>
+        <p class="policy-p">本アプリは「現状のまま」かつ「提供可能な範囲で」提供されます。法律で認められる最大限の範囲で、当社は、商品性、特定目的への適合性、権利の非侵害、および中断やエラーのない動作についての保証を否認します。</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">11. 責任の制限とお問い合わせ</div>
+        <p class="policy-p">法律で認められる最大限の範囲で、Peaceful Soil および Let's Go Raid は、お客様による本アプリの使用から生じる間接的、付随的、特別、結果的、懲罰的またはこれらに類する損害（レイドの見逃し、招待の失敗、第三者のサービス停止、請求プラットフォームの問題、データの損失、サービスの中断、通知の配信の失敗、不正確なレイド・イベント情報を含みます）について責任を負いません。</p>
+        <p class="policy-p">サポート、法的なご質問、プライバシーに関するご依頼、アカウントの削除、データの削除については、<a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a> までご連絡ください。</p>
+      </div>
+    </section>
+    <!-- SUPPORT -->
+    <section id="support">
+      <div class="section-label">ヘルプ</div>
+      <div class="section-title">サポート</div>
+
+      <p class="body-text">Let's Go Raid は Google Play で入手できます。<strong>5 営業日以内</strong>の返信を目指しています。</p>
+
+      <a href="mailto:peacefulsoil4k@gmail.com" class="email-link">
+        ✉ &nbsp;peacefulsoil4k@gmail.com
+      </a>
+
+      <p class="body-text-muted" style="margin-top:8px;">メールでお問い合わせの際は、アカウントのメールアドレス、デバイスのモデル、アプリのバージョン（設定で確認できる場合）、問題の説明を記載してください。パスワードやワンタイム認証コードは送らないでください。</p>
+
+      <div class="support-topics">
+        <div class="support-topic">
+          <div class="support-topic-title">ログイン・メールアドレスの確認</div>
+          <div class="support-topic-body">まず迷惑メールフォルダを確認してください。問題が続く場合は、アカウントのメールアドレスと表示されたエラーメッセージを添えてサポートにご連絡ください。</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">プロフィールまたはトレーナーコード</div>
+          <div class="support-topic-body">トレーナー名、レベル、コードを入力し直してみてください。問題が解決しない場合は、トレーナー名とエラーメッセージを添えてサポートにご連絡ください。</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">レイドが表示されない</div>
+          <div class="support-topic-body">引っ張って更新するか、ロビー画面を閉じて開き直してください。サポートにご連絡の際は、ボスの名前とレイドの種類を記載してください。</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">プライバシーまたはデータの削除</div>
+          <div class="support-topic-body">プライバシーに関するご質問、アカウントの削除、データの削除、公開されている削除手順の利用に関するお手伝いについては、サポートにご連絡ください。</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">不具合の報告</div>
+          <div class="support-topic-body">デバイスのモデル、アプリのバージョン、行おうとしていた操作、表示されたエラーメッセージを記載してください。</div>
+        </div>        <div class="support-topic">
+          <div class="support-topic-title">支払いまたはプレミアムに関するご質問</div>
+          <div class="support-topic-body">購入に関するサポートには、商品名とエラーメッセージを記載してください。支払いの認証情報は送らないでください。</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">認証用スクリーンショット</div>
+          <div class="support-topic-body">画像の選択画面が開いたかどうか、項目が自動入力されたかどうか、許可を求める画面が表示されたかどうかを記載してください。</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">報告またはモデレーションに関するご質問</div>
+          <div class="support-topic-body">説明、報告対象のユーザーのトレーナー名（わかる場合）、裏付けとなるスクリーンショットを添えて、peacefulsoil4k@gmail.com までメールでご連絡ください。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREMIUM -->
+    <section id="premium"><div class="section-label">サブスクリプション</div><div class="section-title">プレミアムと購入</div><p class="body-text">月額プレミアム（monthly_premium）と、別売りの永久の広告削除（remove_ads）には、Google Play Billing と RevenueCat を使用します。価格と提供状況はアプリ内に表示されます。購入の復元はアプリから行えます。サブスクリプションは Google Play の規約に従って更新されます。解約と返金は Google Play で管理してください。アカウントを削除してもサブスクリプションは解約されません。</p><p class="body-text">リワード広告は、機能の一時的なアンロックのみを提供します。プレミアムや永久の広告削除が付与されることはありません。バージョン 1.0.7 では、広告なしのアクセスをお持ちでないユーザーに Appodeal のバナーを表示します。インストール済みの旧バージョンでは、バナーが無効になっている場合があります。</p></section>
+
+    <!-- DISCLAIMER -->
+    <section id="disclaimer">
+      <div class="section-label">法的通知</div>
+      <div class="section-title">独立アプリに関する免責事項</div>
+      <div class="disclaimer-box">
+        <p>Let's Go Raid は、ポケモンGOのレイド調整のための独立したアプリです。Niantic, Inc.、The Pokémon Company International、Nintendo Co., Ltd.、またはその関連団体とは<strong>提携しておらず、これらによる推奨や後援も受けていません</strong>。Pokémon GO and Pokémon are trademarks of their respective owners.（Pokémon GO および Pokémon は、それぞれの所有者の商標です。）</p>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="padding-bottom:0;">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">Let's Go Raid</div>
+          <div class="footer-copy">&copy; 2026 Peaceful Soil &nbsp;·&nbsp; com.peacefulsoil.letsgoraid</div>
+          <div class="footer-copy" style="margin-top:2px;">最終更新日: 2026年10月30日</div>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>
+          <a href="#top">ページの先頭へ ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/lang.js" defer></script>
+</body>
+</html>

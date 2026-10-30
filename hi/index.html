@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let's Go Raid – गोपनीयता और सहायता</title>
+  <link rel="canonical" href="https://salg20.github.io/lets-go-raid-privacy/hi/" />
+  <link rel="alternate" hreflang="x-default" href="https://salg20.github.io/lets-go-raid-privacy/" />
+  <link rel="alternate" hreflang="en" href="https://salg20.github.io/lets-go-raid-privacy/" />
+  <link rel="alternate" hreflang="ja" href="https://salg20.github.io/lets-go-raid-privacy/ja/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://salg20.github.io/lets-go-raid-privacy/pt-BR/" />
+  <link rel="alternate" hreflang="es" href="https://salg20.github.io/lets-go-raid-privacy/es/" />
+  <link rel="alternate" hreflang="de" href="https://salg20.github.io/lets-go-raid-privacy/de/" />
+  <link rel="alternate" hreflang="ko" href="https://salg20.github.io/lets-go-raid-privacy/ko/" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://salg20.github.io/lets-go-raid-privacy/zh-Hant/" />
+  <link rel="alternate" hreflang="id" href="https://salg20.github.io/lets-go-raid-privacy/id/" />
+  <link rel="alternate" hreflang="th" href="https://salg20.github.io/lets-go-raid-privacy/th/" />
+  <link rel="alternate" hreflang="fr" href="https://salg20.github.io/lets-go-raid-privacy/fr/" />
+  <link rel="alternate" hreflang="it" href="https://salg20.github.io/lets-go-raid-privacy/it/" />
+  <link rel="alternate" hreflang="hi" href="https://salg20.github.io/lets-go-raid-privacy/hi/" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #07091a;
+      --surface: #0d1225;
+      --surface2: #111830;
+      --border: rgba(56, 189, 248, 0.15);
+      --border-strong: rgba(56, 189, 248, 0.3);
+      --accent: #38bdf8;
+      --accent-dim: #0ea5e9;
+      --accent-glow: rgba(56, 189, 248, 0.08);
+      --text: #cbd5e1;
+      --text-bright: #f1f5f9;
+      --text-muted: #64748b;
+      --text-dim: #475569;
+      --green: #34d399;
+      --green-bg: rgba(52, 211, 153, 0.07);
+      --green-border: rgba(52, 211, 153, 0.28);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7, 9, 26, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+    }
+    .nav-bar {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-inner {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 48px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    .nav-brand {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      margin-right: 12px;
+      text-decoration: none;
+    }
+    .nav-link {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-link:hover { color: var(--accent); background: var(--accent-glow); }
+
+    /* LANGUAGE MENU (works without JavaScript: <details> + plain links) */
+    .lang-menu { position: relative; flex: none; }
+    .lang-menu summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text);
+      white-space: nowrap;
+      padding: 5px 9px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .lang-menu summary::-webkit-details-marker { display: none; }
+    .lang-menu summary:hover { color: var(--accent); border-color: var(--border-strong); }
+    .lang-menu summary:focus-visible, .lang-list a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .lang-list {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 6px);
+      z-index: 60;
+      list-style: none;
+      min-width: 190px;
+      max-height: 70vh;
+      overflow-y: auto;
+      padding: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+    .lang-list a {
+      display: block;
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .lang-list a:hover { background: var(--accent-glow); color: var(--accent); }
+    .lang-list a[aria-current="true"] { color: var(--accent); font-weight: 700; }
+
+    /* LAYOUT */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 72px 0 52px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      padding: 4px 12px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--text-bright);
+      line-height: 1.12;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      max-width: 520px;
+      line-height: 1.55;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .hero-meta-item {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .hero-meta-item strong { color: var(--text-muted); }
+
+    /* SECTION */
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    section:last-of-type { border-bottom: none; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-bright);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    /* SUMMARY CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .card:hover {
+      border-color: var(--border-strong);
+      background: var(--surface2);
+    }
+    .card-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 6px;
+    }
+    .card-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* TABLE OF CONTENTS */
+    .toc-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-top: 24px;
+    }
+    .toc-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-bright);
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .toc-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 8px;
+    }
+    .toc-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(56, 189, 248, 0.12);
+    }
+    .toc-links a:hover { background: var(--accent-glow); }
+    /* POLICY CONTENT */
+    .policy-section { margin-bottom: 32px; }
+    .policy-section:last-child { margin-bottom: 0; }
+    .policy-h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .policy-p {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+    .policy-ul {
+      list-style: none;
+      margin: 8px 0 12px;
+      padding: 0;
+    }
+    .policy-ul li {
+      font-size: 14px;
+      color: var(--text);
+      padding: 7px 0 7px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: relative;
+      line-height: 1.6;
+    }
+    .policy-ul li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--accent-dim);
+    }
+    .policy-ul li:last-child { border-bottom: none; }
+    .policy-ul li strong { color: var(--text-bright); }
+    .policy-ul a { color: var(--accent); }
+
+    /* CALLOUT BOXES */
+    .callout {
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .callout-green {
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
+    }
+    .callout-blue {
+      background: var(--accent-glow);
+      border: 1px solid var(--border-strong);
+    }
+    .callout-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .callout-green .callout-title { color: var(--green); }
+    .callout-blue .callout-title { color: var(--accent); }
+    .callout-body {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .callout-body a { color: var(--accent); }
+    .callout-body strong { color: var(--text-bright); }
+
+    /* DELETION STEPS */
+    .deletion-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .deletion-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .deletion-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .deletion-step-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 4px;
+    }
+    .deletion-step-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .deletion-step-body a { color: var(--accent); }
+    .deletion-step-body em { font-style: italic; }
+
+    /* SUPPORT TOPICS */
+    .support-topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .support-topic {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .support-topic-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 6px;
+    }
+    .support-topic-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* EMAIL BUTTON */
+    a { color: var(--accent); text-decoration: underline; }
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      background: var(--accent-glow);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 10px 18px;
+      margin: 12px 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .email-link:hover {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: var(--accent);
+    }
+
+    /* DISCLAIMER */
+    .disclaimer-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+    }
+    .disclaimer-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .disclaimer-box strong { color: var(--text); }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0 20px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .footer-brand {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* BODY HELPERS */
+    .body-text {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .body-text-muted {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.65;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 28px; }
+      .hero-sub { font-size: 15px; }
+      .section-title { font-size: 20px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .deletion-steps { grid-template-columns: 1fr; }
+      .support-topics { grid-template-columns: 1fr; }
+      .disclaimer-box { padding: 20px; }
+      .footer-links { align-items: flex-start; }
+      nav { padding: 0 12px; }
+      .container { padding: 0 16px 60px; }
+      .callout { padding: 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY NAV -->
+  <nav>
+    <div class="nav-bar">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top">Let's Go Raid</a>
+      <a class="nav-link" href="#summary">अवलोकन</a>
+      <a class="nav-link" href="#privacy">गोपनीयता</a>
+      <a class="nav-link" href="#deletion">डेटा मिटाएँ</a>
+      <a class="nav-link" href="#terms">शर्तें</a>
+      <a class="nav-link" href="#support">सहायता</a>
+      <a class="nav-link" href="#premium">प्रीमियम</a>
+      <a class="nav-link" href="#disclaimer">अस्वीकरण</a>
+    </div>
+    <!-- LANGUAGE MENU: language names stay in their own language on every page. -->
+    <details class="lang-menu">
+      <summary aria-label="भाषा: हिन्दी"><span aria-hidden="true">🌐</span><span>हिन्दी</span></summary>
+      <ul class="lang-list">
+        <li><a href="../" hreflang="en" lang="en" data-lang="en">English</a></li>
+        <li><a href="../ja/" hreflang="ja" lang="ja" data-lang="ja">日本語</a></li>
+        <li><a href="../pt-BR/" hreflang="pt-BR" lang="pt-BR" data-lang="pt-BR">Português (Brasil)</a></li>
+        <li><a href="../es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+        <li><a href="../de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+        <li><a href="../ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a></li>
+        <li><a href="../zh-Hant/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-Hant">繁體中文</a></li>
+        <li><a href="../id/" hreflang="id" lang="id" data-lang="id">Bahasa Indonesia</a></li>
+        <li><a href="../th/" hreflang="th" lang="th" data-lang="th">ไทย</a></li>
+        <li><a href="../fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+        <li><a href="../it/" hreflang="it" lang="it" data-lang="it">Italiano</a></li>
+        <li><a href="../hi/" hreflang="hi" lang="hi" data-lang="hi" aria-current="true">हिन्दी</a></li>
+      </ul>
+    </details>
+    </div>
+  </nav>
+
+  <div class="container" id="top">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-badge">गोपनीयता और सहायता</div>
+      <h1>Let's Go Raid</h1>
+      <p class="hero-sub">Let's Go Raid के लिए गोपनीयता नीति, खाता मिटाने और सहायता से जुड़ी जानकारी — Android के लिए रेड समन्वय।</p>
+      <div class="hero-meta">
+        <span class="hero-meta-item"><strong>पैकेज:</strong> com.peacefulsoil.letsgoraid</span>
+        <span class="hero-meta-item"><strong>प्रभावी तिथि:</strong> 30 अक्टूबर 2026</span>
+        <span class="hero-meta-item"><strong>संपर्क:</strong> peacefulsoil4k@gmail.com</span>
+      </div>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <section id="toc">
+      <div class="section-label">कानूनी लिंक</div>
+      <div class="section-title">आपको जो चाहिए, वह खोजें</div>
+      <div class="toc-panel">
+        <div class="toc-title">इस पेज के भाग</div>
+        <div class="toc-links">
+          <a href="#privacy">गोपनीयता नीति</a>
+          <a href="#deletion">खाता/डेटा मिटाना</a>
+          <a href="#terms">सेवा की शर्तें</a>
+          <a href="#support">सहायता</a>
+        </div>
+      </div>
+    </section>
+    <!-- QUICK SUMMARY -->
+    <section id="summary">
+      <div class="section-label">अवलोकन</div>
+      <div class="section-title">एक नज़र में</div>
+      <div class="cards-grid">
+        <div class="card">
+          <span class="card-icon">📋</span>
+          <div class="card-title">हम क्या एकत्र करते हैं</div>
+          <div class="card-body">खाते का ईमेल, ट्रेनर प्रोफ़ाइल, रेड गतिविधि, वैकल्पिक सत्यापन डेटा, स्थान संदर्भ, ऑनबोर्डिंग के वैकल्पिक उत्तर (आपको हमारे बारे में कैसे पता चला, देश/शहर और समय क्षेत्र) और खरीदारी पहचानकर्ता।</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🔒</span>
+          <div class="card-title">डेटा साझा करना</div>
+          <div class="card-body">हम ऐप चलाने के लिए सेवा प्रदाताओं का और विज्ञापन दिखाने व उनका मापन करने के लिए विज्ञापन भागीदारों का उपयोग करते हैं। विज्ञापन के लिए डेटा साझा करने और आपके गोपनीयता विकल्पों का वर्णन नीचे किया गया है।</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">📢</span>
+          <div class="card-title">विज्ञापन संबंधी प्रकटीकरण</div>
+          <div class="card-body">संस्करण 1.0.7 बैनर विज्ञापनों और वैकल्पिक रिवॉर्डेड विज्ञापनों के लिए Appodeal और उसके मध्यस्थ (mediated) विज्ञापन भागीदारों का उपयोग करता है। पुराने इंस्टॉल किए गए संस्करण Google AdMob का उपयोग कर सकते हैं।</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🗑️</span>
+          <div class="card-title">आप अपना डेटा मिटा सकते हैं</div>
+          <div class="card-body">सेटिंग से ऐप के भीतर अपना खाता मिटाएँ, या peacefulsoil4k@gmail.com पर ईमेल करें। ईमेल अनुरोधों के लिए ऐप इंस्टॉल होना आवश्यक नहीं है।</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🎮</span>
+          <div class="card-title">स्वतंत्र ऐप</div>
+          <div class="card-body">Niantic, The Pokémon Company या Nintendo से संबद्ध नहीं। विवरण के लिए अस्वीकरण वाला भाग देखें।</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY POLICY -->
+    <section id="privacy"><div class="section-label">कानूनी</div><div class="section-title">गोपनीयता नीति</div>
+<p class="policy-p">Let's Go Raid का संचालन Peaceful Soil Studio द्वारा किया जाता है। Android पैकेज: com.peacefulsoil.letsgoraid। संपर्क: peacefulsoil4k@gmail.com। सार्वजनिक नीति: https://salg20.github.io/lets-go-raid-privacy/</p>
+<h3 class="policy-h2">खाता और ट्रेनर जानकारी</h3>
+<p class="policy-p">खाते तक पहुँच और रेड समन्वय प्रदान करने के लिए हम आपका ईमेल पता, खाता पहचानकर्ता, प्रमाणीकरण/सत्र रिकॉर्ड और ट्रेनर प्रोफ़ाइल प्रोसेस करते हैं। आपकी प्रोफ़ाइल में ट्रेनर नाम, ट्रेनर कोड, लेवल, टीम, अवतार विकल्प, सत्यापन स्थिति और खाता प्राथमिकताएँ शामिल होती हैं। Supabase प्रमाणीकरण और हमारा बैकएंड प्रदान करता है। यदि आप Google Sign-In चुनते हैं, तो Google आपका प्रमाणीकरण करता है और एक पहचान टोकन देता है, जिसका उपयोग आपका ऐप सत्र बनाने के लिए किया जाता है। साइनअप के समय ईमेल जाँच में अमान्य ईमेल पतों का पता लगाने और दुरुपयोग कम करने के लिए ZeroBounce का उपयोग किया जा सकता है।</p>
+<p class="policy-p">रेड के लिए आवश्यक ट्रेनर विवरण उन ट्रेनरों को दिखाई देते हैं जिनके साथ आप समन्वय करते हैं। होस्ट की गई/जॉइन की गई रेड, तैयारी की स्थिति, रद्दीकरण, रिपोर्ट, फ़ीडबैक और मॉडरेशन रिकॉर्ड सेवा चलाने और दुरुपयोग रोकने के लिए प्रोसेस किए जाते हैं।</p>
+<p class="policy-p">यदि आप Social में फ़्रेंड कोड लिस्टिंग प्रकाशित करते हैं, तो ऐप के अन्य उपयोगकर्ता आपकी लिस्टिंग में शामिल ट्रेनर नाम, फ़्रेंड कोड, लेवल, टीम, अवतार, टैग, देश और Vivillon पैटर्न देख सकते हैं, और सक्षम होने पर ऑनलाइन संकेतक भी। आप अपनी लिस्टिंग का प्रकाशन रद्द कर सकते हैं। इन सुविधाओं को चलाने के लिए हम आपके खाते से जुड़ी रिवॉर्ड गतिविधि, पॉइंट और गेम की प्रगति संग्रहीत करते हैं। लीडरबोर्ड पर आपका ट्रेनर नाम, रैंक और पॉइंट या गेम के परिणाम दिखाए जा सकते हैं; आप मुझे लीडरबोर्ड पर दिखाएँ प्राथमिकता बदल सकते हैं।</p>
+<p class="policy-p">रेड क्विक मैसेज आपको पहले से तय समन्वय संदेश चुनने देते हैं। अधिकृत रेड-रूम प्रतिभागियों तक संदेश भेजने के लिए Supabase चुने गए संदेश का पहचानकर्ता, भेजने वाले का खाता पहचानकर्ता, प्रदर्शित नाम, भूमिका, समय-मुहर (timestamp) और डिलीवरी/पुनः प्रयास पहचानकर्ता प्रोसेस करता है। दुरुपयोग और दोहराए गए संदेशों को रोकने के लिए बैकएंड भेजने की सीमा (throttle) और पुनः प्रयास की जानकारी भी संग्रहीत करता है। डेटाबेस ब्रॉडकास्ट स्वचालित सफ़ाई से पहले Supabase Realtime में संग्रहीत रहते हैं; उन्हें केवल डिवाइस की मेमोरी में प्रोसेस नहीं किया जाता और डिलीवरी के तुरंत बाद उनके गायब होने की कोई गारंटी नहीं है। क्विक मैसेज ब्रॉडकास्ट, जिनमें आपका खाता पहचानकर्ता और प्रदर्शित नाम शामिल हैं, डिलीवरी के बाद सीमित अवधि तक हमारे प्रदाता के रियलटाइम संदेश लॉग में रह सकते हैं और आपके खाता मिटाने पर तुरंत नहीं हटाए जाते।</p>
+<p class="policy-p">सत्यापन स्क्रीनशॉट टेक्स्ट पहचान (text recognition) का उपयोग करके आपके डिवाइस पर प्रोसेस किए जाते हैं। सत्यापन प्रक्रिया हमारे बैकएंड को निकाली गई ट्रेनर जानकारी भेजती है, स्क्रीनशॉट नहीं।</p>
+<p class="policy-p">ईमेल से साइनअप में ब्राउज़र-आधारित Cloudflare Turnstile सुरक्षा जाँच का उपयोग होता है। हमारा बैकएंड चुनौती (challenge) टोकन को Cloudflare के साथ सत्यापित करता है और सत्यापन के लिए ईमेल पता ZeroBounce को भेजता है। बॉट का पता लगाने के लिए Turnstile IP पता, ब्राउज़र जानकारी और चुनौती संदर्भ जैसे तकनीकी संकेत प्रोसेस करता है; Cloudflare इन संकेतों का उपयोग अपनी बॉट पहचान को बेहतर बनाने के लिए भी करता है। इसका <a href="https://www.cloudflare.com/turnstile-privacy-policy/">Turnstile गोपनीयता परिशिष्ट</a> देखें।</p>
+<h3 class="policy-h2">स्थान</h3>
+<p class="policy-p">फ़ोरग्राउंड स्थान अनुमति वैकल्पिक है। यदि आप इसे देते हैं, तो ऐप अक्षांश और देशांतर प्राप्त कर सकता है, जिसमें आपका डिवाइस अनुमति दे तो सटीक निर्देशांक भी शामिल हैं, और उन्हें रिवर्स-जियोकोड करके देश, क्षेत्र और शहर में बदल सकता है। होस्ट/बॉस-चयन प्रक्रियाएँ निर्देशांक और समय क्षेत्र/स्थान संदर्भ उन बैकएंड फ़ंक्शनों को भेजती हैं जो रेड की उपलब्धता और पात्रता की जाँच करते हैं। अनुमति के बिना, स्थान पर निर्भर कुछ परिणाम उपलब्ध नहीं हो सकते।</p>
+<p class="policy-p">मोटे तौर पर देश/क्षेत्र/शहर की जानकारी और अपडेट की समय-मुहरें आपकी प्रोफ़ाइल के साथ संग्रहीत की जा सकती हैं। पहले से दी गई स्थान अनुमति होने पर, ऐप परिचालन गतिविधि रिपोर्टिंग के लिए एक देश कोड भी निर्धारित करता है। स्थान तक पहुँच के लिए बैकग्राउंड-स्थान अनुमति की आवश्यकता नहीं होती।</p>
+<p class="policy-p">हमारा वर्तमान बैकएंड रेड की पात्रता जाँचने के लिए सटीक निर्देशांकों का उपयोग करता है और रेड बनाते समय रेड रिकॉर्ड में कोई सटीक निर्देशांक नहीं लिखता। डिवाइस की स्थान सेवा देश, क्षेत्र या शहर लौटाने के लिए निर्देशांक प्रोसेस कर सकती है। हम यह वादा नहीं करते कि सारी इन्फ्रास्ट्रक्चर प्रोसेसिंग केवल मेमोरी में होती है या तुरंत मिटा दी जाती है। सेवा लॉग और बैकअप के अपने अलग प्रतिधारण नियम होते हैं। संस्करण 1.0.7 में, जब आपने संबंधित फ़ोरग्राउंड स्थान अनुमति दी हो, तब Appodeal और BidMachine विज्ञापन के लिए डिवाइस का अनुमानित या सटीक स्थान भी एकत्र और साझा कर सकते हैं। आप Android सेटिंग में यह अनुमति अस्वीकार या वापस ले सकते हैं। विज्ञापन भागीदार स्थान अनुमति के बिना भी IP पतों से अनुमानित स्थान का अनुमान लगा सकते हैं। AdMob का उपयोग करने वाले पुराने संस्करण ऐप के विज्ञापन-अनुरोध कोड में जानबूझकर सटीक निर्देशांक नहीं भेजते।</p>
+<h3 class="policy-h2">IV स्कैनर, लाइव मोड और स्क्रीन कैप्चर</h3>
+<p class="policy-p"><strong>स्क्रीनशॉट स्कैन करना।</strong> जब आप IV स्कैनर में कोई स्क्रीनशॉट चुनते हैं, तो ऐप Pokémon और CP, HP, लेवल, आकार और मूल्यांकन (appraisal) जैसे मानों की पहचान करने के लिए उसे आपके फ़ोन पर ऑन-डिवाइस टेक्स्ट पहचान से पढ़ता है। स्क्रीनशॉट और उससे पढ़े गए मान हमें या विज्ञापन भागीदारों को नहीं भेजे जाते।</p>
+<p class="policy-p"><strong>लाइव मोड (वैकल्पिक)।</strong> लाइव मोड Android स्क्रीन कैप्चर (MediaProjection) का उपयोग करता है। हर बार जब आप इसे शुरू करते हैं, Android आपसे अनुमति माँगता है; हाल के Android संस्करणों पर आप एक ऐप (हम केवल Pokémon GO की सलाह देते हैं) या अपनी पूरी स्क्रीन साझा कर सकते हैं। जब लाइव मोड चालू होता है:</p>
+<ul class="policy-ul">
+<li>रोकें (Stop) बटन वाली एक सूचना दिखाई जाती है;</li>
+<li>ऐप साझा की गई स्क्रीन को लगातार प्राप्त करता है और मेमोरी में केवल सबसे हाल की छवि रखता है;</li>
+<li>जब कोई नई, स्थिर स्क्रीन दिखाई देती है (स्वचालित स्कैनिंग) और जब आप तैरते हुए आँख वाले बटन पर टैप करते हैं, तब यह साझा की गई स्क्रीन का स्वचालित रूप से विश्लेषण करता है। यदि आप अपनी पूरी स्क्रीन साझा करते हैं, तो आपके द्वारा खोले गए अन्य ऐप की स्क्रीन का भी आपके फ़ोन पर थोड़ी देर के लिए विश्लेषण हो सकता है; जो कुछ भी Pokémon स्क्रीन नहीं है, उसे छोड़ दिया जाता है;</li>
+<li>छवियाँ आपके फ़ोन पर डिकोड और विश्लेषित की जाती हैं। उन्हें अपलोड नहीं किया जाता, वीडियो के रूप में रिकॉर्ड नहीं किया जाता, और न ही हमें या तृतीय पक्षों को भेजा जाता है;</li>
+<li>अस्थायी छवियाँ ऐप के निजी स्टोरेज में संग्रहीत होती हैं, नई स्क्रीन के विश्लेषण के साथ बदल दी जाती हैं, और लाइव मोड बंद होने पर मिटा दी जाती हैं;</li>
+<li>तैरता हुआ बटन और परिणाम Android की &ldquo;दूसरे ऐप्लिकेशन के ऊपर दिखाएं&rdquo; अनुमति का उपयोग करके अन्य ऐप के ऊपर दिखाए जाते हैं। अन्य ऐप के ऊपर कोई विज्ञापन नहीं दिखाया जाता।</li>
+</ul>
+<p class="policy-p">आप लाइव मोड को सूचना, तैरते बटन के मेनू, लाइव मोड स्क्रीन या Android के स्क्रीन-शेयरिंग संकेतक से रोक सकते हैं। आप Android सेटिंग में किसी भी समय ओवरले, सूचना या स्क्रीन-कैप्चर अनुमतियाँ वापस ले सकते हैं।</p>
+<p class="policy-p"><strong>टेक्स्ट पहचान।</strong> टेक्स्ट पहचान Google Play services के माध्यम से दिए गए Google ML Kit का उपयोग करती है और आपके डिवाइस पर चलती है। Google को डिवाइस और ऐप की जानकारी, प्रदर्शन मीट्रिक और त्रुटि कोड जैसी तकनीकी जानकारी मिल सकती है, जैसा कि Google के <a href="https://developers.google.com/ml-kit/android-data-disclosure">ML Kit डेटा प्रकटीकरण</a> में बताया गया है; छवि की सामग्री नहीं भेजी जाती।</p>
+<p class="policy-p"><strong>सहेजे गए Pokémon।</strong> यदि आप स्कैन किया गया Pokémon सहेजते हैं, तो उसके मान, स्क्रीनशॉट की छोटी की गई प्रति और एक थंबनेल आपके फ़ोन पर ऐप के निजी स्टोरेज में संग्रहीत होते हैं, हमारे सर्वरों पर नहीं, जब तक कि आप वह स्कैन मिटा नहीं देते या ऐप अनइंस्टॉल नहीं कर देते। यदि आपके डिवाइस पर Android बैकअप सक्षम है, तो Android इस ऐप डेटा को आपके Google खाते में डिवाइस बैकअप में शामिल कर सकता है।</p>
+<p class="policy-p"><strong>छवियाँ साझा करना, कॉपी करना और सहेजना।</strong> केवल आपके चुनने पर, ऐप परिणाम पैनल की एक छवि बनाता है और उसे Android शेयर शीट के माध्यम से साझा कर सकता है, क्लिपबोर्ड पर कॉपी कर सकता है, या आपके फ़ोन के Pictures/Let's Go Raid फ़ोल्डर में सहेज सकता है, जहाँ फ़ोटो एक्सेस वाले अन्य ऐप उसे देख सकते हैं। ऐप क्लिपबोर्ड पर लिखता है, लेकिन उसे कभी पढ़ता नहीं है।</p>
+<p class="policy-p"><strong>Pokémon छवियाँ।</strong> Pokémon छवियाँ आवश्यकता पड़ने पर GitHub (raw.githubusercontent.com) पर होस्ट की गई सार्वजनिक छवि रिपॉज़िटरी से लोड की जाती हैं। इन अनुरोधों में कोई खाता जानकारी नहीं होती, लेकिन होस्ट को आपका IP पता और कौन-सी छवि माँगी गई है, जैसा मानक तकनीकी डेटा मिलता है।</p>
+<h3 class="policy-h2">ऑनबोर्डिंग प्रश्न और समय क्षेत्र</h3>
+<p class="policy-p">आपके खाता बनाने के बाद (या मौजूदा खातों के लिए एक बार), ऐप पूछ सकता है &ldquo;आपको हमारे बारे में कैसे पता चला?&rdquo;। उत्तर देना वैकल्पिक है और आप इसे छोड़ सकते हैं। विकल्प हैं Instagram, Facebook, TikTok, YouTube, मित्र या परिवार, App Store और अन्य। यदि आप अन्य चुनते हैं, तो आप स्वेच्छा से एक छोटा विवरण (अधिकतम 80 अक्षर) लिख सकते हैं। हम आपके द्वारा चुना गया विकल्प, आपके द्वारा लिखा गया कोई भी टेक्स्ट, और यह कि आपने प्रश्न का उत्तर दिया या उसे छोड़ दिया, आपके खाते से जोड़कर संग्रहीत करते हैं। हम इस जानकारी का उपयोग यह समझने के लिए करते हैं कि लोग ऐप के बारे में कैसे जानते हैं, और अपनी मार्केटिंग बेहतर बनाने के लिए करते हैं। यह अन्य ट्रेनरों को नहीं दिखाई जाती, और हमारा ऐप इसे विज्ञापन प्रदाताओं को नहीं भेजता।</p>
+<p class="policy-p">ऐप आपके डिवाइस पर कॉन्फ़िगर किया गया समय क्षेत्र पढ़ता है (उदाहरण के लिए Europe/Madrid)। प्रारंभिक सुझाव के रूप में यह उस देश का भी उपयोग कर सकता है जिससे वह समय क्षेत्र संबंधित है, और आपकी डिवाइस भाषा/क्षेत्र सेटिंग से क्षेत्र का भी। समय क्षेत्र का पता लगाने में केवल डिवाइस सेटिंग का उपयोग होता है; इसमें GPS का उपयोग नहीं होता और स्थान अनुमति नहीं माँगी जाती। ऑनबोर्डिंग के दौरान आप वैकल्पिक रूप से शहरों और देशों की एक ऑफ़लाइन सूची में खोज कर एक चुन सकते हैं; खोज आपके डिवाइस पर चलती है। हम आपका समय क्षेत्र IANA समय-क्षेत्र पहचानकर्ता के रूप में, आपके द्वारा चुना गया या सुझाया गया देश, यदि आपने शहर चुना हो तो शहर और क्षेत्र, और आपने पिछली बार अपने समय क्षेत्र की पुष्टि कब की थी, यह संग्रहीत करते हैं। सेटिंग &gt; समय क्षेत्र में आप इसे अपने डिवाइस पर वर्तमान में सेट समय क्षेत्र पर अपडेट कर सकते हैं; रेड होस्ट करने के लिए उपयोग किए जाने वाले समय क्षेत्र में बदलाव हर 24 घंटे में एक बार संभव है।</p>
+<p class="policy-p">हम इस जानकारी का उपयोग आपकी सेटिंग में आपकी समय-क्षेत्र प्राथमिकता दिखाने और यह जाँचने के लिए करते हैं कि स्थानीय समय या क्षेत्रीय उपलब्धता वाले कौन-से रेड बॉस आप होस्ट कर सकते हैं (ये जाँचें आपके पुष्टि किए गए समय क्षेत्र और सर्वर समय का उपयोग करती हैं)। डिवाइस का समय क्षेत्र या आपके द्वारा चुना गया शहर सत्यापित नहीं किया जाता और उसे आपके भौतिक स्थान का प्रमाण नहीं माना जाता। यह जानकारी अन्य ट्रेनरों को नहीं दिखाई जाती, और हमारा ऐप इसे विज्ञापन प्रदाताओं को नहीं भेजता।</p>
+<p class="policy-p">ये उत्तर हमारे बैकएंड (Supabase) में संग्रहीत होते हैं और एक प्रति आपके डिवाइस पर रखी जाती है ताकि ऐप उन्हें ऑफ़लाइन दिखा सके। केवल आप (ऐप के माध्यम से) और ऐप संचालक ही इन तक पहुँच सकते हैं। जब तक आपका खाता मौजूद है, इन्हें रखा जाता है, और आपके खाते के साथ ही मिटा दिया जाता है (सेटिंग &gt; खाता मिटाएँ)। इन तक पहुँचने या इन्हें सुधारने के लिए आप हमसे संपर्क कर सकते हैं।</p>
+<h3 class="policy-h2">विज्ञापन और गोपनीयता विकल्प</h3><p class="policy-p">संस्करण 1.0.7 के विज्ञापन SDK में Appodeal, BidMachine, Bidon, AppLovin, Mintegral, Unity Ads, Liftoff Monetize (Vungle), Meta Audience Network और Pangle शामिल हैं; Sentry SDK क्रैश रिपोर्टिंग में सहायता करता है। Appodeal विज्ञापन और एनालिटिक्स के लिए विज्ञापन इंटरैक्शन, विज्ञापन और अन्य पहचानकर्ता, डिवाइस/नेटवर्क की तकनीकी जानकारी, डायग्नोस्टिक्स और ऐप प्रदर्शन से जुड़ा अन्य डेटा एकत्र करता है। मध्यस्थ विज्ञापन SDK भी विज्ञापन वितरण, मापन, एनालिटिक्स, सुरक्षा और धोखाधड़ी रोकथाम के लिए इस डेटा को प्रोसेस कर सकते हैं; प्रथाएँ प्रदाता के अनुसार अलग-अलग होती हैं। डेटा विज्ञापन और मापन भागीदारों के साथ साझा किया जा सकता है। अनुमतियाँ और सहमति विकल्प संग्रह को प्रभावित करते हैं; वैयक्तिकृत विज्ञापनों को अस्वीकार करने से आवश्यक रूप से सारा तकनीकी डेटा संग्रह बंद नहीं होता। रिवॉर्डेड विज्ञापनों के लिए, हमारा ऐप रिवॉर्ड सत्यापित करने और दुरुपयोग रोकने में मदद के लिए Appodeal को एक अपारदर्शी (opaque) रिवॉर्ड पहचानकर्ता भेजता है। हमारा बैकएंड इस पहचानकर्ता को आपके खाते से जोड़ता है; यह छद्मनामी (pseudonymous) है, अनाम नहीं। यह आपकी मूल खाता ID, ईमेल पता या ट्रेनर नाम नहीं है। ऐप सीधे Appodeal को खरीदारी इवेंट नहीं भेजता। इसका अर्थ यह नहीं है कि ऐप में शामिल अन्य SDK डेटा एकत्र नहीं करते: Unity Ads अपने दस्तावेज़ों में बताता है कि वह ऐप की कार्यक्षमता के लिए व्यक्तिगत पहचानकर्ता और विज्ञापन व एनालिटिक्स के लिए खरीदारी इतिहास एकत्र और साझा करता है। Google Play और RevenueCat खरीदारी को नीचे बताए अनुसार प्रोसेस करते हैं।</p>
+<p class="policy-p">संस्करण 1.0.7 बैनर विज्ञापनों के लिए और सुविधाओं तक अस्थायी पहुँच हेतु वैकल्पिक रिवॉर्डेड विज्ञापनों के लिए Appodeal मध्यस्थता (mediation) का उपयोग करता है। रिवॉर्डेड विज्ञापन प्रीमियम या आजीवन विज्ञापन हटाएँ (Remove Ads) प्रदान नहीं करते। विज्ञापन-मुक्त पहुँच बैनर स्थानों को छिपा देती है। कोई इंटरस्टीशियल या ऐप-ओपन विज्ञापन प्रारूप लागू नहीं है। पुराने इंस्टॉल किए गए संस्करण बैनर अक्षम रखते हुए रिवॉर्डेड विज्ञापनों के लिए Google AdMob का उपयोग कर सकते हैं।</p>
+<p class="policy-p">AdMob का उपयोग करने वाले पुराने इंस्टॉल किए गए संस्करणों में, Google Mobile Ads SDK विज्ञापन, मापन, एनालिटिक्स, सुरक्षा और धोखाधड़ी रोकथाम के लिए IP पते, IP से अनुमानित स्थान, विज्ञापन/ऐप-सेट या अन्य डिवाइस पहचानकर्ता, ऐप/विज्ञापन इंटरैक्शन और डायग्नोस्टिक जानकारी प्रोसेस करता है। Google और उसके विज्ञापन भागीदार इस जानकारी को अपनी नीतियों के तहत प्रोसेस करते हैं। गैर-वैयक्तिकृत विज्ञापनों में भी पहचानकर्ता, स्टोरेज और मापन शामिल हो सकते हैं।</p>
+<p class="policy-p">संस्करण 1.0.7 जहाँ आवश्यक हो वहाँ गोपनीयता विकल्प प्राप्त करने के लिए SDK आरंभ करते समय Appodeal Stack Consent Manager का उपयोग करता है। AdMob का उपयोग करने वाले पुराने इंस्टॉल किए गए संस्करण Google User Messaging Platform (UMP) का उपयोग करते हैं। जहाँ आवश्यक हो, गोपनीयता फ़ॉर्म फिर से खोलने के लिए सेटिंग में गोपनीयता विकल्प उपलब्ध है। उपलब्धता आपके क्षेत्र और सहमति प्लेटफ़ॉर्म की आवश्यकताओं पर निर्भर करती है। डिवाइस सेटिंग से भी आप विज्ञापन पहचानकर्ताओं को प्रबंधित कर सकते हैं। वैकल्पिक रिवॉर्डेड विज्ञापनों को अस्वीकार करने से आपका खाता नहीं मिटता और सामान्य रेड समन्वय बाधित नहीं होता।</p>
+<h3 class="policy-h2">खरीदारी</h3>
+<p class="policy-p">मासिक प्रीमियम (monthly_premium) और अलग से उपलब्ध विज्ञापन हटाएँ (Remove Ads) खरीदारी (remove_ads) Google Play Billing के माध्यम से उपलब्ध हैं। RevenueCat सत्यापन, पुनर्स्थापन और खरीदारी एनालिटिक्स के लिए खाता/ग्राहक पहचानकर्ता, खरीदारी इतिहास, सदस्यता स्थिति और पात्रताएँ (entitlements) प्रोसेस करता है। पहुँच को अद्यतन रखने के लिए हमारे बैकएंड को बिलिंग इवेंट प्राप्त होते हैं। हमें भुगतान कार्ड का पूरा विवरण प्राप्त नहीं होता। सदस्यताओं और रिफ़ंड का प्रबंधन Google Play के माध्यम से होता है। ऐप खाता मिटाने से अपने-आप Google Play सदस्यता रद्द नहीं होती।</p>
+<h3 class="policy-h2">सूचनाएँ और परिचालन डेटा</h3>
+<p class="policy-p">यदि आप सूचनाएँ सक्षम करते हैं, तो Expo और Google/Firebase सूचना सेवाएँ पुश टोकन, डिवाइस/इंस्टॉलेशन पहचानकर्ता, प्लेटफ़ॉर्म जानकारी और डिलीवरी डेटा प्रोसेस करती हैं। हमारा बैकएंड पंजीकरण और प्राथमिकता की जानकारी संग्रहीत करता है और रेड/सेवा सूचनाएँ भेजता है। आप सेटिंग में या Android की सूचना सेटिंग में सूचनाएँ बंद कर सकते हैं।</p>
+<p class="policy-p">हम विश्वसनीयता, एनालिटिक्स, सहायता और दुरुपयोग रोकथाम के लिए ऐप/बिल्ड संस्करण, ऑपरेटिंग सिस्टम, डिवाइस मॉडल, सत्र पहचानकर्ता, स्क्रीन/गतिविधि इवेंट और त्रुटि सारांश प्रोसेस करते हैं। गतिविधि रिपोर्टिंग आपके ऐप खाते से जुड़ी होती है। विज्ञापन SDK डायग्नोस्टिक्स हमारी परिचालन रिपोर्टिंग से अलग हैं।</p>
+<p class="policy-p"><strong>डिवाइस अनुमतियाँ।</strong> आपके द्वारा उपयोग की जाने वाली सुविधाओं के आधार पर, ऐप ये अनुमतियाँ माँग सकता है: सूचनाएँ; फ़ोरग्राउंड स्थान (होस्ट पात्रता और मोटे तौर पर देश/क्षेत्र); पुराने Android संस्करणों पर फ़ोटो एक्सेस (स्क्रीनशॉट चुनना); स्क्रीन कैप्चर और दूसरे ऐप्लिकेशन के ऊपर दिखाना (लाइव मोड)। प्रत्येक अनुमति वैकल्पिक है और Android सेटिंग में वापस ली जा सकती है; तब संबंधित सुविधाएँ काम करना बंद कर देती हैं।</p>
+<h3 class="policy-h2">प्रदाता और प्रकटीकरण</h3><p class="policy-p">विज्ञापन प्रदाताओं की जानकारी: <a href="https://appodeal.com/privacy-policy/">Appodeal</a>, <a href="https://bidmachine.io/privacy-policy/">BidMachine</a>, <a href="https://docs.bidon.org/">Bidon</a>, <a href="https://legal.applovin.com/privacy/">AppLovin</a>, <a href="https://www.mintegral.com/en/privacy">Mintegral</a>, <a href="https://unity.com/legal/privacy-policy">Unity</a>, <a href="https://liftoff.io/privacy-policy/">Liftoff</a>, <a href="https://www.facebook.com/privacy/policy/">Meta</a>, <a href="https://www.pangleglobal.com/privacy">Pangle</a> और <a href="https://sentry.io/privacy/">Sentry</a>।</p>
+<p class="policy-p">आभार: ऑफ़लाइन शहर और देश खोज <a href="https://www.geonames.org/">GeoNames</a> के डेटा का उपयोग करती है, जो <a href="https://creativecommons.org/licenses/by/4.0/">क्रिएटिव कॉमन्स एट्रिब्यूशन 4.0 (Creative Commons Attribution 4.0)</a> के तहत लाइसेंस प्राप्त है। हमने ऐप में उपयोग के लिए इस डेटा के एक भाग (बड़े शहर, समय क्षेत्र और वैकल्पिक नाम) का चयन किया और उसे पुनः प्रारूपित किया। यह डेटा GeoNames द्वारा &ldquo;जैसा है&rdquo; के आधार पर, बिना किसी वारंटी के प्रदान किया जाता है। आपका खोज टेक्स्ट आपके डिवाइस पर प्रोसेस होता है और GeoNames को नहीं भेजा जाता।</p>
+<p class="policy-p">प्रदाताओं में Supabase (https://supabase.com/privacy), Google Sign-In, Google Play Billing, Google/Firebase सेवाएँ और पुराने इंस्टॉल किए गए संस्करणों में AdMob (https://policies.google.com/privacy), RevenueCat (https://www.revenuecat.com/privacy), Expo (https://expo.dev/privacy), साइनअप ईमेल-सत्यापन प्रदाता ZeroBounce (https://www.zerobounce.net/privacy-policy.html), और साइनअप सुरक्षा के लिए Cloudflare Turnstile (https://www.cloudflare.com/turnstile-privacy-policy/) शामिल हैं।</p>
+<p class="policy-p">हम ऐप चलाने, उपयोगकर्ताओं का प्रमाणीकरण करने, सूचनाएँ पहुँचाने, खरीदारी सत्यापित करने, विज्ञापन दिखाने और सेवा की सुरक्षा के लिए प्रदाताओं का उपयोग करते हैं। हम कानूनी दायित्वों का पालन करने या धोखाधड़ी, दुरुपयोग और सुरक्षा घटनाओं की जाँच के लिए जानकारी का खुलासा कर सकते हैं।</p>
+<h3 class="policy-h2">प्रतिधारण और खाता मिटाना</h3>
+<p class="policy-p">खाता/प्रोफ़ाइल जानकारी तब तक रखी जाती है जब तक आपका खाता सक्रिय है। रेड, मॉडरेशन, परिचालन और सहायता रिकॉर्ड सेवा संचालन, सुरक्षा और समस्या निवारण के लिए रखे जा सकते हैं। बिलिंग रिकॉर्ड Google Play और RevenueCat द्वारा उनकी अपनी नीतियों और कानूनी दायित्वों के तहत रखे जा सकते हैं। जब आप खाता मिटाते हैं, तो बैकअप और सेवा लॉग आवश्यक रूप से तुरंत नहीं मिटाए जाते।</p>
+<p class="policy-p">आप सेटिंग &gt; खाता मिटाएँ में जाकर और पुष्टि पूरी करके खाता मिटाने का अनुरोध कर सकते हैं। आप अपने खाते के ईमेल से peacefulsoil4k@gmail.com पर &quot;Account Deletion Request - Let's Go Raid&quot; विषय के साथ ईमेल भी कर सकते हैं; अपना ट्रेनर नाम शामिल करें ताकि हम स्वामित्व सत्यापित कर सकें। यह अनुरोध भेजने के लिए आपको ऐप फिर से इंस्टॉल करने की आवश्यकता नहीं है।</p>
+<p class="policy-p">खाता मिटाने से प्रमाणीकरण खाता और प्रोफ़ाइल हट जाते हैं और संबंधित रेड/सदस्य प्रदर्शन जानकारी अनाम कर दी जाती है। ऊपर बताए गए पहचान फ़ील्ड हटाए जाने के बाद भी कुछ रेड और मॉडरेशन रिकॉर्ड बने रहते हैं। रखे गए बैकएंड बिलिंग इवेंट में अब भी खाता/ग्राहक पहचानकर्ता और प्रदाता इवेंट पेलोड हो सकते हैं; ये रिकॉर्ड आवश्यक रूप से अनाम नहीं हैं। सत्यापन स्क्रीनशॉट हमारे बैकएंड में नहीं रखे जाते। आपका खाता मिटाने से Google, RevenueCat, Appodeal और उसके विज्ञापन भागीदारों या अन्य प्रदाताओं द्वारा स्वतंत्र रूप से रखे गए रिकॉर्ड नहीं मिटते, और कोई सदस्यता रद्द नहीं होती। IV स्कैनर में आपके द्वारा सहेजे गए Pokémon केवल आपके फ़ोन पर संग्रहीत होते हैं और जब आप उन्हें IV स्कैनर में मिटाते हैं या ऐप अनइंस्टॉल करते हैं तब हटा दिए जाते हैं; आपका खाता मिटाने से वे आपके फ़ोन से नहीं हटते।</p>
+<p class="policy-p">वर्तमान में खाता बनाए रखते हुए चुनिंदा ऐप डेटा मिटाने की कोई अलग स्थापित प्रक्रिया नहीं है। आप पहुँच, सुधार या अन्य गोपनीयता चिंताओं के बारे में सहायता से संपर्क कर सकते हैं; इससे हर रिकॉर्ड को चुनिंदा रूप से मिटाने का वादा नहीं होता।</p>
+<h3 class="policy-h2">बच्चे, सुरक्षा और संपर्क</h3>
+<p class="policy-p">यह ऐप 13 वर्ष से कम आयु के बच्चों, या उनके क्षेत्र में लागू न्यूनतम आयु से कम आयु वालों, के लिए नहीं है। यदि आपको लगता है कि किसी बच्चे ने अनुचित रूप से व्यक्तिगत जानकारी दी है, तो हमसे संपर्क करें। हम पूर्ण सुरक्षा की गारंटी नहीं दे सकते।</p>
+<p class="policy-p"><strong>आपके अधिकार।</strong> आप कहाँ रहते हैं इसके आधार पर, आपको अपनी व्यक्तिगत जानकारी तक पहुँचने, उसे सुधारने, मिटाने या उसकी प्रति प्राप्त करने का, कुछ प्रोसेसिंग पर आपत्ति करने या उसे सीमित करने का, और किसी भी समय सहमति वापस लेने का (विज्ञापन के लिए, सेटिंग &gt; गोपनीयता विकल्प में) अधिकार हो सकता है। आप अपने स्थानीय डेटा संरक्षण प्राधिकरण से शिकायत भी कर सकते हैं। peacefulsoil4k@gmail.com पर संपर्क करें; हमें आपकी पहचान सत्यापित करने की आवश्यकता हो सकती है। कुछ विज्ञापन भागीदार वैयक्तिकृत विज्ञापन के लिए डिवाइस पहचानकर्ताओं का उपयोग करते हैं, जिसे अमेरिका के कुछ राज्यों के कानून &ldquo;बिक्री&rdquo; या &ldquo;साझाकरण&rdquo; मानते हैं; जहाँ आवश्यक हो, सेटिंग &gt; गोपनीयता विकल्प से आप ऑप्ट आउट कर सकते हैं। हमारे प्रदाता आपके देश के बाहर, जिसमें संयुक्त राज्य अमेरिका भी शामिल है, डेटा प्रोसेस कर सकते हैं।</p>
+<p class="policy-p"><strong>सुरक्षा।</strong> हमारा ऐप और बैकएंड HTTPS पर संचार करते हैं। विज्ञापन भागीदारों द्वारा दी जाने वाली कुछ विज्ञापन सामग्री अनएन्क्रिप्टेड कनेक्शन का उपयोग कर सकती है।</p>
+<p class="policy-p">जब हमारी प्रथाएँ बदलेंगी, हम इस नीति को अपडेट करेंगे। Let's Go Raid, Niantic, Nintendo और The Pokémon Company से स्वतंत्र है।
+</p></section>
+
+    <!-- DELETION -->
+    <section id="deletion"><div class="section-label">आपके अधिकार</div><div class="section-title">खाता मिटाना</div><p class="body-text">सेटिंग &rarr; खाता मिटाएँ का उपयोग करें और पुष्टि पूरी करें। यदि आप ऐप का उपयोग नहीं कर सकते, तो अपने खाते के ईमेल से <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a> पर Account Deletion Request - Let's Go Raid विषय के साथ ईमेल करें। अपना ट्रेनर नाम शामिल करें। प्रोसेस करने से पहले हम स्वामित्व सत्यापित करते हैं।</p><p class="body-text">प्रमाणीकरण खाता और प्रोफ़ाइल मिटा दिए जाते हैं; संबंधित रेड/सदस्य प्रदर्शन जानकारी अनाम कर दी जाती है। कुछ रेड और मॉडरेशन रिकॉर्ड, सेवा लॉग और बैकअप बने रह सकते हैं। रखे गए बैकएंड बिलिंग इवेंट में अब भी खाता/ग्राहक पहचानकर्ता और प्रदाता इवेंट पेलोड हो सकते हैं और वे आवश्यक रूप से अनाम नहीं हैं। आपका खाता मिटाने से Google, RevenueCat, Appodeal और उसके विज्ञापन भागीदारों या अन्य प्रदाताओं द्वारा स्वतंत्र रूप से रखे गए रिकॉर्ड नहीं मिटते, और कोई सदस्यता रद्द नहीं होती। IV स्कैनर में आपके द्वारा सहेजे गए Pokémon केवल आपके फ़ोन पर संग्रहीत होते हैं और जब आप उन्हें IV स्कैनर में मिटाते हैं या ऐप अनइंस्टॉल करते हैं तब हटा दिए जाते हैं; आपका खाता मिटाने से वे आपके फ़ोन से नहीं हटते।</p><p class="body-text">वर्तमान में खाता बनाए रखते हुए चुनिंदा ऐप डेटा मिटाने की कोई अलग स्थापित प्रक्रिया नहीं है। गोपनीयता संबंधी चिंताओं या खाता मिटाने के लिए सहायता से संपर्क करें।</p></section>
+
+    <!-- TERMS -->
+    <section id="terms">
+      <div class="section-label">कानूनी</div>
+      <div class="section-title">सेवा की शर्तें</div>
+
+      <div class="policy-section">
+        <div class="policy-h2">1. शर्तों की स्वीकृति</div>
+        <p class="policy-p">Let's Go Raid को डाउनलोड करके, उस तक पहुँच कर या उसका उपयोग करके, आप सेवा की इन शर्तों से सहमत होते हैं। यदि आप सहमत नहीं हैं, तो ऐप का उपयोग न करें।</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">2. सेवा का विवरण</div>
+        <p class="policy-p">Let's Go Raid एक स्वतंत्र Pokemon GO रेड समन्वय ऐप है। यह ट्रेनरों को रेड लिस्टिंग होस्ट करने, रेड रूम खोजने, समन्वय के लिए आवश्यक ट्रेनर विवरण साझा करने, तैयारी की स्थिति दर्शाने और रेड पार्टियों का समन्वय करने में मदद करता है।</p>
+        <p class="policy-p">Let's Go Raid, Pokemon GO, रेड की उपलब्धता, रेड आमंत्रण, रिमोट रेड पास, गेम रिवॉर्ड, शाइनी मिलने की संभावना, पकड़ने, इवेंट शेड्यूल या किसी भी अन्य इन-गेम परिणाम को नियंत्रित नहीं करता।</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">3. गैर-संबद्धता अस्वीकरण</div>
+        <p class="policy-p">Let's Go Raid, Niantic, Inc., Nintendo Co., Ltd., The Pokemon Company, The Pokemon Company International, Game Freak, Creatures Inc. या किसी भी संबंधित संस्था से संबद्ध नहीं है, न ही उनके द्वारा समर्थित, प्रायोजित या अनुमोदित है। Pokemon GO और Pokemon अपने-अपने स्वामियों के ट्रेडमार्क हैं।</p>
+        <p class="policy-p">Pokemon GO की अपनी शर्तों, नियमों और सामुदायिक दिशानिर्देशों का पालन करने की ज़िम्मेदारी आपकी है।</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">4. खाता और ट्रेनर प्रोफ़ाइल की ज़िम्मेदारी</div>
+        <ul class="policy-ul">
+          <li>Let's Go Raid का उपयोग करने के लिए आपकी आयु कम से कम 13 वर्ष, या आपके स्थान पर कानून द्वारा आवश्यक न्यूनतम आयु, होनी चाहिए।</li>
+          <li>अपने खाते को सुरक्षित रखने और अपने खाते के अंतर्गत होने वाली सभी गतिविधियों की ज़िम्मेदारी आपकी है।</li>
+          <li>रेड होस्ट या जॉइन करते समय ट्रेनर प्रोफ़ाइल जानकारी, जिसमें ट्रेनर नाम, ट्रेनर लेवल, ट्रेनर कोड, टीम, अवतार शैली और सत्यापन स्थिति शामिल हैं, सटीक होनी चाहिए।</li>
+          <li>झूठी या भ्रामक प्रोफ़ाइल जानकारी के कारण खाते पर सीमाएँ लगाई जा सकती हैं या खाता हटाया जा सकता है।</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">5. रेड होस्ट करने और जॉइन करने के नियम</div>
+        <ul class="policy-ul">
+          <li>होस्ट को केवल उन्हीं वास्तविक रेड के लिए लिस्टिंग बनानी चाहिए जिनका वे समन्वय करना चाहते हैं।</li>
+          <li>होस्ट को पार्टी सेटिंग सटीक रखनी चाहिए और रद्द करने, शुरू करने, पार्टी के आकार, न्यूनतम लेवल, केवल-प्रीमियम या रिपोर्ट प्रक्रियाओं का दुरुपयोग नहीं करना चाहिए।</li>
+          <li>अतिथियों को केवल उन्हीं रेड में शामिल होना चाहिए जिनमें वे भाग लेना चाहते हैं, और केवल वास्तव में तैयार होने पर ही Ready (तैयार) चिह्नित करना चाहिए।</li>
+          <li>यदि आपकी योजना बदल जाती है, तो रेड रूम छोड़ दें ताकि होस्ट के पास पार्टी की सटीक सूची रहे।</li>
+        </ul>
+      </div>
+
+      <div class="policy-section" id="community-rules">
+        <div class="policy-h2">6. उपयोगकर्ता आचरण और सामुदायिक नियम</div>
+        <p class="policy-p">ये सामुदायिक नियम उन सभी चीज़ों पर लागू होते हैं जिन्हें अन्य ट्रेनर देख सकते हैं, जिनमें ट्रेनर नाम, रेड लिस्टिंग, रेड रूम, क्विक मैसेज, फ़्रेंड कोड लिस्टिंग और लीडरबोर्ड शामिल हैं।</p>
+        <ul class="policy-ul">
+          <li>ऐसे ट्रेनर नाम का उपयोग करें जो आपत्तिजनक, घृणास्पद, यौन, धमकी भरा न हो और किसी अन्य व्यक्ति या संगठन का प्रतिरूपण न करता हो।</li>
+          <li>अन्य ट्रेनरों को परेशान न करें, धमकाएँ नहीं, उन पर दबंगई न करें या उनके साथ दुर्व्यवहार न करें।</li>
+          <li>स्पैम न करें, जिसमें बार-बार या भ्रामक रेड लिस्टिंग, फ़्रेंड कोड लिस्टिंग या संदेश शामिल हैं।</li>
+          <li>नकली, धोखाधड़ी वाली या भ्रामक रेड न बनाएँ, और अन्य ट्रेनरों के साथ धोखाधड़ी के लिए ऐप का उपयोग न करें, उदाहरण के लिए रेड आमंत्रण के बदले भुगतान, खाते का विवरण या आइटम माँगकर।</li>
+          <li>फ़्रेंड कोड लिस्टिंग सटीक रखें: अपने स्वयं के फ़्रेंड कोड और वास्तविक टीम, लेवल, टैग और देश की जानकारी का उपयोग करें।</li>
+          <li>दूसरों का प्रतिरूपण न करें, ट्रेनर कोड का दुरुपयोग न करें, झूठी रिपोर्ट न भेजें, या मॉडरेशन टूल का दुरुपयोग न करें।</li>
+          <li>प्रीमियम, सुरक्षा, मॉडरेशन या सिक्योरिटी प्रणालियों को दरकिनार करने का प्रयास न करें।</li>
+          <li>धोखाधड़ी (चीटिंग), स्थान स्पूफ़िंग, अनधिकृत ऑटोमेशन, या Pokemon GO के नियमों के उल्लंघन को सुगम बनाने के लिए ऐप का उपयोग न करें।</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">7. रिपोर्ट और मॉडरेशन</div>
+        <p class="policy-p">ऐप आपको रेड से जुड़ी समस्याओं की रिपोर्ट करने देता है, उदाहरण के लिए ऐसा होस्ट जिसने रेड छोड़ दी, या ऐसी रेड जो आपके जॉइन करने के बाद रद्द कर दी गई। हम रिपोर्टों की समीक्षा कर सकते हैं। रिपोर्ट और रद्द की गई रेड की ऐप द्वारा स्वचालित जाँच के परिणामस्वरूप चेतावनी, अस्थायी होस्टिंग प्रतिबंध, खाते पर सीमाएँ, ट्रेनर नाम या लिस्टिंग जैसी आपत्तिजनक सामग्री को हटाना या बदलना, या खाता हटाना जैसी कार्रवाइयाँ हो सकती हैं।</p>
+        <p class="policy-p">हम किसी विशेष मॉडरेशन परिणाम या प्रतिक्रिया समय की गारंटी नहीं देते।</p>
+        <p class="policy-p">यदि आपको प्रभावित करने वाले किसी मॉडरेशन निर्णय के बारे में आपका कोई प्रश्न है, तो <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a> पर संपर्क करें। वर्तमान में कोई अलग औपचारिक अपील प्रक्रिया नहीं है।</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">8. प्रीमियम, खरीदारी, विज्ञापन और सूचनाएँ</div>
+        <ul class="policy-ul">
+          <li>मासिक प्रीमियम और विज्ञापन हटाएँ (Remove Ads) Google Play Billing के माध्यम से उपलब्ध हैं, जिनकी पात्रता का सत्यापन RevenueCat करता है।</li>
+          <li>खरीदारी और सदस्यताएँ Google Play Billing और RevenueCat का उपयोग करती हैं।</li>
+          <li>खरीदारी पुनर्स्थापित करने की सुविधा को केवल तभी उपलब्ध माना जाना चाहिए जब इंस्टॉल किए गए ऐप बिल्ड में सक्रिय पुनर्स्थापन प्रक्रिया उपलब्ध हो।</li>
+          <li>संस्करण 1.0.7 बैनर विज्ञापनों के लिए और अस्थायी अनलॉक हेतु स्वैच्छिक रिवॉर्डेड विज्ञापनों के लिए Appodeal और मध्यस्थ भागीदारों का उपयोग करता है। पुराने इंस्टॉल किए गए संस्करण बैनर अक्षम रखते हुए AdMob का उपयोग कर सकते हैं।</li>
+          <li>स्थानीय रिमाइंडर और सर्वर से भेजी जाने वाली सूचनाएँ आपकी अनुमतियों और सूचना प्राथमिकताओं पर निर्भर करती हैं।</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">9. गोपनीयता, डेटा मिटाना और तृतीय-पक्ष सेवाएँ</div>
+        <p class="policy-p">Let's Go Raid का आपका उपयोग <a href="#privacy">गोपनीयता नीति</a> द्वारा भी नियंत्रित होता है। आप <a href="#deletion">खाता/डेटा मिटाना</a> भाग के माध्यम से खाता या डेटा मिटाने का अनुरोध कर सकते हैं।</p>
+        <p class="policy-p">ऐप तृतीय-पक्ष सेवाओं पर निर्भर हो सकता है, जिनमें Supabase, Expo सेवाएँ, RevenueCat, Google Play Billing, Appodeal और उसके मध्यस्थ भागीदार (या पुराने संस्करणों में AdMob), और होस्ट किए गए दस्तावेज़ पेज शामिल हैं। इन सेवाओं की अपनी शर्तें और गोपनीयता नीतियाँ हो सकती हैं।</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">10. सेवा की उपलब्धता और कोई वारंटी नहीं</div>
+        <p class="policy-p">Let's Go Raid एक समन्वय टूल के रूप में प्रदान किया जाता है। हम सफल रेड, आमंत्रण, पकड़ने, रिवॉर्ड, Pokemon GO की उपलब्धता, रिमोट रेड सीमाओं, इवेंट की सटीकता, सूचना डिलीवरी, अपटाइम या अन्य उपयोगकर्ताओं के व्यवहार की गारंटी नहीं देते।</p>
+        <p class="policy-p">ऐप "जैसा है" और "जैसा उपलब्ध है" के आधार पर प्रदान किया जाता है। कानून द्वारा अनुमत अधिकतम सीमा तक, हम व्यापारिकता (merchantability), किसी विशेष उद्देश्य के लिए उपयुक्तता, गैर-उल्लंघन, और निर्बाध या त्रुटि-रहित संचालन की वारंटियों को अस्वीकार करते हैं।</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">11. दायित्व की सीमा और संपर्क</div>
+        <p class="policy-p">कानून द्वारा अनुमत अधिकतम सीमा तक, Peaceful Soil और Let's Go Raid आपके ऐप के उपयोग से उत्पन्न होने वाले अप्रत्यक्ष, आकस्मिक, विशेष, परिणामी, दंडात्मक या इसी तरह के नुकसान के लिए उत्तरदायी नहीं हैं, जिनमें छूटी हुई रेड, विफल आमंत्रण, तृतीय-पक्ष सेवाओं में रुकावट, बिलिंग प्लेटफ़ॉर्म की समस्याएँ, डेटा हानि, सेवा में रुकावट, सूचना डिलीवरी की विफलता, या गलत रेड/इवेंट जानकारी शामिल हैं।</p>
+        <p class="policy-p">सहायता, कानूनी प्रश्नों, गोपनीयता अनुरोधों, खाता मिटाने या डेटा मिटाने के लिए <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a> पर संपर्क करें।</p>
+      </div>
+    </section>
+    <!-- SUPPORT -->
+    <section id="support">
+      <div class="section-label">मदद</div>
+      <div class="section-title">सहायता</div>
+
+      <p class="body-text">Let's Go Raid, Google Play पर उपलब्ध है। हमारा लक्ष्य <strong>5 कार्यदिवसों</strong> के भीतर जवाब देना है।</p>
+
+      <a href="mailto:peacefulsoil4k@gmail.com" class="email-link">
+        ✉ &nbsp;peacefulsoil4k@gmail.com
+      </a>
+
+      <p class="body-text-muted" style="margin-top:8px;">ईमेल करते समय, कृपया अपने खाते का ईमेल, डिवाइस मॉडल, ऐप संस्करण (यदि उपलब्ध हो तो सेटिंग में दिखाई देता है) और समस्या का विवरण शामिल करें। अपना पासवर्ड या एक बार उपयोग होने वाले सत्यापन कोड न भेजें।</p>
+
+      <div class="support-topics">
+        <div class="support-topic">
+          <div class="support-topic-title">लॉगिन / ईमेल सत्यापन</div>
+          <div class="support-topic-body">पहले अपना स्पैम फ़ोल्डर जाँचें। यदि समस्या बनी रहती है, तो अपने खाते के ईमेल और दिखाई देने वाले किसी भी त्रुटि संदेश के साथ सहायता से संपर्क करें।</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">प्रोफ़ाइल या ट्रेनर कोड</div>
+          <div class="support-topic-body">अपना ट्रेनर नाम, लेवल या कोड फिर से दर्ज करके देखें। यदि समस्या बनी रहती है, तो ट्रेनर नाम और त्रुटि संदेश के साथ सहायता से संपर्क करें।</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">रेड दिखाई नहीं दे रही</div>
+          <div class="support-topic-body">रीफ़्रेश करने के लिए नीचे खींचें, या लॉबी स्क्रीन बंद करके फिर से खोलें। सहायता से संपर्क करते समय बॉस का नाम और रेड का प्रकार शामिल करें।</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">गोपनीयता या डेटा मिटाना</div>
+          <div class="support-topic-body">गोपनीयता संबंधी प्रश्नों, खाता मिटाने, डेटा मिटाने, या सार्वजनिक मिटाने के निर्देशों का उपयोग करने में मदद के लिए सहायता से संपर्क करें।</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">बग रिपोर्ट</div>
+          <div class="support-topic-body">अपना डिवाइस मॉडल, ऐप संस्करण, आप क्या करने का प्रयास कर रहे थे, और दिखाई देने वाला कोई भी त्रुटि संदेश शामिल करें।</div>
+        </div>        <div class="support-topic">
+          <div class="support-topic-title">भुगतान या प्रीमियम से जुड़े प्रश्न</div>
+          <div class="support-topic-body">खरीदारी सहायता के लिए, उत्पाद और त्रुटि संदेश शामिल करें। भुगतान क्रेडेंशियल न भेजें।</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">सत्यापन स्क्रीनशॉट</div>
+          <div class="support-topic-body">बताएँ कि छवि चयन खुला या नहीं, फ़ील्ड अपने-आप भरे गए या नहीं, और कोई अनुमति संकेत (prompt) दिखाई दिया या नहीं।</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">रिपोर्ट या मॉडरेशन से जुड़े प्रश्न</div>
+          <div class="support-topic-body">peacefulsoil4k@gmail.com पर विवरण, यदि ज्ञात हो तो रिपोर्ट किए गए उपयोगकर्ता का ट्रेनर नाम, और कोई भी सहायक स्क्रीनशॉट के साथ ईमेल करें।</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREMIUM -->
+    <section id="premium"><div class="section-label">सदस्यताएँ</div><div class="section-title">प्रीमियम और खरीदारी</div><p class="body-text">मासिक प्रीमियम (monthly_premium) और अलग से उपलब्ध आजीवन विज्ञापन हटाएँ (Remove Ads) खरीदारी (remove_ads) Google Play Billing और RevenueCat का उपयोग करती हैं। कीमतें और उपलब्धता ऐप में दिखाई देती हैं। खरीदारी पुनर्स्थापित करने का विकल्प ऐप से उपलब्ध है। सदस्यताएँ Google Play की शर्तों के अनुसार नवीनीकृत होती हैं; रद्दीकरण और रिफ़ंड का प्रबंधन Google Play के माध्यम से करें। खाता मिटाने से सदस्यता रद्द नहीं होती।</p><p class="body-text">रिवॉर्डेड विज्ञापन केवल अस्थायी सुविधा अनलॉक प्रदान करते हैं। वे प्रीमियम या आजीवन विज्ञापन हटाएँ (Remove Ads) प्रदान नहीं करते। संस्करण 1.0.7 उन उपयोगकर्ताओं के लिए Appodeal बैनर का समर्थन करता है जिनके पास विज्ञापन-मुक्त पहुँच नहीं है; पुराने इंस्टॉल किए गए संस्करणों में बैनर अक्षम हो सकते हैं।</p></section>
+
+    <!-- DISCLAIMER -->
+    <section id="disclaimer">
+      <div class="section-label">कानूनी सूचना</div>
+      <div class="section-title">स्वतंत्र ऐप अस्वीकरण</div>
+      <div class="disclaimer-box">
+        <p>Let's Go Raid, Pokémon GO रेड समन्वय के लिए एक स्वतंत्र ऐप है। यह Niantic, Inc., The Pokémon Company International, Nintendo Co., Ltd. या किसी भी संबंधित संस्था से <strong>संबद्ध नहीं है, न ही उनके द्वारा समर्थित या प्रायोजित है</strong>। Pokémon GO और Pokémon अपने-अपने स्वामियों के ट्रेडमार्क हैं।</p>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="padding-bottom:0;">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">Let's Go Raid</div>
+          <div class="footer-copy">&copy; 2026 Peaceful Soil &nbsp;·&nbsp; com.peacefulsoil.letsgoraid</div>
+          <div class="footer-copy" style="margin-top:2px;">अंतिम अपडेट: 30 अक्टूबर 2026</div>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>
+          <a href="#top">ऊपर वापस जाएँ ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/lang.js" defer></script>
+</body>
+</html>

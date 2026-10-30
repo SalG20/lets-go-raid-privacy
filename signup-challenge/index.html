@@ -6,17 +6,18 @@
   <meta name="referrer" content="no-referrer">
   <title>Let's Go Raid — Security check</title>
   <link rel="stylesheet" href="style.css">
+  <script src="../assets/flow-i18n.js" defer></script>
   <script src="challenge.js" defer></script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileReady" defer></script>
 </head>
 <body>
   <main>
     <h1>Let's Go Raid</h1>
-    <p>Complete the security check to continue creating your account.</p>
+    <p data-flow="secIntro">Complete the security check to continue creating your account.</p>
     <div id="challenge"></div>
-    <p id="status" role="status">Loading security check…</p>
-    <a id="continue" hidden>Return to Let's Go Raid</a>
-    <p>No email address or password is sent to this page.</p>
+    <p id="status" role="status" data-flow="secLoading">Loading security check…</p>
+    <a id="continue" hidden data-flow="secReturn">Return to Let's Go Raid</a>
+    <p data-flow="secNoData">No email address or password is sent to this page.</p>
   </main>
 </body>
 </html>

@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Let's Go Raid – Privacy e assistenza</title>
+  <link rel="canonical" href="https://salg20.github.io/lets-go-raid-privacy/it/" />
+  <link rel="alternate" hreflang="x-default" href="https://salg20.github.io/lets-go-raid-privacy/" />
+  <link rel="alternate" hreflang="en" href="https://salg20.github.io/lets-go-raid-privacy/" />
+  <link rel="alternate" hreflang="ja" href="https://salg20.github.io/lets-go-raid-privacy/ja/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://salg20.github.io/lets-go-raid-privacy/pt-BR/" />
+  <link rel="alternate" hreflang="es" href="https://salg20.github.io/lets-go-raid-privacy/es/" />
+  <link rel="alternate" hreflang="de" href="https://salg20.github.io/lets-go-raid-privacy/de/" />
+  <link rel="alternate" hreflang="ko" href="https://salg20.github.io/lets-go-raid-privacy/ko/" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://salg20.github.io/lets-go-raid-privacy/zh-Hant/" />
+  <link rel="alternate" hreflang="id" href="https://salg20.github.io/lets-go-raid-privacy/id/" />
+  <link rel="alternate" hreflang="th" href="https://salg20.github.io/lets-go-raid-privacy/th/" />
+  <link rel="alternate" hreflang="fr" href="https://salg20.github.io/lets-go-raid-privacy/fr/" />
+  <link rel="alternate" hreflang="it" href="https://salg20.github.io/lets-go-raid-privacy/it/" />
+  <link rel="alternate" hreflang="hi" href="https://salg20.github.io/lets-go-raid-privacy/hi/" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #07091a;
+      --surface: #0d1225;
+      --surface2: #111830;
+      --border: rgba(56, 189, 248, 0.15);
+      --border-strong: rgba(56, 189, 248, 0.3);
+      --accent: #38bdf8;
+      --accent-dim: #0ea5e9;
+      --accent-glow: rgba(56, 189, 248, 0.08);
+      --text: #cbd5e1;
+      --text-bright: #f1f5f9;
+      --text-muted: #64748b;
+      --text-dim: #475569;
+      --green: #34d399;
+      --green-bg: rgba(52, 211, 153, 0.07);
+      --green-border: rgba(52, 211, 153, 0.28);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(7, 9, 26, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 20px;
+    }
+    .nav-bar {
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-inner {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 48px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    .nav-brand {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      margin-right: 12px;
+      text-decoration: none;
+    }
+    .nav-link {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      white-space: nowrap;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-link:hover { color: var(--accent); background: var(--accent-glow); }
+
+    /* LANGUAGE MENU (works without JavaScript: <details> + plain links) */
+    .lang-menu { position: relative; flex: none; }
+    .lang-menu summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text);
+      white-space: nowrap;
+      padding: 5px 9px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    .lang-menu summary::-webkit-details-marker { display: none; }
+    .lang-menu summary:hover { color: var(--accent); border-color: var(--border-strong); }
+    .lang-menu summary:focus-visible, .lang-list a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .lang-list {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 6px);
+      z-index: 60;
+      list-style: none;
+      min-width: 190px;
+      max-height: 70vh;
+      overflow-y: auto;
+      padding: 6px;
+      background: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    }
+    .lang-list a {
+      display: block;
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .lang-list a:hover { background: var(--accent-glow); color: var(--accent); }
+    .lang-list a[aria-current="true"] { color: var(--accent); font-weight: 700; }
+
+    /* LAYOUT */
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 20px 80px;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 72px 0 52px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid var(--border-strong);
+      border-radius: 999px;
+      padding: 4px 12px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--text-bright);
+      line-height: 1.12;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+      max-width: 520px;
+      line-height: 1.55;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .hero-meta-item {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .hero-meta-item strong { color: var(--text-muted); }
+
+    /* SECTION */
+    section {
+      padding: 56px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    section:last-of-type { border-bottom: none; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-bright);
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    /* SUMMARY CARDS */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .card:hover {
+      border-color: var(--border-strong);
+      background: var(--surface2);
+    }
+    .card-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+    .card-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 6px;
+    }
+    .card-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* TABLE OF CONTENTS */
+    .toc-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-top: 24px;
+    }
+    .toc-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--text-bright);
+      margin-bottom: 10px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .toc-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 8px;
+    }
+    .toc-links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(56, 189, 248, 0.12);
+    }
+    .toc-links a:hover { background: var(--accent-glow); }
+    /* POLICY CONTENT */
+    .policy-section { margin-bottom: 32px; }
+    .policy-section:last-child { margin-bottom: 0; }
+    .policy-h2 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .policy-p {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.7;
+    }
+    .policy-ul {
+      list-style: none;
+      margin: 8px 0 12px;
+      padding: 0;
+    }
+    .policy-ul li {
+      font-size: 14px;
+      color: var(--text);
+      padding: 7px 0 7px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: relative;
+      line-height: 1.6;
+    }
+    .policy-ul li::before {
+      content: "–";
+      position: absolute;
+      left: 0;
+      color: var(--accent-dim);
+    }
+    .policy-ul li:last-child { border-bottom: none; }
+    .policy-ul li strong { color: var(--text-bright); }
+    .policy-ul a { color: var(--accent); }
+
+    /* CALLOUT BOXES */
+    .callout {
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .callout-green {
+      background: var(--green-bg);
+      border: 1px solid var(--green-border);
+    }
+    .callout-blue {
+      background: var(--accent-glow);
+      border: 1px solid var(--border-strong);
+    }
+    .callout-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .callout-green .callout-title { color: var(--green); }
+    .callout-blue .callout-title { color: var(--accent); }
+    .callout-body {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .callout-body a { color: var(--accent); }
+    .callout-body strong { color: var(--text-bright); }
+
+    /* DELETION STEPS */
+    .deletion-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .deletion-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .deletion-step-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .deletion-step-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 4px;
+    }
+    .deletion-step-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .deletion-step-body a { color: var(--accent); }
+    .deletion-step-body em { font-style: italic; }
+
+    /* SUPPORT TOPICS */
+    .support-topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .support-topic {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .support-topic-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-bright);
+      margin-bottom: 6px;
+    }
+    .support-topic-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* EMAIL BUTTON */
+    a { color: var(--accent); text-decoration: underline; }
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      background: var(--accent-glow);
+      border: 1px solid var(--border-strong);
+      border-radius: 8px;
+      padding: 10px 18px;
+      margin: 12px 0;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .email-link:hover {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: var(--accent);
+    }
+
+    /* DISCLAIMER */
+    .disclaimer-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+    }
+    .disclaimer-box p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .disclaimer-box strong { color: var(--text); }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0 20px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .footer-brand {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* BODY HELPERS */
+    .body-text {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+    .body-text-muted {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.65;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 28px; }
+      .hero-sub { font-size: 15px; }
+      .section-title { font-size: 20px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .deletion-steps { grid-template-columns: 1fr; }
+      .support-topics { grid-template-columns: 1fr; }
+      .disclaimer-box { padding: 20px; }
+      .footer-links { align-items: flex-start; }
+      nav { padding: 0 12px; }
+      .container { padding: 0 16px 60px; }
+      .callout { padding: 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY NAV -->
+  <nav>
+    <div class="nav-bar">
+    <div class="nav-inner">
+      <a class="nav-brand" href="#top">Let's Go Raid</a>
+      <a class="nav-link" href="#summary">Panoramica</a>
+      <a class="nav-link" href="#privacy">Privacy</a>
+      <a class="nav-link" href="#deletion">Elimina dati</a>
+      <a class="nav-link" href="#terms">Termini</a>
+      <a class="nav-link" href="#support">Assistenza</a>
+      <a class="nav-link" href="#premium">Premium</a>
+      <a class="nav-link" href="#disclaimer">Note legali</a>
+    </div>
+    <!-- LANGUAGE MENU: language names stay in their own language on every page. -->
+    <details class="lang-menu">
+      <summary aria-label="Lingua: Italiano"><span aria-hidden="true">🌐</span><span>Italiano</span></summary>
+      <ul class="lang-list">
+        <li><a href="../" hreflang="en" lang="en" data-lang="en">English</a></li>
+        <li><a href="../ja/" hreflang="ja" lang="ja" data-lang="ja">日本語</a></li>
+        <li><a href="../pt-BR/" hreflang="pt-BR" lang="pt-BR" data-lang="pt-BR">Português (Brasil)</a></li>
+        <li><a href="../es/" hreflang="es" lang="es" data-lang="es">Español</a></li>
+        <li><a href="../de/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li>
+        <li><a href="../ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a></li>
+        <li><a href="../zh-Hant/" hreflang="zh-Hant" lang="zh-Hant" data-lang="zh-Hant">繁體中文</a></li>
+        <li><a href="../id/" hreflang="id" lang="id" data-lang="id">Bahasa Indonesia</a></li>
+        <li><a href="../th/" hreflang="th" lang="th" data-lang="th">ไทย</a></li>
+        <li><a href="../fr/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li>
+        <li><a href="../it/" hreflang="it" lang="it" data-lang="it" aria-current="true">Italiano</a></li>
+        <li><a href="../hi/" hreflang="hi" lang="hi" data-lang="hi">हिन्दी</a></li>
+      </ul>
+    </details>
+    </div>
+  </nav>
+
+  <div class="container" id="top">
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-badge">Privacy e assistenza</div>
+      <h1>Let's Go Raid</h1>
+      <p class="hero-sub">Informativa sulla privacy, eliminazione dell'account e informazioni di assistenza per Let's Go Raid, l'app per coordinare i raid su Android.</p>
+      <div class="hero-meta">
+        <span class="hero-meta-item"><strong>Pacchetto:</strong> com.peacefulsoil.letsgoraid</span>
+        <span class="hero-meta-item"><strong>In vigore dal:</strong> 30 ottobre 2026</span>
+        <span class="hero-meta-item"><strong>Contatto:</strong> peacefulsoil4k@gmail.com</span>
+      </div>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <section id="toc">
+      <div class="section-label">Link legali</div>
+      <div class="section-title">Trovi ciò che le serve</div>
+      <div class="toc-panel">
+        <div class="toc-title">Sezioni della pagina</div>
+        <div class="toc-links">
+          <a href="#privacy">Informativa sulla privacy</a>
+          <a href="#deletion">Eliminazione dell'account/dei dati</a>
+          <a href="#terms">Termini di servizio</a>
+          <a href="#support">Assistenza</a>
+        </div>
+      </div>
+    </section>
+    <!-- QUICK SUMMARY -->
+    <section id="summary">
+      <div class="section-label">Panoramica</div>
+      <div class="section-title">In sintesi</div>
+      <div class="cards-grid">
+        <div class="card">
+          <span class="card-icon">📋</span>
+          <div class="card-title">Quali dati raccogliamo</div>
+          <div class="card-body">Email dell'account, profilo Allenatore, attività nei raid, dati di verifica facoltativi, contesto di posizione, risposte facoltative della configurazione iniziale (come ci ha conosciuto, paese/città e fuso orario) e identificativi degli acquisti.</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🔒</span>
+          <div class="card-title">Condivisione dei dati</div>
+          <div class="card-body">Ci avvaliamo di fornitori di servizi per gestire l'app e di partner pubblicitari per mostrare e misurare gli annunci. La condivisione dei dati a fini pubblicitari e le sue scelte sulla privacy sono descritte di seguito.</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">📢</span>
+          <div class="card-title">Informazioni sulla pubblicità</div>
+          <div class="card-body">La versione 1.0.7 utilizza Appodeal e i partner pubblicitari della sua mediazione per gli annunci banner e per gli annunci premiati facoltativi. Le versioni precedenti installate possono utilizzare Google AdMob.</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🗑️</span>
+          <div class="card-title">Può eliminare i suoi dati</div>
+          <div class="card-body">Elimini il suo account nell'app da Impostazioni oppure scriva a peacefulsoil4k@gmail.com. Per le richieste via email non è necessario avere l'app installata.</div>
+        </div>
+        <div class="card">
+          <span class="card-icon">🎮</span>
+          <div class="card-title">App indipendente</div>
+          <div class="card-body">Non affiliata a Niantic, The Pokémon Company o Nintendo. Per i dettagli consulti la sezione delle note legali.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRIVACY POLICY -->
+    <section id="privacy"><div class="section-label">Legale</div><div class="section-title">Informativa sulla privacy</div>
+<p class="policy-p">Let's Go Raid è gestita da Peaceful Soil Studio. Pacchetto Android: com.peacefulsoil.letsgoraid. Contatto: peacefulsoil4k@gmail.com. Informativa pubblica: https://salg20.github.io/lets-go-raid-privacy/</p>
+<h3 class="policy-h2">Informazioni sull'account e sull'Allenatore</h3>
+<p class="policy-p">Trattiamo il suo indirizzo email, l'identificativo dell'account, i registri di autenticazione/sessione e il suo profilo Allenatore per fornire l'accesso all'account e la coordinazione dei raid. Il profilo comprende nome Allenatore, codice Allenatore, livello, squadra, scelte dell'avatar, stato di verifica e preferenze dell'account. Supabase fornisce l'autenticazione e il nostro backend. Se sceglie Google Sign-In, Google la autentica e fornisce un token di identità utilizzato per creare la sua sessione nell'app. I controlli dell'email in fase di registrazione possono utilizzare ZeroBounce per rilevare indirizzi email non validi e ridurre gli abusi.</p>
+<p class="policy-p">I dati dell'Allenatore necessari per i raid sono visibili agli Allenatori con cui si coordina. I raid ospitati o a cui ha partecipato, lo stato di disponibilità, gli annullamenti, le segnalazioni, i commenti e i registri di moderazione sono trattati per gestire il servizio e prevenire gli abusi.</p>
+<p class="policy-p">Se pubblica un annuncio con il suo codice amico in Social, gli altri utenti dell'app possono vedere il nome Allenatore, il codice amico, il livello, la squadra, l'avatar, i tag, il paese e il motivo di Vivillon inclusi nell'annuncio, nonché un indicatore di stato online quando attivato. Può annullare la pubblicazione del suo annuncio. Conserviamo l'attività relativa ai premi, i punti e i progressi nei giochi collegati al suo account per gestire queste funzioni. Le classifiche possono mostrare il suo nome Allenatore, la sua posizione e i suoi punti o risultati di gioco; può modificare la preferenza Mostrami in classifica.</p>
+<p class="policy-p">I Messaggi rapidi dei raid le consentono di scegliere messaggi di coordinazione predefiniti. Supabase tratta l'identificativo del messaggio scelto, l'identificativo dell'account del mittente, il nome visualizzato, il ruolo, la marca temporale e gli identificativi di consegna/nuovo tentativo per inviare il messaggio ai partecipanti autorizzati della stanza del raid. Il backend conserva inoltre informazioni sui limiti di invio e sui nuovi tentativi per prevenire abusi e messaggi duplicati. Le trasmissioni del database sono conservate in Supabase Realtime prima della pulizia automatica; non sono trattate soltanto nella memoria del dispositivo né è garantito che scompaiano subito dopo la consegna. Le trasmissioni dei Messaggi rapidi, inclusi l'identificativo del suo account e il suo nome visualizzato, possono rimanere nel registro dei messaggi in tempo reale del nostro fornitore per un periodo limitato dopo la consegna e non vengono rimosse immediatamente quando elimina il suo account.</p>
+<p class="policy-p">Gli screenshot di verifica vengono elaborati sul suo dispositivo tramite il riconoscimento del testo. La procedura di verifica invia al nostro backend le informazioni dell'Allenatore estratte, non lo screenshot.</p>
+<p class="policy-p">La registrazione via email utilizza un controllo di sicurezza Cloudflare Turnstile basato sul browser. Il nostro backend verifica il token della sfida con Cloudflare e invia l'indirizzo email a ZeroBounce per la convalida. Turnstile tratta segnali tecnici quali l'indirizzo IP, le informazioni sul browser e il contesto della sfida per rilevare i bot; Cloudflare utilizza questi segnali anche per migliorare il proprio rilevamento dei bot. Consulti il relativo <a href="https://www.cloudflare.com/turnstile-privacy-policy/">Addendum sulla privacy di Turnstile</a>.</p>
+<h3 class="policy-h2">Posizione</h3>
+<p class="policy-p">L'autorizzazione alla posizione in primo piano è facoltativa. Se la concede, l'app può ottenere latitudine e longitudine, comprese coordinate precise quando il suo dispositivo lo consente, e convertirle tramite geocodifica inversa in paese, regione e città. Le procedure di creazione del raid e di selezione del boss inviano coordinate e contesto di fuso orario/posizione a funzioni del backend che verificano la disponibilità e l'idoneità dei raid. Senza l'autorizzazione, alcuni risultati che dipendono dalla posizione potrebbero non essere disponibili.</p>
+<p class="policy-p">Le informazioni approssimative su paese/regione/città e le marche temporali di aggiornamento possono essere conservate insieme al suo profilo. Se l'autorizzazione alla posizione è già stata concessa, l'app determina anche un codice paese per i rapporti sull'attività operativa. L'accesso alla posizione non richiede l'autorizzazione alla posizione in background.</p>
+<p class="policy-p">Il nostro backend attuale utilizza coordinate precise per verificare l'idoneità dei raid e non scrive coordinate esatte nel record del raid al momento della creazione. Il servizio di localizzazione del dispositivo può trattare coordinate per restituire un paese, una regione o una città. Non promettiamo che tutto il trattamento nell'infrastruttura avvenga soltanto in memoria o venga cancellato immediatamente. I log di servizio e i backup hanno proprie modalità di conservazione. Nella versione 1.0.7, anche Appodeal e BidMachine possono raccogliere e condividere la posizione approssimativa o precisa del dispositivo a fini pubblicitari se ha concesso la corrispondente autorizzazione alla posizione in primo piano. Può negare o revocare questa autorizzazione nelle impostazioni di Android. I partner pubblicitari possono dedurre la posizione approssimativa dagli indirizzi IP anche senza l'autorizzazione alla posizione. Le versioni precedenti che utilizzano AdMob non trasmettono intenzionalmente coordinate precise nel codice di richiesta degli annunci dell'app.</p>
+<h3 class="policy-h2">Scanner di IV, Modalità live e acquisizione dello schermo</h3>
+<p class="policy-p"><strong>Scansione degli screenshot.</strong> Quando sceglie uno screenshot nello Scanner di IV, l'app lo legge sul suo telefono con il riconoscimento del testo sul dispositivo per identificare il Pokémon e valori come PL, PS, livello, dimensioni e valutazione. Lo screenshot e i valori letti non vengono inviati a noi né ai partner pubblicitari.</p>
+<p class="policy-p"><strong>Modalità live (facoltativa).</strong> La Modalità live utilizza l'acquisizione dello schermo di Android (MediaProjection). Android le chiede l'autorizzazione ogni volta che la avvia; nelle versioni recenti di Android può condividere una sola app (consigliamo soltanto Pokémon GO) oppure l'intero schermo. Mentre la Modalità live è attiva:</p>
+<ul class="policy-ul">
+<li>viene mostrata una notifica con un pulsante Interrompi;</li>
+<li>l'app riceve lo schermo condiviso in modo continuo e conserva in memoria soltanto l'immagine più recente;</li>
+<li>analizza automaticamente lo schermo condiviso quando compare una schermata nuova e stabile (scansione automatica) e quando tocca il pulsante mobile a forma di occhio. Se condivide l'intero schermo, anche le schermate di altre app che apre possono essere analizzate brevemente sul suo telefono; tutto ciò che non è una schermata di un Pokémon viene scartato;</li>
+<li>le immagini vengono decodificate e analizzate sul suo telefono. Non vengono caricate, registrate come video né inviate a noi o a terzi;</li>
+<li>le immagini temporanee vengono salvate nella memoria privata dell'app, sostituite man mano che vengono analizzate nuove schermate ed eliminate quando la Modalità live si interrompe;</li>
+<li>il pulsante mobile e i risultati vengono mostrati sopra le altre app tramite l'autorizzazione di Android &ldquo;Mostra sopra altre app&rdquo;. Non vengono mostrati annunci sopra le altre app.</li>
+</ul>
+<p class="policy-p">Può interrompere la Modalità live dalla notifica, dal menu del pulsante mobile, dalla schermata della Modalità live o dall'indicatore di condivisione dello schermo di Android. Può revocare in qualsiasi momento le autorizzazioni di sovrapposizione, di notifica o di acquisizione dello schermo nelle impostazioni di Android.</p>
+<p class="policy-p"><strong>Riconoscimento del testo.</strong> Il riconoscimento del testo utilizza Google ML Kit, fornito tramite Google Play Services, e viene eseguito sul suo dispositivo. Google può ricevere informazioni tecniche, come informazioni sul dispositivo e sull'app, metriche sulle prestazioni e codici di errore, come descritto nella <a href="https://developers.google.com/ml-kit/android-data-disclosure">informativa sui dati di ML Kit</a> di Google; il contenuto delle immagini non viene inviato.</p>
+<p class="policy-p"><strong>Pokémon salvati.</strong> Se salva un Pokémon scansionato, i suoi valori, una copia ridotta dello screenshot e una miniatura vengono conservati nella memoria privata dell'app sul suo telefono, non sui nostri server, finché non elimina la scansione o disinstalla l'app. Se il backup di Android è attivo sul suo dispositivo, Android può includere questi dati dell'app nel backup del dispositivo sul suo account Google.</p>
+<p class="policy-p"><strong>Condivisione, copia e salvataggio delle immagini.</strong> Soltanto quando lo sceglie lei, l'app crea un'immagine del pannello dei risultati e può condividerla tramite il menu di condivisione di Android, copiarla negli appunti o salvarla nella cartella Pictures/Let's Go Raid del suo telefono, dove altre app con accesso alle foto possono vederla. L'app scrive negli appunti, ma non li legge mai.</p>
+<p class="policy-p"><strong>Immagini dei Pokémon.</strong> Le immagini dei Pokémon vengono caricate quando necessario da repository pubblici di immagini ospitati su GitHub (raw.githubusercontent.com). Queste richieste non contengono informazioni sull'account, ma il server riceve dati tecnici standard come il suo indirizzo IP e quale immagine viene richiesta.</p>
+<h3 class="policy-h2">Domande della configurazione iniziale e fuso orario</h3>
+<p class="policy-p">Dopo la creazione di un account (o una sola volta, per gli account esistenti), l'app può chiedere &ldquo;Come ci hai conosciuto?&rdquo;. Rispondere è facoltativo e può saltare la domanda. Le opzioni sono Instagram, Facebook, TikTok, YouTube, Amici o familiari, App Store e Altro. Se sceglie Altro, può digitare volontariamente una breve descrizione (fino a 80 caratteri). Conserviamo l'opzione selezionata, l'eventuale testo digitato e se ha risposto o saltato la domanda, collegati al suo account. Utilizziamo queste informazioni per capire come le persone scoprono l'app e per migliorare il nostro marketing. Non vengono mostrate agli altri Allenatori e la nostra app non le invia ai fornitori di pubblicità.</p>
+<p class="policy-p">L'app legge il fuso orario configurato sul suo dispositivo (ad esempio Europe/Madrid). Come suggerimento iniziale, può utilizzare anche il paese a cui appartiene quel fuso orario e la regione indicata nelle impostazioni di lingua/regione del dispositivo. Il rilevamento del fuso orario utilizza soltanto le impostazioni del dispositivo; non utilizza il GPS e non richiede l'autorizzazione alla posizione. Durante la configurazione iniziale può, se lo desidera, cercare in un elenco offline di città e paesi e sceglierne uno; la ricerca viene eseguita sul suo dispositivo. Conserviamo il suo fuso orario come identificativo di fuso orario IANA, il paese che ha selezionato o che le è stato suggerito, la città e la regione se ha scelto una città, e quando ha confermato l'ultima volta il suo fuso orario. In Impostazioni &gt; Fuso orario può aggiornarlo al fuso orario attualmente impostato sul suo dispositivo; la modifica del fuso orario utilizzato per ospitare raid è possibile una volta ogni 24 ore.</p>
+<p class="policy-p">Utilizziamo queste informazioni per mostrare la sua preferenza di fuso orario nelle impostazioni e per verificare quali boss dei raid con disponibilità in base all'ora locale o alla regione può ospitare (queste verifiche utilizzano il fuso orario confermato e l'ora del server). Il fuso orario del dispositivo o una città scelta non vengono verificati e non sono considerati prova della sua posizione fisica. Queste informazioni non vengono mostrate agli altri Allenatori e la nostra app non le invia ai fornitori di pubblicità.</p>
+<p class="policy-p">Queste risposte sono conservate nel nostro backend (Supabase) e una copia viene mantenuta sul suo dispositivo affinché l'app possa mostrarle offline. Soltanto lei, tramite l'app, e il gestore dell'app possono accedervi. Sono conservate finché il suo account esiste e vengono eliminate insieme all'account (Impostazioni &gt; Eliminare l'account). Può contattarci per accedervi o correggerle.</p>
+<h3 class="policy-h2">Pubblicità e scelte sulla privacy</h3><p class="policy-p">Gli SDK pubblicitari della versione 1.0.7 includono Appodeal, BidMachine, Bidon, AppLovin, Mintegral, Unity Ads, Liftoff Monetize (Vungle), Meta Audience Network e Pangle; Sentry supporta la segnalazione degli arresti anomali degli SDK. Appodeal raccoglie le interazioni con gli annunci, identificativi pubblicitari e di altro tipo, informazioni tecniche sul dispositivo/sulla rete, dati diagnostici e altri dati sulle prestazioni dell'app a fini pubblicitari e di analisi. Anche gli SDK pubblicitari della mediazione possono trattare questi dati per la pubblicazione degli annunci, la misurazione, l'analisi, la sicurezza e la prevenzione delle frodi; le pratiche variano a seconda del fornitore. I dati possono essere condivisi con partner pubblicitari e di misurazione. Le autorizzazioni e le scelte relative al consenso incidono sulla raccolta; rifiutare gli annunci personalizzati non interrompe necessariamente tutta la raccolta di dati tecnici. Per gli annunci premiati, la nostra app trasmette ad Appodeal un identificativo opaco del premio per verificare i premi e contribuire a prevenire gli abusi. Il nostro backend collega questo identificativo al suo account; è pseudonimo, non anonimo. Non è l'ID non elaborato del suo account, il suo indirizzo email né il suo nome Allenatore. L'app non invia direttamente ad Appodeal eventi di acquisto. Ciò non esclude la raccolta da parte di altri SDK inclusi: Unity Ads documenta la raccolta e la condivisione di identificativi personali per la funzionalità dell'app e della cronologia degli acquisti a fini pubblicitari e di analisi. Google Play e RevenueCat trattano gli acquisti come descritto di seguito.</p>
+<p class="policy-p">La versione 1.0.7 utilizza la mediazione di Appodeal per gli annunci banner e per gli annunci premiati facoltativi che offrono l'accesso temporaneo a funzioni. Gli annunci premiati non concedono Premium né Rimuovi gli annunci a vita. L'accesso senza annunci nasconde gli spazi dei banner. Non è implementato alcun formato interstitial o di apertura dell'app. Le versioni precedenti installate possono utilizzare Google AdMob per gli annunci premiati, con i banner disattivati.</p>
+<p class="policy-p">Nelle versioni precedenti installate che utilizzano AdMob, l'SDK Google Mobile Ads tratta indirizzi IP, la posizione approssimativa dedotta dall'IP, identificativi pubblicitari, identificativi del set di app o altri identificativi del dispositivo, interazioni con l'app e con gli annunci e informazioni diagnostiche a fini di pubblicità, misurazione, analisi, sicurezza e prevenzione delle frodi. Google e i suoi partner pubblicitari trattano queste informazioni in base alle proprie norme. Anche gli annunci non personalizzati possono comportare l'uso di identificativi, archiviazione e misurazione.</p>
+<p class="policy-p">La versione 1.0.7 utilizza Appodeal Stack Consent Manager durante l'inizializzazione dell'SDK per ottenere le scelte sulla privacy ove richiesto. Le versioni precedenti installate che utilizzano AdMob impiegano la piattaforma di messaggistica per gli utenti (UMP) di Google. Ove richiesto, le Impostazioni offrono le Scelte sulla privacy degli annunci per riaprire il modulo sulla privacy. La disponibilità dipende dalla sua regione e dai requisiti della piattaforma per il consenso. Anche le impostazioni del dispositivo le consentono di gestire gli identificativi pubblicitari. Rifiutare gli annunci premiati facoltativi non elimina il suo account né impedisce la normale coordinazione dei raid.</p>
+<h3 class="policy-h2">Acquisti</h3>
+<p class="policy-p">Premium mensile (monthly_premium) e l'acquisto separato Rimuovi gli annunci (remove_ads) sono disponibili tramite Google Play Billing. RevenueCat tratta identificativi dell'account/del cliente, cronologia degli acquisti, stato dell'abbonamento e diritti di accesso per la convalida, il ripristino e l'analisi degli acquisti. Il nostro backend riceve eventi di fatturazione per mantenere aggiornato l'accesso. Non riceviamo i dati completi della carta di pagamento. Gli abbonamenti e i rimborsi sono gestiti tramite Google Play. L'eliminazione di un account dell'app non annulla di per sé un abbonamento di Google Play.</p>
+<h3 class="policy-h2">Notifiche e dati operativi</h3>
+<p class="policy-p">Se attiva le notifiche, Expo e i servizi di notifica di Google/Firebase trattano token push, identificativi del dispositivo/dell'installazione, informazioni sulla piattaforma e dati di consegna. Il nostro backend conserva le informazioni di registrazione e di preferenza e invia notifiche relative ai raid e al servizio. Può disattivare le notifiche in Impostazioni o nelle impostazioni di notifica di Android.</p>
+<p class="policy-p">Trattiamo la versione dell'app/della build, il sistema operativo, il modello del dispositivo, gli identificativi di sessione, gli eventi di schermata/attività e i riepiloghi degli errori a fini di affidabilità, analisi, assistenza e prevenzione degli abusi. I rapporti sull'attività sono collegati al suo account dell'app. I dati diagnostici degli SDK pubblicitari sono separati dai nostri rapporti operativi.</p>
+<p class="policy-p"><strong>Autorizzazioni del dispositivo.</strong> A seconda delle funzioni che utilizza, l'app può chiedere: notifiche; posizione in primo piano (idoneità per ospitare raid e paese/regione approssimativi); accesso alle foto nelle versioni precedenti di Android (per scegliere gli screenshot); acquisizione dello schermo e visualizzazione sopra altre app (Modalità live). Ciascuna è facoltativa e può essere revocata nelle impostazioni di Android; in tal caso le funzioni correlate smettono di funzionare.</p>
+<h3 class="policy-h2">Fornitori e informative</h3><p class="policy-p">Informazioni sui fornitori di pubblicità: <a href="https://appodeal.com/privacy-policy/">Appodeal</a>, <a href="https://bidmachine.io/privacy-policy/">BidMachine</a>, <a href="https://docs.bidon.org/">Bidon</a>, <a href="https://legal.applovin.com/privacy/">AppLovin</a>, <a href="https://www.mintegral.com/en/privacy">Mintegral</a>, <a href="https://unity.com/legal/privacy-policy">Unity</a>, <a href="https://liftoff.io/privacy-policy/">Liftoff</a>, <a href="https://www.facebook.com/privacy/policy/">Meta</a>, <a href="https://www.pangleglobal.com/privacy">Pangle</a> e <a href="https://sentry.io/privacy/">Sentry</a>.</p>
+<p class="policy-p">Riconoscimenti: la ricerca offline di città e paesi utilizza dati di <a href="https://www.geonames.org/">GeoNames</a>, concessi in licenza ai sensi di <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribuzione 4.0</a>. Abbiamo selezionato e riformattato parte di questi dati (città più grandi, fusi orari e nomi alternativi) per l'uso nell'app. I dati sono forniti da GeoNames &ldquo;così come sono&rdquo;, senza garanzia. Il testo della sua ricerca viene elaborato sul suo dispositivo e non viene inviato a GeoNames.</p>
+<p class="policy-p">Tra i fornitori figurano Supabase (https://supabase.com/privacy), Google Sign-In, Google Play Billing, i servizi Google/Firebase e, nelle versioni precedenti installate, AdMob (https://policies.google.com/privacy), RevenueCat (https://www.revenuecat.com/privacy), Expo (https://expo.dev/privacy), il fornitore di convalida dell'email di registrazione ZeroBounce (https://www.zerobounce.net/privacy-policy.html) e Cloudflare Turnstile per la sicurezza della registrazione (https://www.cloudflare.com/turnstile-privacy-policy/).</p>
+<p class="policy-p">Ci avvaliamo di fornitori per gestire l'app, autenticare gli utenti, consegnare le notifiche, convalidare gli acquisti, mostrare annunci e proteggere il servizio. Possiamo comunicare informazioni per adempiere a obblighi di legge o per indagare su frodi, abusi e incidenti di sicurezza.</p>
+<h3 class="policy-h2">Conservazione ed eliminazione dell'account</h3>
+<p class="policy-p">Le informazioni dell'account/del profilo sono conservate finché il suo account è attivo. I registri relativi a raid, moderazione, operatività e assistenza possono essere conservati per la gestione del servizio, la sicurezza e la risoluzione dei problemi. I registri di fatturazione possono essere conservati da Google Play e RevenueCat in base alle rispettive norme e agli obblighi di legge. I backup e i log di servizio non vengono necessariamente cancellati subito quando elimina un account.</p>
+<p class="policy-p">Può richiedere l'eliminazione dell'account in Impostazioni > Eliminare l'account e completare la conferma. Può anche scrivere a peacefulsoil4k@gmail.com dall'email del suo account con l'oggetto &quot;Account Deletion Request - Let's Go Raid&quot;; indichi il suo nome Allenatore affinché possiamo verificare la titolarità. Non è necessario reinstallare l'app per inviare questa richiesta.</p>
+<p class="policy-p">L'eliminazione dell'account rimuove l'account di autenticazione e il profilo e anonimizza le informazioni visualizzate associate ai raid/ai membri. Alcuni registri di raid e di moderazione rimangono dopo la rimozione dei campi identificativi descritti sopra. Gli eventi di fatturazione conservati nel backend possono ancora contenere identificativi dell'account/del cliente e dati degli eventi dei fornitori; questi registri non sono necessariamente anonimi. Gli screenshot di verifica non sono conservati dal nostro backend. L'eliminazione dell'account non cancella i registri conservati in modo indipendente da Google, RevenueCat, Appodeal e i suoi partner pubblicitari o altri fornitori, e non annulla un abbonamento. I Pokémon salvati nello Scanner di IV sono conservati soltanto sul suo telefono e vengono rimossi quando li elimina nello Scanner di IV o disinstalla l'app; l'eliminazione dell'account non li rimuove dal suo telefono.</p>
+<p class="policy-p">Attualmente non esiste una procedura separata consolidata per eliminare determinati dati dell'app mantenendo l'account. Può contattare l'assistenza per questioni di accesso, rettifica o altre questioni relative alla privacy; ciò non costituisce una promessa di eliminazione selettiva di ogni registro.</p>
+<h3 class="policy-h2">Minori, sicurezza e contatti</h3>
+<p class="policy-p">L'app non è rivolta ai minori di 13 anni o di età inferiore all'età minima applicabile nella loro regione. Ci contatti se ritiene che un minore abbia fornito informazioni personali in modo improprio. Non possiamo garantire una sicurezza assoluta.</p>
+<p class="policy-p"><strong>I suoi diritti.</strong> A seconda del luogo in cui vive, può avere il diritto di accedere alle sue informazioni personali, rettificarle, cancellarle o riceverne una copia, di opporsi a determinati trattamenti o di limitarli e di revocare il consenso in qualsiasi momento (per la pubblicità, in Impostazioni &gt; Scelte sulla privacy degli annunci). Può inoltre proporre reclamo all'autorità locale per la protezione dei dati. Scriva a peacefulsoil4k@gmail.com; potremmo dover verificare la sua identità. Alcuni partner pubblicitari utilizzano identificativi del dispositivo per la pubblicità personalizzata, che alcune leggi statali degli Stati Uniti considerano &ldquo;vendita&rdquo; o &ldquo;condivisione&rdquo;; ove richiesto, Impostazioni &gt; Scelte sulla privacy degli annunci le consente di esercitare l'opt-out. I nostri fornitori possono trattare i dati al di fuori del suo paese, anche negli Stati Uniti.</p>
+<p class="policy-p"><strong>Sicurezza.</strong> La nostra app e il nostro backend comunicano tramite HTTPS. Alcuni contenuti pubblicitari forniti dai partner pubblicitari possono utilizzare connessioni non crittografate.</p>
+<p class="policy-p">Aggiorneremo la presente informativa quando le nostre pratiche cambieranno. Let's Go Raid è indipendente da Niantic, Nintendo e The Pokémon Company.
+</p></section>
+
+    <!-- DELETION -->
+    <section id="deletion"><div class="section-label">I suoi diritti</div><div class="section-title">Eliminazione dell'account</div><p class="body-text">Utilizzi Impostazioni &rarr; Eliminare l'account e completi la conferma. Se non può utilizzare l'app, scriva a <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a> dall'email del suo account, con l'oggetto Account Deletion Request - Let's Go Raid. Indichi il suo nome Allenatore. Verifichiamo la titolarità prima di procedere.</p><p class="body-text">L'account di autenticazione e il profilo vengono eliminati; le informazioni visualizzate associate ai raid/ai membri vengono anonimizzate. Alcuni registri di raid e di moderazione, log di servizio e backup possono rimanere. Gli eventi di fatturazione conservati nel backend possono ancora contenere identificativi dell'account/del cliente e dati degli eventi dei fornitori e non sono necessariamente anonimi. L'eliminazione dell'account non cancella i registri conservati in modo indipendente da Google, RevenueCat, Appodeal e i suoi partner pubblicitari o altri fornitori, e non annulla un abbonamento. I Pokémon salvati nello Scanner di IV sono conservati soltanto sul suo telefono e vengono rimossi quando li elimina nello Scanner di IV o disinstalla l'app; l'eliminazione dell'account non li rimuove dal suo telefono.</p><p class="body-text">Attualmente non esiste una procedura separata consolidata per eliminare determinati dati dell'app mantenendo l'account. Contatti l'assistenza per questioni relative alla privacy o per l'eliminazione dell'account.</p></section>
+
+    <!-- TERMS -->
+    <section id="terms">
+      <div class="section-label">Legale</div>
+      <div class="section-title">Termini di servizio</div>
+
+      <div class="policy-section">
+        <div class="policy-h2">1. Accettazione dei Termini</div>
+        <p class="policy-p">Scaricando, accedendo a o utilizzando Let's Go Raid, accetta i presenti Termini di servizio. Se non li accetta, non utilizzi l'app.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">2. Descrizione del servizio</div>
+        <p class="policy-p">Let's Go Raid è un'app indipendente per la coordinazione dei raid di Pokemon GO. Aiuta gli Allenatori a pubblicare raid, trovare stanze dei raid, condividere i dati dell'Allenatore necessari per la coordinazione, indicare di essere pronti e coordinare i gruppi di raid.</p>
+        <p class="policy-p">Let's Go Raid non controlla Pokemon GO, la disponibilità dei raid, gli inviti ai raid, i pass per raid in remoto, le ricompense del gioco, le probabilità di cromatici, le catture, i calendari degli eventi né qualsiasi altro risultato all'interno del gioco.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">3. Dichiarazione di non affiliazione</div>
+        <p class="policy-p">Let's Go Raid non è affiliata, approvata, sponsorizzata o autorizzata da Niantic, Inc., Nintendo Co., Ltd., The Pokemon Company, The Pokemon Company International, Game Freak, Creatures Inc. o da qualsiasi entità correlata. Pokemon GO e Pokemon sono marchi dei rispettivi proprietari.</p>
+        <p class="policy-p">Lei è responsabile del rispetto dei termini, delle regole e delle linee guida della community di Pokemon GO.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">4. Responsabilità per l'account e il profilo Allenatore</div>
+        <ul class="policy-ul">
+          <li>Per utilizzare Let's Go Raid deve avere almeno 13 anni o l'età minima richiesta dalla legge del luogo in cui si trova.</li>
+          <li>Lei è responsabile di mantenere sicuro il suo account e di tutte le attività svolte con il suo account.</li>
+          <li>Le informazioni del profilo Allenatore, inclusi nome Allenatore, livello Allenatore, codice Allenatore, squadra, stile dell'avatar e stato di verifica, devono essere accurate quando ospita raid o vi partecipa.</li>
+          <li>Informazioni del profilo false o fuorvianti possono comportare limitazioni o la rimozione dell'account.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">5. Regole per ospitare raid e parteciparvi</div>
+        <ul class="policy-ul">
+          <li>Gli organizzatori dovrebbero pubblicare soltanto raid reali che intendono coordinare.</li>
+          <li>Gli organizzatori dovrebbero mantenere accurate le impostazioni del gruppo ed evitare di abusare delle funzioni di annullamento, avvio, dimensione del gruppo, livello minimo, solo Premium o segnalazione.</li>
+          <li>Gli ospiti dovrebbero partecipare soltanto ai raid a cui intendono prendere parte e segnarsi come Pronto soltanto quando lo sono davvero.</li>
+          <li>Se i suoi piani cambiano, lasci la stanza del raid affinché l'organizzatore disponga di un elenco del gruppo accurato.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section" id="community-rules">
+        <div class="policy-h2">6. Condotta degli utenti e Regole della community</div>
+        <p class="policy-p">Le presenti Regole della community si applicano a tutto ciò che gli altri Allenatori possono vedere, inclusi nomi Allenatore, raid pubblicati, stanze dei raid, Messaggi rapidi, annunci con codici amico e classifiche.</p>
+        <ul class="policy-ul">
+          <li>Utilizzi un nome Allenatore che non sia offensivo, d'odio, sessuale o minaccioso e che non impersoni un'altra persona od organizzazione.</li>
+          <li>Non molesti, minacci, bullizzi o maltratti altri Allenatori.</li>
+          <li>Non invii spam, inclusi raid pubblicati, annunci con codici amico o messaggi ripetuti o fuorvianti.</li>
+          <li>Non crei raid falsi, fraudolenti o fuorvianti e non utilizzi l'app per truffare altri Allenatori, ad esempio chiedendo pagamenti, dati dell'account o oggetti in cambio di inviti ai raid.</li>
+          <li>Mantenga accurati gli annunci con codici amico: utilizzi il suo codice amico e informazioni reali su squadra, livello, tag e paese.</li>
+          <li>Non impersoni altre persone, non faccia un uso improprio dei codici Allenatore, non invii segnalazioni false e non abusi degli strumenti di moderazione.</li>
+          <li>Non tenti di aggirare i sistemi Premium, di sicurezza, di moderazione o di protezione.</li>
+          <li>Non utilizzi l'app per agevolare imbrogli, la falsificazione della posizione, l'automazione non autorizzata o violazioni delle regole di Pokemon GO.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">7. Segnalazioni e moderazione</div>
+        <p class="policy-p">L'app le consente di segnalare problemi con i raid, ad esempio un organizzatore che ha abbandonato un raid o un raid annullato dopo che lei vi si era unito. Possiamo esaminare le segnalazioni. Le segnalazioni e i controlli automatici dell'app sui raid annullati possono comportare provvedimenti quali avvertimenti, limitazioni temporanee all'organizzazione di raid, limitazioni dell'account, rimozione o modifica di contenuti inappropriati come nomi Allenatore o annunci, oppure la rimozione dell'account.</p>
+        <p class="policy-p">Non garantiamo un esito specifico della moderazione né tempi di risposta specifici.</p>
+        <p class="policy-p">Se ha una domanda su una decisione di moderazione che la riguarda, scriva a <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>. Attualmente non esiste una procedura formale di ricorso separata.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">8. Premium, acquisti, annunci e notifiche</div>
+        <ul class="policy-ul">
+          <li>Premium mensile e Rimuovi gli annunci sono disponibili tramite Google Play Billing, con convalida dei diritti di accesso da parte di RevenueCat.</li>
+          <li>Gli acquisti e gli abbonamenti utilizzano Google Play Billing e RevenueCat.</li>
+          <li>Il ripristino degli acquisti dovrebbe essere considerato disponibile soltanto se la build dell'app installata offre una procedura di ripristino attiva.</li>
+          <li>La versione 1.0.7 utilizza Appodeal e partner della mediazione per gli annunci banner e per gli annunci premiati volontari che offrono sblocchi temporanei. Le versioni precedenti installate possono utilizzare AdMob con i banner disattivati.</li>
+          <li>I promemoria locali e le notifiche inviate dal server dipendono dalle sue autorizzazioni e dalle sue preferenze di notifica.</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">9. Privacy, eliminazione e servizi di terze parti</div>
+        <p class="policy-p">L'uso di Let's Go Raid è disciplinato anche dall'<a href="#privacy">Informativa sulla privacy</a>. Può richiedere l'eliminazione dell'account o dei dati tramite la sezione <a href="#deletion">Eliminazione dell'account/dei dati</a>.</p>
+        <p class="policy-p">L'app può avvalersi di servizi di terze parti, tra cui Supabase, i servizi Expo, RevenueCat, Google Play Billing, Appodeal e i partner della sua mediazione (o AdMob nelle versioni precedenti) e pagine di documentazione ospitate. Questi servizi possono avere propri termini e proprie informative sulla privacy.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">10. Disponibilità del servizio ed esclusione di garanzie</div>
+        <p class="policy-p">Let's Go Raid è fornita come strumento di coordinazione. Non garantiamo il successo di raid, inviti, catture o ricompense, né la disponibilità di Pokemon GO, i limiti dei raid in remoto, l'accuratezza degli eventi, la consegna delle notifiche, la continuità del servizio o il comportamento degli altri utenti.</p>
+        <p class="policy-p">L'app è fornita "così com'è" e "come disponibile". Nella misura massima consentita dalla legge, escludiamo le garanzie di commerciabilità, idoneità a uno scopo particolare, non violazione e funzionamento ininterrotto o privo di errori.</p>
+      </div>
+
+      <div class="policy-section">
+        <div class="policy-h2">11. Limitazione di responsabilità e contatti</div>
+        <p class="policy-p">Nella misura massima consentita dalla legge, Peaceful Soil e Let's Go Raid non sono responsabili per danni indiretti, incidentali, speciali, consequenziali, punitivi o simili derivanti dall'uso dell'app, inclusi raid persi, inviti non riusciti, interruzioni di terze parti, problemi della piattaforma di fatturazione, perdita di dati, interruzioni del servizio, mancata consegna delle notifiche o informazioni inesatte su raid/eventi.</p>
+        <p class="policy-p">Per assistenza, questioni legali, richieste relative alla privacy, eliminazione dell'account o eliminazione dei dati, scriva a <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>.</p>
+      </div>
+    </section>
+    <!-- SUPPORT -->
+    <section id="support">
+      <div class="section-label">Aiuto</div>
+      <div class="section-title">Assistenza</div>
+
+      <p class="body-text">Let's Go Raid è disponibile su Google Play. Ci impegniamo a rispondere entro <strong>5 giorni lavorativi</strong>.</p>
+
+      <a href="mailto:peacefulsoil4k@gmail.com" class="email-link">
+        ✉ &nbsp;peacefulsoil4k@gmail.com
+      </a>
+
+      <p class="body-text-muted" style="margin-top:8px;">Quando ci scrive, indichi l'email del suo account, il modello del dispositivo, la versione dell'app (visibile nelle impostazioni, se disponibile) e una descrizione del problema. Non invii la sua password né codici di verifica monouso.</p>
+
+      <div class="support-topics">
+        <div class="support-topic">
+          <div class="support-topic-title">Accesso / verifica dell'email</div>
+          <div class="support-topic-body">Controlli prima la cartella dello spam. Se il problema persiste, contatti l'assistenza indicando l'email del suo account ed eventuali messaggi di errore visualizzati.</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">Profilo o codice Allenatore</div>
+          <div class="support-topic-body">Provi a inserire di nuovo il suo nome Allenatore, il livello o il codice. Se il problema persiste, contatti l'assistenza indicando il nome Allenatore e il messaggio di errore.</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">Il raid non viene visualizzato</div>
+          <div class="support-topic-body">Trascini verso il basso per aggiornare oppure chiuda e riapra la schermata della sala. Quando contatta l'assistenza, indichi il nome del boss e il tipo di raid.</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">Privacy o eliminazione dei dati</div>
+          <div class="support-topic-body">Contatti l'assistenza per domande sulla privacy, eliminazione dell'account, eliminazione dei dati o aiuto nell'utilizzo delle istruzioni pubbliche per l'eliminazione.</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">Segnalazione di bug</div>
+          <div class="support-topic-body">Indichi il modello del suo dispositivo, la versione dell'app, cosa stava cercando di fare ed eventuali messaggi di errore visualizzati.</div>
+        </div>        <div class="support-topic">
+          <div class="support-topic-title">Domande su pagamenti o Premium</div>
+          <div class="support-topic-body">Per assistenza sugli acquisti, indichi il prodotto e il messaggio di errore. Non invii credenziali di pagamento.</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">Screenshot di verifica</div>
+          <div class="support-topic-body">Indichi se la selezione dell'immagine si è aperta, se i campi sono stati compilati automaticamente e se è comparsa una richiesta di autorizzazione.</div>
+        </div>
+        <div class="support-topic">
+          <div class="support-topic-title">Domande su segnalazioni o moderazione</div>
+          <div class="support-topic-body">Scriva a peacefulsoil4k@gmail.com con una descrizione, il nome Allenatore dell'utente segnalato, se lo conosce, ed eventuali screenshot a supporto.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREMIUM -->
+    <section id="premium"><div class="section-label">Abbonamenti</div><div class="section-title">Premium e acquisti</div><p class="body-text">Premium mensile (monthly_premium) e l'acquisto separato a vita Rimuovi gli annunci (remove_ads) utilizzano Google Play Billing e RevenueCat. I prezzi e la disponibilità sono indicati nell'app. Il ripristino degli acquisti è disponibile dall'app. Gli abbonamenti si rinnovano secondo i termini di Google Play; gestisca l'annullamento e i rimborsi tramite Google Play. L'eliminazione dell'account non annulla un abbonamento.</p><p class="body-text">Gli annunci premiati offrono soltanto sblocchi temporanei di funzioni. Non concedono Premium né Rimuovi gli annunci a vita. La versione 1.0.7 supporta i banner di Appodeal per gli utenti senza accesso senza annunci; nelle versioni precedenti installate i banner possono essere disattivati.</p></section>
+
+    <!-- DISCLAIMER -->
+    <section id="disclaimer">
+      <div class="section-label">Note legali</div>
+      <div class="section-title">Dichiarazione di app indipendente</div>
+      <div class="disclaimer-box">
+        <p>Let's Go Raid è un'app indipendente per la coordinazione dei raid di Pokémon GO. <strong>Non è affiliata, approvata né sponsorizzata da</strong> Niantic, Inc., The Pokémon Company International, Nintendo Co., Ltd. o da qualsiasi entità correlata. Pokémon GO e Pokémon sono marchi dei rispettivi proprietari.</p>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="padding-bottom:0;">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand">Let's Go Raid</div>
+          <div class="footer-copy">&copy; 2026 Peaceful Soil &nbsp;·&nbsp; com.peacefulsoil.letsgoraid</div>
+          <div class="footer-copy" style="margin-top:2px;">Ultimo aggiornamento: 30 ottobre 2026</div>
+        </div>
+        <div class="footer-links">
+          <a href="mailto:peacefulsoil4k@gmail.com">peacefulsoil4k@gmail.com</a>
+          <a href="#top">Torna su ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/lang.js" defer></script>
+</body>
+</html>
